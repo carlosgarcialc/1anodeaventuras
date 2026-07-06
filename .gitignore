@@ -4,3 +4,6 @@
 # Basura del sistema
 .DS_Store
 Thumbs.db
+
+# Historial de R (basura)
+.Rhistory
