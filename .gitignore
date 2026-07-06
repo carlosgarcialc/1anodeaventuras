@@ -1,0 +1,6 @@
+# Config local del preview (rutas de tu máquina, no sirve en el deploy)
+.claude/
+
+# Basura del sistema
+.DS_Store
+Thumbs.db

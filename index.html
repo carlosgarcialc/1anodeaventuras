@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>1 año de Aventuras… por ahora</title>
+  <meta name="description" content="Un año de viajes, mapas, gaviotas ladronas y conciertos. Nuestro álbum de aventuras — por ahora.">
+  <meta property="og:title" content="1 año de Aventuras… por ahora">
+  <meta property="og:description" content="Nuestro álbum de viaje: 10 destinos, 1 año, demasiadas anécdotas.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og.jpg">
+  <meta name="theme-color" content="#EAE0CA">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600;1,900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/home.css">
+
+  <script>/* anti-flash si llegamos vía transición de viaje */
+    if (sessionStorage.getItem('beapa-arrive')) document.documentElement.classList.add('arriving');
+  </script>
+</head>
+<body>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="hero">
+    <div class="hero-corazon" id="heroCorazon" aria-hidden="true"></div>
+    <div class="hero-olivo" aria-hidden="true" data-adorno="olivo"></div>
+    <h1 class="hero-titulo"><span class="num">1</span> <span class="anio">año</span> de Aventuras</h1>
+    <div class="hero-porahora">por ahora…</div>
+    <div class="hero-sub">un mapa · diez destinos · nosotros</div>
+    <div class="hero-scroll">baja, que esto sigue ↓</div>
+  </header>
+
+  <!-- ============ BIENVENIDA (dedicatoria) ============ -->
+  <section class="bienvenida torn-top" aria-label="Dedicatoria">
+    <div class="postmark">1er<br>aniversario<br>· beapa ·</div>
+    <h2>Querida copiloto,</h2>
+
+    <!-- ✏️ ‹‹ TEXTO DE BIENVENIDA — EDITAR ›› -->
+    <p class="ph-texto">
+      ‹‹ TEXTO DE BIENVENIDA — EDITAR ››<br>
+      Aquí va tu dedicatoria: por qué este mapa, por qué este año,
+      y por qué "por ahora". Escríbelo en este mismo archivo
+      (<code>index.html</code>, sección "bienvenida").
+    </p>
+
+    <span class="firma">‹‹ FIRMA — EDITAR ››</span>
+  </section>
+
+  <!-- ============ EL MAPA VIVO ============ -->
+  <section class="mapa-seccion" aria-label="Selector de destinos">
+    <div class="mapa-titulo">
+      <h2>El mapa vivo</h2>
+      <div class="pista">cada destino esconde una página (igual que el mapa esconde chips)</div>
+    </div>
+
+    <div class="mapa-frame" id="mapaFrame">
+      <div class="mapa-canvas" id="mapaCanvas"></div>
+    </div>
+    <p class="mapa-ayuda">en el móvil: pellizca para hacer zoom · toca un destino para desplegarlo · toca otra vez para viajar ✈</p>
+
+    <!-- índice de respaldo (accesible y práctico) -->
+    <nav class="indice-destinos" id="indiceDestinos" aria-label="Todos los destinos"></nav>
+  </section>
+
+  <noscript><p style="text-align:center;padding:2em">Este álbum necesita JavaScript para volar. Los destinos están en <code>/destinos/&lt;nombre&gt;/</code>.</p></noscript>
+
+  <!-- CDN: GSAP + ScrollTrigger + MotionPath + Lenis -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+
+  <script src="js/icons.js"></script>
+  <script src="js/data/destinos.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/map.js"></script>
+  <script>
+    App.overlaysGlobales();
+    App.llegada();
+    App.footer('');
+
+    /* adornos declarativos */
+    document.querySelectorAll('[data-adorno]').forEach(el => el.innerHTML = ADORNOS[el.dataset.adorno]);
+
+    /* destellos del hero */
+    sembrarDestellos(document.getElementById('hero'), 10);
+
+    /* estela de corazón + avioncito en el hero */
+    (function(){
+      const cont = document.getElementById('heroCorazon');
+      const NS = 'http://www.w3.org/2000/svg';
+      const svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', '0 0 400 600');
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+      const heart = 'M200,205 C186,178 152,168 132,186 C110,206 114,238 136,260 C158,282 200,306 200,306 C200,306 242,282 264,260 C286,238 290,206 268,186 C248,168 214,178 200,205 Z';
+      svg.innerHTML = `
+        <defs><mask id="heartMask"><path id="heartMaskPath" d="${heart}" fill="none" stroke="#fff" stroke-width="16"/></mask></defs>
+        <path d="${heart}" fill="none" stroke="#6E5B48" stroke-width="3.5"
+          stroke-dasharray="1 13" stroke-linecap="round" opacity=".8" mask="url(#heartMask)"/>
+        <g id="heroAvionG" style="color:#6E5B48"><g transform="translate(-26,-16) scale(.8)">${ADORNOS.avion.replace('<svg','<svg width="64" height="40"')}</g></g>`;
+      cont.appendChild(svg);
+      const mp = svg.querySelector('#heartMaskPath');
+      const L = mp.getTotalLength();
+      mp.style.strokeDasharray = L; mp.style.strokeDashoffset = L;
+      if (!App.reduced && App.hasGsap){
+        gsap.to(mp, { strokeDashoffset: 0, duration: 3.4, ease: 'power1.inOut', delay: .6 });
+        gsap.to('#heroAvionG', {
+          motionPath: { path: mp, align: mp, alignOrigin: [.5, .5], autoRotate: true },
+          duration: 3.4, ease: 'power1.inOut', delay: .6,
+        });
+        /* parallax sutil del hero */
+        gsap.to(cont, { y: -60, scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: true } });
+        gsap.from('.hero-titulo, .hero-porahora, .hero-sub', { opacity: 0, y: 30, duration: 1.1, stagger: .15, ease: 'power2.out' });
+      } else {
+        mp.style.strokeDashoffset = 0;
+      }
+    })();
+
+    /* índice de respaldo */
+    (function(){
+      const nav = document.getElementById('indiceDestinos');
+      DESTINOS.forEach(d => {
+        const a = document.createElement('a');
+        a.className = 'ticket';
+        a.href = `destinos/${d.slug}/index.html`;
+        a.innerHTML = `${d.nombre} <span class="flecha">✈</span>`;
+        a.addEventListener('click', e => { e.preventDefault(); App.viajarA(a.href, d.nombre, ICONOS[d.slug]); });
+        nav.appendChild(a);
+      });
+    })();
+
+    App.activarReveals();
+  </script>
+</body>
+</html>

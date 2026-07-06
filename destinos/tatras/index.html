@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Tatras — 1 año de Aventuras</title>
+  <meta name="description" content="Montañas, nieve cayendo a cámara lenta y una cabaña con la ventanita encendida.">
+  <meta property="og:title" content="Tatras — 1 año de Aventuras">
+  <meta property="og:description" content="Montañas, nieve cayendo a cámara lenta y una cabaña con la ventanita encendida.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="../../assets/og.jpg">
+  <meta name="theme-color" content="#EAE0CA">
+  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600;1,900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../../css/design-system.css">
+  <link rel="stylesheet" href="../../css/destino.css">
+
+  <script>/* anti-flash si llegamos via transicion de viaje */
+    if (sessionStorage.getItem('beapa-arrive')) document.documentElement.classList.add('arriving');
+  </script>
+</head>
+<body>
+  <main id="app"></main>
+  <noscript><p style="text-align:center;padding:2em">Este recuerdo necesita JavaScript. <a href="../../index.html">Volver al mapa</a>.</p></noscript>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+
+  <script src="../../js/icons.js"></script>
+  <script src="../../js/data/destinos.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/data/tatras.js"></script>
+  <script src="../../js/effects/tatras.js"></script>
+  <script src="../../js/destino.js"></script>
+</body>
+</html>

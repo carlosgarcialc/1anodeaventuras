@@ -1,0 +1,140 @@
+/* ============================================================
+   beapa — home (hero + mapa vivo)
+   ============================================================ */
+
+/* ---------- hero ---------- */
+.hero{
+  min-height:92svh; position:relative; overflow:hidden;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:72px 22px 90px;
+}
+.hero-titulo{
+  font-size:clamp(2.6rem, 11vw, 6.2rem);
+  font-weight:900; margin:0; letter-spacing:.01em;
+}
+.hero-titulo .num{ font-style:italic; color:var(--gold); }
+.hero-titulo .anio{ color:var(--rose); font-style:italic; }
+.hero-porahora{
+  font-family:var(--font-hand); font-size:clamp(1.7rem, 6.5vw, 3rem);
+  color:var(--ink-soft); transform:rotate(-3deg); margin-top:.1em;
+}
+.hero-sub{
+  margin-top:1.4em; font-size:1rem; letter-spacing:.24em; text-transform:uppercase;
+  font-family:var(--font-display); color:var(--ink-soft);
+}
+.hero-olivo{ width:min(200px,44vw); color:var(--sage-deep); margin-bottom:10px; opacity:.9; }
+.hero-corazon{ position:absolute; inset:0; pointer-events:none; }
+.hero-corazon svg{ width:100%; height:100%; }
+.hero-avion{ position:absolute; width:52px; color:var(--ink-soft); top:18%; left:8%; }
+.hero-scroll{
+  position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+  font-family:var(--font-hand); font-size:1.25rem; color:var(--ink-soft);
+  animation:flotar 2.6s ease-in-out infinite;
+}
+@keyframes flotar{ 0%,100%{ transform:translate(-50%,0);} 50%{ transform:translate(-50%,8px);} }
+html.no-motion .hero-scroll{ animation:none; }
+
+/* ---------- bienvenida ---------- */
+.bienvenida{
+  max-width:640px; margin:0 auto; padding:64px 26px 30px; text-align:center; position:relative;
+}
+.bienvenida .postmark{ margin:0 auto 22px; }
+.bienvenida h2{ font-size:clamp(1.7rem,6vw,2.4rem); }
+.bienvenida .firma{ font-family:var(--font-hand); font-size:1.5rem; color:var(--ink-soft); margin-top:1em; transform:rotate(-2deg); display:inline-block; }
+
+/* ---------- mapa vivo ---------- */
+.mapa-seccion{ padding:56px 0 40px; position:relative; }
+.mapa-titulo{ text-align:center; padding:0 24px; }
+.mapa-titulo h2{ font-size:clamp(1.9rem,7vw,3rem); margin-bottom:.2em; }
+.mapa-titulo .pista{ font-family:var(--font-hand); font-size:1.4rem; color:var(--ink-soft); }
+
+.mapa-frame{
+  margin:26px auto 0; width:min(1200px, 96vw);
+  border:2px solid var(--ink-soft); outline:6px solid var(--paper-light);
+  outline-offset:-8px; border-radius:6px;
+  box-shadow:var(--shadow-lift);
+  overflow:hidden; position:relative;
+  background:var(--sea);
+  touch-action:none; /* pan/zoom propio */
+  cursor:grab;
+}
+.mapa-frame.arrastrando{ cursor:grabbing; }
+.mapa-frame::after{ /* viñeteado interior del mapa */
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:5;
+  box-shadow:inset 0 0 60px rgba(74,59,44,.35);
+}
+.mapa-canvas{
+  position:relative; aspect-ratio:1536/1024; width:100%;
+  transform-origin:0 0; will-change:transform;
+}
+.mapa-canvas > img.mapa-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+
+/* fallback si aún no existe assets/mapa.png */
+.mapa-fallback{
+  position:absolute; inset:0; display:grid; place-items:center;
+  background:
+    var(--noise),
+    radial-gradient(80% 70% at 30% 30%, var(--paper-light), var(--paper) 70%, var(--paper-dark));
+  text-align:center; color:var(--ink-soft); padding:20px;
+}
+.mapa-fallback .ph-txt{ font-family:var(--font-hand); font-size:clamp(1.2rem,3vw,1.8rem); }
+
+.mapa-rutas{ position:absolute; inset:0; width:100%; height:100%; z-index:2; pointer-events:none; }
+.mapa-rutas .ruta-dots{ stroke:var(--ink-soft); opacity:.85; }
+
+/* marcadores */
+.marker{
+  position:absolute; z-index:6; width:52px; height:52px;
+  transform:translate(-50%,-50%); padding:0;
+  -webkit-tap-highlight-color:transparent;
+}
+.marker-glow{
+  position:absolute; inset:4px; border-radius:50%;
+  background:radial-gradient(circle, rgba(201,162,75,.55), rgba(201,162,75,0) 70%);
+  animation:pulso 2.4s ease-in-out infinite;
+}
+.marker-ring{
+  position:absolute; inset:12px; border-radius:50%;
+  border:2.5px solid var(--gold);
+  box-shadow:0 0 0 3px rgba(243,236,218,.35), 0 2px 8px rgba(74,59,44,.3);
+  background:rgba(243,236,218,.12);
+  transition:transform .3s, border-color .3s;
+}
+.marker:hover .marker-ring, .marker.activo .marker-ring{
+  transform:scale(1.25); border-color:var(--terracotta);
+}
+@keyframes pulso{ 0%,100%{ transform:scale(.8); opacity:.7;} 50%{ transform:scale(1.15); opacity:1;} }
+html.no-motion .marker-glow{ animation:none; }
+
+.marker-tag{
+  position:absolute; bottom:calc(100% + 2px); left:50%;
+  transform:translateX(-50%) rotate(-3deg) scale(.4);
+  transform-origin:bottom center;
+  font-family:var(--font-hand); font-size:1.15rem; white-space:nowrap;
+  background:var(--paper-light); color:var(--ink);
+  border:1px solid rgba(110,91,72,.5); border-radius:3px;
+  padding:.02em .55em .08em; box-shadow:var(--shadow-soft);
+  opacity:0; pointer-events:none;
+  transition:opacity .25s, transform .3s cubic-bezier(.2,1.5,.4,1);
+}
+.marker-tag small{ display:block; font-size:.72em; color:var(--terracotta); margin-top:-4px; }
+.marker:hover .marker-tag, .marker.activo .marker-tag{
+  opacity:1; transform:translateX(-50%) rotate(-3deg) scale(1);
+}
+.marker.activo .marker-tag small::after{ content:" · toca otra vez ✈"; color:var(--ink-soft); }
+
+.mapa-ayuda{
+  text-align:center; font-family:var(--font-hand); font-size:1.25rem;
+  color:var(--ink-soft); margin-top:14px; padding:0 20px;
+}
+
+/* índice textual de respaldo (accesible, SEO, y por si el mapa tarda) */
+.indice-destinos{
+  display:flex; flex-wrap:wrap; gap:10px 12px; justify-content:center;
+  padding:30px 22px 10px; max-width:860px; margin:0 auto;
+}
+
+@media (min-width:760px){
+  .mapa-frame{ touch-action:auto; cursor:default; }
+  .marker{ width:60px; height:60px; }
+}

@@ -1,0 +1,96 @@
+/* ============================================================
+   beapa — plantilla de página de destino
+   (cada página define su --accent en el <head>)
+   ============================================================ */
+
+.d-header{
+  text-align:center; padding:76px 22px 30px; position:relative; overflow:hidden;
+}
+.d-header .volver{
+  position:absolute; top:16px; left:16px; z-index:10;
+  font-size:.72rem; padding:.5em .9em;
+}
+.d-header .d-icono{
+  width:76px; margin:0 auto 8px; color:var(--ink);
+  filter:drop-shadow(0 3px 6px rgba(74,59,44,.25));
+}
+.d-header h1{
+  font-size:clamp(2.4rem, 10vw, 4.6rem); font-weight:900;
+}
+.d-header h1 em{ color:var(--accent); }
+.d-header .dateline{
+  font-family:var(--font-hand); font-size:1.5rem; color:var(--ink-soft);
+  transform:rotate(-2deg); display:inline-block;
+}
+.d-header .adorno-esq{ position:absolute; width:70px; opacity:.85; color:var(--sage-deep); pointer-events:none; }
+.d-header .adorno-esq.tl{ top:14px; right:14px; transform:rotate(20deg); }
+.d-header .adorno-esq.br{ bottom:8px; left:10px; transform:scaleX(-1) rotate(10deg); width:86px; }
+.d-header .postmark{ position:absolute; top:52px; right:6%; transform:rotate(14deg) scale(.8); opacity:.7; }
+
+/* ---------- hero media ---------- */
+.d-hero{ padding:8px 18px 30px; max-width:900px; margin:0 auto; }
+.d-hero .marco{
+  position:relative; background:#F7F1E1; padding:14px; border-radius:2px;
+  box-shadow:var(--shadow-lift); transform:rotate(-.6deg);
+}
+.d-hero .marco .media-slot{ display:block; }
+.d-hero .marco img, .d-hero .marco video{ width:100%; max-height:72svh; object-fit:cover; }
+.d-hero .marco .ph-media{ aspect-ratio:4/3; }
+.d-hero .sello-esq{ position:absolute; top:-16px; right:-10px; transform:rotate(8deg); z-index:2; }
+
+/* ---------- intro ---------- */
+.d-intro{ max-width:640px; margin:0 auto; padding:26px 26px 6px; text-align:center; font-size:1.15em; }
+
+/* ---------- efecto temático ---------- */
+.efecto{ position:relative; margin:44px 0; }
+
+/* ---------- galería polaroids ---------- */
+.d-galeria{
+  max-width:1000px; margin:0 auto; padding:30px 22px;
+  display:grid; grid-template-columns:repeat(2, 1fr); gap:26px 16px;
+}
+.d-galeria .polaroid:nth-child(3n){ margin-top:18px; }
+.d-galeria-titulo{ text-align:center; padding-top:26px; }
+.d-galeria-titulo h2{ font-size:clamp(1.8rem,6vw,2.6rem); }
+.d-galeria-titulo .hand{ font-size:1.4rem; color:var(--ink-soft); }
+
+/* ---------- historia ---------- */
+.d-historia{
+  max-width:660px; margin:30px auto; padding:38px 30px; position:relative;
+  background:var(--paper-light); background-image:var(--noise);
+  box-shadow:var(--shadow-soft); transform:rotate(.4deg);
+  border-radius:2px;
+}
+.d-historia::before{
+  content:""; position:absolute; top:-11px; left:34px; width:90px; height:26px;
+  background:linear-gradient(100deg, rgba(139,154,120,.4), rgba(201,162,75,.4));
+  transform:rotate(-4deg); opacity:.85;
+}
+.d-historia h2{ font-size:1.7rem; }
+.d-historia h2 em{ color:var(--accent); }
+
+/* ---------- nota manuscrita ---------- */
+.d-nota{
+  max-width:480px; margin:34px auto; padding:26px 30px 30px; position:relative;
+  font-family:var(--font-hand); font-size:1.55rem; line-height:1.35; color:var(--ink);
+  background:
+    var(--noise),
+    repeating-linear-gradient(transparent 0 30px, rgba(110,91,72,.18) 30px 31px),
+    var(--paper-light);
+  transform:rotate(-1.6deg);
+  box-shadow:var(--shadow-soft);
+}
+.d-nota .wax-seal{ position:absolute; bottom:-22px; right:-14px; transform:rotate(10deg) scale(.85); }
+
+/* ---------- navegación entre destinos ---------- */
+.d-nav{
+  display:flex; justify-content:center; gap:14px; flex-wrap:wrap;
+  padding:36px 20px 10px;
+}
+
+@media (min-width:760px){
+  .d-galeria{ grid-template-columns:repeat(3, 1fr); gap:34px 24px; }
+  .d-galeria .polaroid:nth-child(3n){ margin-top:30px; }
+  .d-galeria .polaroid:nth-child(3n+2){ margin-top:-14px; }
+  .d-header .d-icono{ width:92px; }
+}
