@@ -158,8 +158,8 @@
       const s = document.createElement('span');
       s.className = 'sparkle';
       s.innerHTML = ADORNOS.sparkle;
-      s.style.left = (5 + Math.random() * 90) + '%';
-      s.style.top = (5 + Math.random() * 85) + '%';
+      s.style.left = (4 + Math.random() * 82) + '%';   /* sin rozar los bordes (overflow en móvil) */
+      s.style.top = (5 + Math.random() * 82) + '%';
       s.style.setProperty('--dur', (2 + Math.random() * 2.6).toFixed(2) + 's');
       s.style.setProperty('--delay', (Math.random() * 3).toFixed(2) + 's');
       const sc = .5 + Math.random() * .9;

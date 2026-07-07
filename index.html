@@ -67,6 +67,17 @@
     <nav class="indice-destinos" id="indiceDestinos" aria-label="Todos los destinos"></nav>
   </section>
 
+  <!-- ============ NUEVAS AVENTURAS (se añaden desde la propia web) ============ -->
+  <section class="aventuras-nuevas torn-top" id="nuevasAventuras" aria-label="Nuevas aventuras">
+    <div class="mapa-titulo">
+      <h2>Próximas paradas</h2>
+      <div class="pista">las que vayamos viviendo, apuntadas al vuelo</div>
+    </div>
+    <div class="av-grid" id="avGrid"></div>
+    <button class="ticket av-add" id="avAdd">✚ &nbsp;nueva aventura</button>
+    <p class="av-pie">psst: estas se guardan en el dispositivo donde las creas</p>
+  </section>
+
   <noscript><p style="text-align:center;padding:2em">Este álbum necesita JavaScript para volar. Los destinos están en <code>/destinos/&lt;nombre&gt;/</code>.</p></noscript>
 
   <!-- CDN: GSAP + ScrollTrigger + MotionPath + Lenis -->
@@ -79,10 +90,12 @@
   <script src="js/data/destinos.js"></script>
   <script src="js/main.js"></script>
   <script src="js/map.js"></script>
+  <script src="js/aventuras.js"></script>
   <script>
     App.overlaysGlobales();
     App.llegada();
     App.footer('');
+    Aventuras.init();
 
     /* adornos declarativos */
     document.querySelectorAll('[data-adorno]').forEach(el => el.innerHTML = ADORNOS[el.dataset.adorno]);

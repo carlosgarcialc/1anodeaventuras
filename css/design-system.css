@@ -32,7 +32,11 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html{ -webkit-text-size-adjust:100%; }
+html{
+  -webkit-text-size-adjust:100%;
+  /* nada puede desbordar horizontalmente (iOS ignora esto si solo está en body) */
+  overflow-x:hidden; overflow-x:clip;
+}
 html.lenis, html.lenis body{ height:auto; }
 .lenis.lenis-smooth{ scroll-behavior:auto !important; }
 
@@ -232,6 +236,7 @@ html.no-motion .will-reveal{ opacity:1; transform:none; transition:opacity .5s; 
 /* ---------- footer compartido ---------- */
 .site-footer{
   text-align:center; padding:64px 24px 48px; position:relative;
+  overflow:hidden; /* que los destellos no desborden el viewport en móvil */
 }
 .site-footer .lema{ font-family:var(--font-display); font-size:1.3rem; }
 .site-footer .lema em{ color:var(--rose); font-style:italic; }
