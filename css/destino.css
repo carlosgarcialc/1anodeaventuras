@@ -82,6 +82,21 @@
 }
 .d-nota .wax-seal{ position:absolute; bottom:-22px; right:-14px; transform:rotate(10deg) scale(.85); }
 
+/* ---------- capa de ambiente (objetos que deambulan por la página) ---------- */
+.ambiente{ position:fixed; inset:0; pointer-events:none; z-index:56; overflow:hidden; }
+.amb-obj{ position:absolute; pointer-events:none; will-change:transform; }
+
+/* ---------- escena abierta (sin caja, a sangre sobre el papel) ---------- */
+.escena-abierta{ position:relative; padding:26px 0 10px; overflow:hidden; }
+.escena-abierta .escena-titulo{
+  text-align:center; font-family:var(--font-hand); font-size:clamp(1.5rem,5.5vw,2.1rem);
+  color:var(--ink); transform:rotate(-2deg); padding:0 22px;
+}
+.escena-abierta .escena-caption{
+  text-align:center; font-family:var(--font-hand); font-size:1.35rem;
+  color:var(--ink-soft); padding:10px 24px 0;
+}
+
 /* ---------- navegación entre destinos ---------- */
 .d-nav{
   display:flex; justify-content:center; gap:14px; flex-wrap:wrap;

@@ -159,4 +159,23 @@ window.DESTINO_EFFECTS = {
       });
     });
   },
+
+  /* ambiente: nubes nórdicas, algún copo y una taza humeante que cruza */
+  ambient(layer, reduced){
+    if (reduced) return;
+    const nube = `<svg viewBox="0 0 80 44" fill="#F3ECDA" opacity=".9"><path d="M16 34 Q4 34 6 25 Q8 17 17 18 Q19 8 30 8 Q40 8 43 16 Q54 12 58 21 Q68 20 68 28 Q68 34 58 34 Z"/></svg>`;
+    const nubarron = `<svg viewBox="0 0 80 44" fill="#6E5B48" opacity=".55"><path d="M16 34 Q4 34 6 25 Q8 17 17 18 Q19 8 30 8 Q40 8 43 16 Q54 12 58 21 Q68 20 68 28 Q68 34 58 34 Z"/></svg>`;
+    const taza = `
+      <svg viewBox="0 0 48 44" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linecap="round">
+        <path d="M8 20 h26 v10 q0 10 -13 10 q-13 0 -13 -10 Z" fill="#C98B84"/>
+        <path d="M34 23 q8 0 6 6 q-2 5 -7 3"/>
+        <path d="M16 14 q-2 -4 2 -7 M25 14 q-2 -4 2 -7" stroke="#6E5B48" stroke-width="2"/>
+      </svg>`;
+    const copo = `<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="#F7F1E1" opacity=".85"/></svg>`;
+    App.ambienteCruzar(layer, nube, { w: 86, op: .55, dur: 38, yMax: 32, vaiven: 8 });
+    App.ambienteCruzar(layer, nubarron, { w: 60, op: .45, dur: 30, yMin: 8, yMax: 40, vaiven: 10, esperaMax: 16 });
+    App.ambienteCruzar(layer, taza, { w: 34, op: .75, dur: 24, yMin: 40, yMax: 75, esperaMax: 12 });
+    App.ambienteCaer(layer, copo, { w: 7, op: .7, dur: 14 });
+    App.ambienteCaer(layer, copo, { w: 5, op: .5, dur: 18, esperaMax: 12 });
+  },
 };

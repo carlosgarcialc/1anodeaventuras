@@ -41,8 +41,19 @@ window.DESTINO_EFFECTS = {
         <svg class="cap-rocas" viewBox="0 0 800 150" xmlns="http://www.w3.org/2000/svg">
           <path d="M0,150 L0,90 Q30,88 42,60 Q54,30 66,58 Q74,80 92,84 L110,90 Q130,86 138,52 Q146,24 158,50 Q170,80 196,88 L230,96 Q260,92 268,64 Q278,34 290,62 Q300,86 330,92 L400,102 Q440,96 452,70 Q462,44 476,68 Q488,88 520,94 L580,102 Q620,98 632,74 Q640,56 654,72 Q668,90 710,96 L800,106 L800,150 Z"
             fill="#B26A54" opacity=".85"/>
+          <!-- cumbres nevadas -->
+          <g fill="#F7F1E1" stroke="#DDCFB2" stroke-width="1.5">
+            <path d="M44,56 Q54,30 64,54 Q59,48 54,52 Q49,46 44,56 Z"/>
+            <path d="M140,48 Q146,24 156,46 Q151,40 146,44 Q143,38 140,48 Z"/>
+            <path d="M270,60 Q278,34 288,58 Q283,52 278,56 Q274,50 270,60 Z"/>
+            <path d="M454,66 Q462,44 474,64 Q469,58 464,62 Q459,56 454,66 Z"/>
+            <path d="M634,70 Q640,56 652,68 Q647,63 643,67 Q639,62 634,70 Z"/>
+          </g>
           <path d="M0,150 L0,116 Q60,108 120,114 Q200,122 280,116 Q380,108 470,118 Q580,128 680,120 Q740,116 800,122 L800,150 Z"
             fill="#8a5140"/>
+          <!-- manto de nieve sobre el valle -->
+          <path d="M0,120 Q60,111 120,117 Q200,125 280,119 Q380,111 470,121 Q580,131 680,123 Q740,119 800,125 L800,131 Q740,125 680,129 Q580,137 470,127 Q380,117 280,125 Q200,131 120,123 Q60,117 0,126 Z"
+            fill="#F7F1E1" opacity=".9"/>
         </svg>
       </div>
 
@@ -83,6 +94,24 @@ window.DESTINO_EFFECTS = {
       globos.push({ el: g, depth: w / 106 });
     }
 
+    /* copitos de nieve dentro de la escena del amanecer */
+    if (!reduced){
+      for (let i = 0; i < 18; i++){
+        const f = document.createElement('span');
+        const s = 3 + Math.random() * 4;
+        f.style.cssText = `position:absolute;width:${s}px;height:${s}px;border-radius:50%;
+          background:#F7F1E1;opacity:${.5 + Math.random() * .45};left:${Math.random() * 98}%;top:-6px;
+          box-shadow:0 0 4px rgba(247,241,225,.7);pointer-events:none;`;
+        cielo.appendChild(f);
+        if (App.hasGsap){
+          gsap.fromTo(f, { y: -10, x: 0 }, {
+            y: cielo.clientHeight + 20, x: '+=' + (Math.random() * 50 - 25),
+            duration: 7 + Math.random() * 8, repeat: -1, ease: 'none', delay: Math.random() * 8,
+          });
+        }
+      }
+    }
+
     if (reduced || !App.hasGsap || typeof ScrollTrigger === 'undefined') return;
 
     /* parallax: al hacer scroll los globos ascienden a distinta velocidad */
@@ -101,5 +130,22 @@ window.DESTINO_EFFECTS = {
       y: 90, opacity: .3, ease: 'none',
       scrollTrigger: { trigger: cielo, start: 'top 80%', end: 'center center', scrub: true },
     });
+  },
+
+  /* ambiente: mini-globos subiendo por los laterales + copitos sueltos */
+  ambient(layer, reduced){
+    if (reduced) return;
+    const globo = (c1, c2) => `
+      <svg viewBox="0 0 60 84" fill="none" stroke="#4A3B2C" stroke-width="2.5">
+        <path d="M30 2 C50 2 58 18 58 32 C58 48 44 58 36 64 L24 64 C16 58 2 48 2 32 C2 18 10 2 30 2 Z" fill="${c1}"/>
+        <path d="M14 8 q-8 22 4 50 M46 8 q8 22 -4 50 M30 2 v62" stroke="${c2}" stroke-width="2"/>
+        <rect x="24" y="70" width="12" height="9" rx="2" fill="#B26A54" stroke-width="2"/>
+      </svg>`;
+    const copo = `<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="#F7F1E1" opacity=".85"/></svg>`;
+    App.ambienteFlotar(layer, globo('#C98B84', '#7C3B34'), { w: 34, op: .8, dur: 20 });
+    App.ambienteFlotar(layer, globo('#C9A24B', '#B26A54'), { w: 26, op: .7, dur: 26, esperaMax: 14 });
+    App.ambienteFlotar(layer, globo('#9BBAC0', '#5F7355'), { w: 22, op: .6, dur: 30, esperaMax: 18 });
+    App.ambienteCaer(layer, copo, { w: 7, op: .7, dur: 12 });
+    App.ambienteCaer(layer, copo, { w: 5, op: .5, dur: 16, esperaMax: 12 });
   },
 };

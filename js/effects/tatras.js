@@ -23,6 +23,22 @@ window.DESTINO_EFFECTS = {
         html.no-motion .tat-ventana{ animation:none; }
         .tat-humo{ opacity:.65; }
         .tat-caption{ text-align:center; font-family:var(--font-hand); font-size:1.4rem; color:var(--ink-soft); padding:14px 20px 0; }
+        .tat-boca{
+          position:absolute; z-index:8; max-width:200px;
+          background:#F7F1E1; border:2.5px solid #4A3B2C; border-radius:16px;
+          padding:.35em .75em; font-family:var(--font-hand); font-weight:700;
+          font-size:1.15rem; line-height:1.15; color:#4A3B2C; text-align:center;
+          box-shadow:var(--shadow-soft); opacity:0; transform:scale(.3);
+        }
+        .tat-boca::after{
+          content:""; position:absolute; bottom:-11px; left:50%; width:14px; height:14px;
+          background:#F7F1E1; border-right:2.5px solid #4A3B2C; border-bottom:2.5px solid #4A3B2C;
+          transform:translateX(-50%) rotate(45deg);
+        }
+        .tat-jaja{
+          position:absolute; z-index:8; font-family:var(--font-hand); font-weight:700;
+          color:#7C3B34; opacity:0; white-space:nowrap;
+        }
       </style>
 
       <div class="tat-escena torn-top torn-bottom" id="tatEscena">
@@ -58,6 +74,14 @@ window.DESTINO_EFFECTS = {
         </svg>
 
         <canvas class="tat-nieve" id="tatNieve"></canvas>
+
+        <!-- grandes éxitos de la cabaña, en riguroso directo -->
+        <div class="tat-boca" style="left:6%;  bottom:52%; transform:scale(.3) rotate(-4deg)">¡AY, MI RODILLA!</div>
+        <div class="tat-boca" style="right:4%; bottom:56%; transform:scale(.3) rotate(3deg)">¿Qué tamaño de palo es vuestro favorito?</div>
+        <div class="tat-boca" style="left:30%; bottom:64%; transform:scale(.3) rotate(-2deg)">¡UNA CABRA!</div>
+        <div class="tat-jaja" style="left:18%; bottom:40%; font-size:1.5rem; transform:rotate(-8deg)">jajajaja</div>
+        <div class="tat-jaja" style="right:14%; bottom:38%; font-size:1.2rem; transform:rotate(6deg)">JAJAJA</div>
+        <div class="tat-jaja" style="left:55%; bottom:46%; font-size:1.05rem; transform:rotate(-3deg)">jsjsjsjs</div>
       </div>
       <div class="tat-caption">‹‹ CAPTION CABAÑA — EDITAR ›› (p. ej. quién ganó al monopoly)</div>`;
 
@@ -78,10 +102,26 @@ window.DESTINO_EFFECTS = {
     resize(); addEventListener('resize', resize);
 
     if (reduced){
-      /* nieve estática: un fotograma */
+      /* nieve estática + bocadillos visibles sin animación */
       ctx.fillStyle = 'rgba(247,241,225,.9)';
       copos.forEach(c => { ctx.beginPath(); ctx.arc(c.x, c.y, c.r, 0, 7); ctx.fill(); });
+      escena.querySelectorAll('.tat-boca, .tat-jaja').forEach(b => { b.style.opacity = 1; b.style.transform = 'none'; });
       return;
+    }
+
+    /* bocadillos de cómic: van saltando por turnos, con risas alrededor */
+    if (App.hasGsap){
+      const bocas = escena.querySelectorAll('.tat-boca');
+      const jajas = escena.querySelectorAll('.tat-jaja');
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 1.8,
+        scrollTrigger: { trigger: escena, start: 'top 75%' } });
+      bocas.forEach(b => {
+        const rot = b.style.transform.match(/rotate\([^)]*\)/)?.[0] || '';
+        tl.to(b, { opacity: 1, transform: `scale(1) ${rot}`, duration: .45, ease: 'back.out(2.2)' })
+          .to(jajas, { opacity: .9, duration: .3, stagger: .08 }, '<.3')
+          .to(jajas, { opacity: 0, duration: .4, stagger: .05 }, '+=1.1')
+          .to(b, { opacity: 0, transform: `scale(.3) ${rot}`, duration: .3, ease: 'power1.in' }, '<');
+      });
     }
 
     let scrollBoost = 0;
@@ -109,5 +149,26 @@ window.DESTINO_EFFECTS = {
       scrollBoost *= .95;
       requestAnimationFrame(nevar);
     })();
+  },
+
+  /* ambiente: LA CABRA cruza la página de vez en cuando + nieve suelta */
+  ambient(layer, reduced){
+    if (reduced) return;
+    const cabra = `
+      <svg viewBox="0 0 90 64" fill="none" stroke="#4A3B2C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 34 Q18 20 34 20 L58 20 Q70 20 70 32 Q70 42 58 42 L32 42 Q18 42 18 34 Z" fill="#DDCFB2"/>
+        <path d="M26 42 l-2 14 M38 42 l0 14 M52 42 l0 14 M64 40 l2 14" stroke-width="3.5"/>
+        <path d="M66 26 Q78 22 80 12 M70 30 L82 28" stroke-width="3"/>
+        <circle cx="76" cy="20" r="9" fill="#DDCFB2"/>
+        <path d="M72 12 q-3 -7 2 -9 M80 12 q3 -7 -2 -9" stroke-width="2.5"/>
+        <circle cx="78" cy="18" r="1.4" fill="#4A3B2C" stroke="none"/>
+        <path d="M80 26 l0 5" stroke-width="2.5"/>
+        <path d="M18 30 q-6 2 -6 8" stroke-width="3"/>
+      </svg>`;
+    const copo = `<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="#F7F1E1" opacity=".9"/></svg>`;
+    App.ambienteCruzar(layer, cabra, { w: 74, op: .9, dur: 9, yMin: 55, yMax: 80, esperaMax: 14, vaiven: 5 });
+    App.ambienteCaer(layer, copo, { w: 8, op: .8, dur: 11 });
+    App.ambienteCaer(layer, copo, { w: 6, op: .6, dur: 15, esperaMax: 10 });
+    App.ambienteCaer(layer, copo, { w: 4, op: .45, dur: 19, esperaMax: 14 });
   },
 };

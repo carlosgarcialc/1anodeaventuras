@@ -46,6 +46,9 @@ window.DESTINO_EFFECTS = {
         .cor-termo .grados{
           font-family:var(--font-hand); font-size:1.5rem; color:#7C3B34; padding-top:6px;
         }
+        .cor-ducha{ text-align:center; margin-top:44px; }
+        .cor-ducha-svg{ width:min(420px,86%); margin:8px auto 0; display:block;
+          border-radius:8px; box-shadow:var(--shadow-soft); }
       </style>
 
       <div class="cor-escena will-reveal" id="corEscena">
@@ -83,6 +86,54 @@ window.DESTINO_EFFECTS = {
           <div class="cor-sol" id="corSol"></div>
           <div class="cor-caption">el patio: 10/10 · la temperatura: denunciable</div>
         </div>
+      </div>
+
+      <!-- ============ BONUS TRACK: LA DUCHA-PISCINA ============ -->
+      <div class="escena-abierta cor-ducha will-reveal" id="corDucha">
+        <div class="escena-titulo">y de repente, la ducha quiso ser piscina</div>
+        <svg class="cor-ducha-svg" viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="3" stroke-linecap="round">
+          <!-- pared de azulejos -->
+          <rect width="420" height="320" fill="#DCE7E4" stroke="none"/>
+          <g stroke="#BFD3D6" stroke-width="2">
+            ${[40,80,120,160,200,240,280].map(y=>`<path d="M0 ${y} h420"/>`).join('')}
+            ${[60,120,180,240,300,360].map(x=>`<path d="M${x} 0 v320"/>`).join('')}
+          </g>
+          <!-- tubería y alcachofa -->
+          <path d="M40 0 v46 q0 16 22 18 l28 3" stroke-width="6" stroke="#6E5B48"/>
+          <g transform="rotate(12 108 70)">
+            <rect x="86" y="58" width="46" height="18" rx="8" fill="#DDCFB2" stroke-width="3"/>
+            <path d="M94 76 v5 M104 76 v5 M114 76 v5 M124 76 v5" stroke-width="2.5" stroke="#6E5B48"/>
+          </g>
+          <!-- chorro infinito -->
+          <g stroke="#7FA6AD" stroke-width="3">
+            <line class="cor-gota" x1="96"  y1="88" x2="93"  y2="106"/>
+            <line class="cor-gota" x1="108" y1="90" x2="106" y2="108"/>
+            <line class="cor-gota" x1="120" y1="92" x2="119" y2="110"/>
+            <line class="cor-gota" x1="130" y1="90" x2="130" y2="106"/>
+          </g>
+          <!-- desagüe en huelga -->
+          <ellipse cx="330" cy="306" rx="16" ry="5" fill="#9BBAC0" stroke-width="2.5" stroke="#6E5B48"/>
+          <text x="330" y="292" text-anchor="middle" font-family="Caveat, cursive" font-size="15" fill="#4A3B2C" stroke="none">el desagüe, dimitiendo</text>
+          <!-- el agua sube (grupo entero con el scroll) -->
+          <g id="corAguaG">
+            <path d="M0 236 Q35 224 70 236 T140 236 T210 236 T280 236 T350 236 T420 236 L420 340 L0 340 Z" fill="#9BBAC0" opacity=".85" stroke="none"/>
+            <path d="M0 236 Q35 224 70 236 T140 236 T210 236 T280 236 T350 236 T420 236" stroke="#F3ECDA" stroke-width="2.5" opacity=".8"/>
+            <!-- patito de goma, muy profesional -->
+            <g id="corPato" transform="translate(150,208)">
+              <ellipse cx="0" cy="10" rx="20" ry="13" fill="#E8D98F" stroke-width="2.5"/>
+              <circle cx="15" cy="-6" r="10" fill="#E8D98F" stroke-width="2.5"/>
+              <path d="M24 -6 l10 3 -10 4" fill="#B26A54" stroke-width="2"/>
+              <circle cx="17" cy="-8" r="1.5" fill="#4A3B2C" stroke="none"/>
+              <path d="M-16 6 q-6 -8 2 -12" stroke-width="2.5"/>
+            </g>
+            <!-- chancla a la deriva -->
+            <g transform="translate(280,226) rotate(8)">
+              <ellipse cx="0" cy="0" rx="17" ry="8" fill="#C98B84" stroke-width="2.5"/>
+              <path d="M-8 -4 q8 6 14 2" stroke-width="2"/>
+            </g>
+          </g>
+        </svg>
+        <div class="escena-caption">‹‹ CAPTION DUCHA — EDITAR ›› (nivel del agua: tobillo, luego rodilla, luego fe)</div>
       </div>`;
 
     const merc = document.getElementById('corMercurio');
@@ -90,6 +141,8 @@ window.DESTINO_EFFECTS = {
 
     if (reduced || !App.hasGsap || typeof ScrollTrigger === 'undefined'){
       merc.style.height = '86%'; grados.textContent = '47';
+      const agua = section.querySelector('#corAguaG');
+      if (agua) agua.setAttribute('transform', 'translate(0,-40)');
       return;
     }
 
@@ -112,5 +165,29 @@ window.DESTINO_EFFECTS = {
       turb.setAttribute('baseFrequency', `${0.012 + Math.sin(t) * 0.004} ${0.06 + Math.cos(t * .8) * 0.012}`);
       requestAnimationFrame(ondear);
     })();
+
+    /* la ducha: gotas cayendo sin parar y el agua subiendo con el scroll */
+    section.querySelectorAll('.cor-gota').forEach((g, i) => {
+      gsap.fromTo(g, { y: 0, opacity: 1 }, {
+        y: 130, opacity: 0, duration: .7 + i * .12, repeat: -1,
+        ease: 'power1.in', delay: i * .18,
+      });
+    });
+    gsap.fromTo('#corAguaG', { y: 60 }, {
+      y: -55, ease: 'none',
+      scrollTrigger: { trigger: '#corDucha', start: 'top 80%', end: 'bottom 45%', scrub: .8 },
+    });
+    gsap.to('#corPato', { y: '-=6', rotation: 5, duration: 1.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+  },
+
+  /* ambiente: pétalos de los patios y alguna pompa de la ducha */
+  ambient(layer, reduced){
+    if (reduced) return;
+    const petalo = c => `<svg viewBox="0 0 20 26"><path d="M10 2 Q19 10 14 21 Q10 26 6 21 Q1 10 10 2 Z" fill="${c}" stroke="#4A3B2C" stroke-width="1.6" opacity=".85"/></svg>`;
+    const pompa = `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#9BBAC0" stroke-width="2" opacity=".8"/><path d="M7 9 q2 -3 5 -3" stroke="#F3ECDA" stroke-width="2" fill="none"/></svg>`;
+    App.ambienteCaer(layer, petalo('#C98B84'), { w: 17, op: .85, dur: 13, giro: 60 });
+    App.ambienteCaer(layer, petalo('#B26A54'), { w: 14, op: .75, dur: 17, giro: 80, esperaMax: 12 });
+    App.ambienteCaer(layer, petalo('#7C3B34'), { w: 12, op: .65, dur: 21, giro: 50, esperaMax: 16 });
+    App.ambienteFlotar(layer, pompa, { w: 20, op: .55, dur: 16, esperaMax: 14 });
   },
 };

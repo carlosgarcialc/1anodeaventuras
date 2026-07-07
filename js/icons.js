@@ -7,58 +7,98 @@
   const S = (vb, inner) =>
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${inner}</svg>`;
 
-  /* ---------- iconos por destino (los del mapa) ---------- */
+  /* ---------- iconos por destino (los mismos que en assets/mapa.svg) ---------- */
   window.ICONOS = {
+    /* Vigo · pata de pulpo */
     vigo: S('0 0 64 64', `
-      <path d="M6 34 Q18 22 30 30 Q26 20 36 16 Q48 12 56 22 Q50 22 46 26 L58 30 Q46 44 30 40 Q16 38 6 34 Z" fill="#F3ECDA"/>
-      <circle cx="41" cy="22" r="1.6" fill="#4A3B2C" stroke="none"/>
-      <path d="M52 24 l7 1 -6 3" stroke-width="2.4" stroke="#C9A24B"/>
-      <path d="M10 48 q8 -5 16 0 q8 5 16 0 q8 -5 12 0" stroke="#9BBAC0" stroke-width="2.6"/>`),
+      <path d="M18 52 C8 36 15 19 32 15 C46 12 56 23 51 34 C47 42 37 43 35 35 C34 30 38 26 43 28"
+        fill="none" stroke="#4A3B2C" stroke-width="12"/>
+      <path d="M18 52 C8 36 15 19 32 15 C46 12 56 23 51 34 C47 42 37 43 35 35 C34 30 38 26 43 28"
+        fill="none" stroke="#C98B84" stroke-width="8"/>
+      <g fill="#F3ECDA" stroke="#7C3B34" stroke-width="1.5">
+        <circle cx="15" cy="44" r="2.6"/><circle cx="13" cy="33" r="2.6"/>
+        <circle cx="19" cy="22" r="2.6"/><circle cx="30" cy="16" r="2.6"/>
+        <circle cx="41" cy="18" r="2.6"/><circle cx="48" cy="26" r="2.4"/>
+      </g>`),
+    /* Madrid · helado de fresa y limón */
     madrid: S('0 0 64 64', `
-      <path d="M24 30 L32 58 L40 30 Z" fill="#DDCFB2" stroke="#4A3B2C"/>
-      <path d="M24 34 l16 0 M27 42 l10 0" stroke-width="2" stroke="#6E5B48"/>
-      <circle cx="26" cy="22" r="9" fill="#C98B84" stroke="#4A3B2C"/>
-      <circle cx="38" cy="22" r="9" fill="#E8D98F" stroke="#4A3B2C"/>
-      <path d="M23 30 q1 5 3 7 M39 30 q0 6 -2 8" stroke-width="2.2" stroke="#B26A54"/>`),
+      <path d="M23 34 L32 58 L41 34 Z" fill="#DDCFB2" stroke="#4A3B2C" stroke-width="2.5"/>
+      <path d="M25 38 l14 0 M27 44 l10 0 M29 50 l6 0" stroke="#B26A54" stroke-width="1.6"/>
+      <circle cx="26" cy="25" r="10" fill="#C98B84" stroke="#4A3B2C" stroke-width="2.5"/>
+      <circle cx="39" cy="23" r="9" fill="#E8D98F" stroke="#4A3B2C" stroke-width="2.5"/>
+      <path d="M23 34 q1 5 3 7 M40 32 q0 5 -2 7" stroke="#B26A54" stroke-width="2" fill="none"/>
+      <circle cx="32" cy="13" r="4" fill="#7C3B34" stroke="#4A3B2C" stroke-width="2"/>
+      <path d="M46 14 l5 -4 M16 16 l-5 -3" stroke="#C9A24B" stroke-width="2"/>`),
+    /* Córdoba · termómetro que revienta */
     cordoba: S('0 0 64 64', `
-      <rect x="26" y="8" width="12" height="34" rx="6" fill="#F3ECDA" stroke="#4A3B2C"/>
-      <circle cx="32" cy="48" r="9" fill="#B26A54" stroke="#4A3B2C"/>
-      <path d="M32 44 V20" stroke="#B26A54" stroke-width="5"/>
-      <path d="M42 14 l6 -3 M43 22 l7 0 M42 30 l6 3" stroke-width="2.4" stroke="#C9A24B"/>`),
+      <rect x="25" y="10" width="10" height="32" rx="5" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="2.5"/>
+      <circle cx="30" cy="48" r="8" fill="#7C3B34" stroke="#4A3B2C" stroke-width="2.5"/>
+      <rect x="27.5" y="16" width="5" height="30" rx="2.5" fill="#7C3B34" stroke="none"/>
+      <path d="M27 6 l-3 -4 M30 5 l0 -4 M33 6 l3 -4" stroke="#B26A54" stroke-width="2.5"/>
+      <path d="M43 24 q4 -3 0 -7 q-4 -4 0 -7 M50 28 q4 -3 0 -7 q-4 -4 0 -7" fill="none" stroke="#C9A24B" stroke-width="2"/>`),
+    /* Copenhague–Aarhus · café pijo para llevar */
     'copenhague-aarhus': S('0 0 64 64', `
-      <path d="M14 26 h30 v14 q0 10 -15 10 q-15 0 -15 -10 Z" fill="#F3ECDA" stroke="#4A3B2C"/>
-      <path d="M44 30 q10 0 8 7 q-2 6 -9 4" stroke="#4A3B2C"/>
-      <path d="M22 20 q-2 -4 2 -7 M30 20 q-2 -4 2 -7 M38 20 q-2 -4 2 -7" stroke="#6E5B48" stroke-width="2.4"/>
-      <path d="M18 54 h28" stroke="#6E5B48" stroke-width="2.4"/>`),
+      <path d="M22 24 L42 24 L39 50 L25 50 Z" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="2.5"/>
+      <rect x="20" y="18" width="24" height="6" rx="2" fill="#DDCFB2" stroke="#4A3B2C" stroke-width="2.2"/>
+      <path d="M29 18 l0 -3 6 0" fill="none" stroke="#4A3B2C" stroke-width="2"/>
+      <path d="M23 31 L41 31 L40 39 L24 39 Z" fill="#C9A24B" stroke="#4A3B2C" stroke-width="2"/>
+      <path d="M32 33 c-2 -2.5 -5.5 0 -3 2.5 l3 2.5 3 -2.5 c2.5 -2.5 -1 -5 -3 -2.5 Z" fill="#7C3B34" stroke="none"/>
+      <path d="M27 12 q-2 -4 1 -7 M36 12 q2 -5 -1 -8" fill="none" stroke="#6E5B48" stroke-width="2.2"/>`),
+    /* Berlín · micrófono */
     berlin: S('0 0 64 64', `
-      <rect x="26" y="8" width="12" height="20" rx="6" fill="#4A3B2C" stroke="#4A3B2C"/>
-      <path d="M20 22 q0 14 12 14 q12 0 12 -14" stroke="#4A3B2C"/>
-      <path d="M32 36 v12 M24 52 h16" stroke="#4A3B2C"/>
-      <path d="M14 14 l4 4 M50 14 l-4 4" stroke="#C9A24B" stroke-width="2.4"/>`),
+      <g transform="rotate(-24 32 32)">
+        <circle cx="32" cy="20" r="9" fill="#4A3B2C" stroke="#4A3B2C" stroke-width="2"/>
+        <path d="M24 17 h16 M23 21 h18 M25 25 h14" stroke="#F3ECDA" stroke-width="1.4"/>
+        <path d="M28 29 L25 50 L39 50 L36 29 Z" fill="#B26A54" stroke="#4A3B2C" stroke-width="2.2"/>
+        <rect x="27" y="28" width="10" height="4" rx="2" fill="#C9A24B" stroke="#4A3B2C" stroke-width="1.6"/>
+      </g>
+      <path d="M48 12 l4 -4 M50 20 l6 0" stroke="#C9A24B" stroke-width="2"/>`),
+    /* Praga · bola de disco */
     praga: S('0 0 64 64', `
-      <circle cx="32" cy="30" r="18" fill="#BFD3D6" stroke="#4A3B2C"/>
-      <path d="M32 12 v36 M14 30 h36 M19 17 l26 26 M45 17 l-26 26" stroke="#F3ECDA" stroke-width="2.2"/>
-      <circle cx="32" cy="30" r="18" stroke="#4A3B2C" fill="none"/>
-      <path d="M32 6 v-3 M20 52 l-3 5 M44 52 l3 5" stroke="#C9A24B" stroke-width="2.4"/>`),
+      <path d="M32 4 V16" stroke="#4A3B2C" stroke-width="2.2"/>
+      <circle cx="32" cy="31" r="14" fill="#9BBAC0" stroke="#4A3B2C" stroke-width="2.5"/>
+      <path d="M18 31 h28 M20 24 h24 M20 38 h24 M32 17 v28 M25 19 v24 M39 19 v24" stroke="#F3ECDA" stroke-width="1.4"/>
+      <circle cx="27" cy="26" r="2" fill="#F7F1E1" stroke="none"/>
+      <path d="M12 42 l-4 3 M52 42 l4 3 M14 18 l-4 -3 M50 18 l4 -3" stroke="#C9A24B" stroke-width="2"/>`),
+    /* Bratislava · salchicha en tenedor */
     bratislava: S('0 0 64 64', `
-      <path d="M18 34 q14 -16 28 0 q-14 14 -28 0 Z" fill="#B26A54" stroke="#4A3B2C" transform="rotate(-18 32 32)"/>
-      <path d="M30 12 l4 10 M38 12 l3 9" stroke="#6E5B48" stroke-width="2.2"/>
-      <path d="M20 52 l16 -14 M20 52 l-4 6 M20 52 l6 4" stroke="#4A3B2C" stroke-width="2.6"/>`),
+      <g transform="rotate(-12 32 32)">
+        <path d="M18 52 L34 30" stroke="#4A3B2C" stroke-width="3"/>
+        <path d="M34 30 l-5 -8 M38 27 l-4 -9 M42 24 l-3 -9" stroke="#4A3B2C" stroke-width="2.4"/>
+        <path d="M26 18 Q40 8 52 16 Q58 20 54 25 Q44 33 30 27 Q23 23 26 18 Z" fill="#B26A54" stroke="#4A3B2C" stroke-width="2.4"/>
+        <path d="M32 20 q10 -5 18 -1" stroke="#7C3B34" stroke-width="2" fill="none"/>
+        <path d="M38 8 q-1 -4 2 -6" stroke="#6E5B48" stroke-width="2" fill="none"/>
+      </g>`),
+    /* Tatras · cabaña */
     tatras: S('0 0 64 64', `
-      <path d="M6 50 L22 22 L32 38 L42 16 L58 50 Z" fill="#F3ECDA" stroke="#4A3B2C"/>
-      <path d="M38 24 L42 16 L47 26" fill="#EAE0CA" stroke="#4A3B2C" stroke-width="2.4"/>
-      <rect x="24" y="40" width="14" height="10" fill="#B26A54" stroke="#4A3B2C" stroke-width="2.4"/>
-      <rect x="28" y="43" width="4" height="4" fill="#C9A24B" stroke="none"/>`),
+      <path d="M40 20 v-6 h5 v10" fill="#6E5B48" stroke="#4A3B2C" stroke-width="1.8"/>
+      <path d="M43 12 q4 -4 1 -8" fill="none" stroke="#DDCFB2" stroke-width="2.4"/>
+      <path d="M15 36 L32 18 L49 36 Z" fill="#B26A54" stroke="#4A3B2C" stroke-width="2.4"/>
+      <path d="M18 32 Q32 20 46 32 L44 30 Q32 19 20 30 Z" fill="#F7F1E1" stroke="none"/>
+      <rect x="19" y="36" width="26" height="13" fill="#8a6a4d" stroke="#4A3B2C" stroke-width="2.2"/>
+      <path d="M19 40.5 h26 M19 45 h26" stroke="#6b4f37" stroke-width="1.6"/>
+      <rect x="24" y="39" width="7" height="7" fill="#E8C06B" stroke="#4A3B2C" stroke-width="1.8"/>
+      <rect x="36" y="39" width="6" height="10" fill="#5b4433" stroke="#4A3B2C" stroke-width="1.8"/>`),
+    /* Bucarest · vampiro */
     bucarest: S('0 0 64 64', `
-      <path d="M32 16 Q30 26 20 26 Q28 30 26 40 Q32 34 38 40 Q36 30 44 26 Q34 26 32 16 Z" fill="#4A3B2C" stroke="#4A3B2C"/>
-      <path d="M24 46 q8 6 16 0" stroke="#7C3B34" stroke-width="2.6"/>
-      <path d="M27 50 l2 4 M35 50 l-2 4" stroke="#F3ECDA" stroke-width="2.4"/>
-      <circle cx="28" cy="22" r="1.5" fill="#C98B84" stroke="none"/><circle cx="36" cy="22" r="1.5" fill="#C98B84" stroke="none"/>`),
+      <path d="M16 42 L26 34 L23 44 Z M48 42 L38 34 L41 44 Z" fill="#4A3B2C" stroke="none"/>
+      <path d="M19 46 Q24 38 32 38 Q40 38 45 46 L42 50 L22 50 Z" fill="#7C3B34" stroke="#4A3B2C" stroke-width="2.2"/>
+      <circle cx="32" cy="28" r="11" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="2.4"/>
+      <path d="M21 24 Q24 17 32 17 Q40 17 43 24 L41 26 Q36 21 32 24 Q28 21 23 26 Z" fill="#4A3B2C" stroke="none"/>
+      <circle cx="28" cy="28" r="1.5" fill="#4A3B2C" stroke="none"/>
+      <circle cx="36" cy="28" r="1.5" fill="#4A3B2C" stroke="none"/>
+      <path d="M28 33 q4 3 8 0" fill="none" stroke="#4A3B2C" stroke-width="1.8"/>
+      <path d="M29.5 33.6 l1 3 M34.5 33.6 l-1 3" stroke="#F3ECDA" stroke-width="2"/>`),
+    /* Estambul–Capadocia · kebab */
     'estambul-capadocia': S('0 0 64 64', `
-      <circle cx="32" cy="24" r="16" fill="#C98B84" stroke="#4A3B2C"/>
-      <path d="M20 28 q12 8 24 0 M24 16 q8 -5 16 0" stroke="#C9A24B" stroke-width="2.4"/>
-      <path d="M25 38 l2 8 h10 l2 -8" stroke="#4A3B2C"/>
-      <rect x="27" y="46" width="10" height="8" rx="2" fill="#B26A54" stroke="#4A3B2C" stroke-width="2.4"/>`),
+      <g transform="rotate(-18 32 32)">
+        <path d="M16 38 L40 38 Q46 38 46 33 L46 32 Q46 27 40 27 L16 27 Q12 27 12 32.5 Q12 38 16 38 Z" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="2.4"/>
+        <path d="M18 27 q2 6 0 11 M25 27 q2 6 0 11 M32 27 q2 6 0 11" fill="none" stroke="#DDCFB2" stroke-width="1.8"/>
+        <circle cx="45" cy="28" r="4" fill="#8B9A78" stroke="#4A3B2C" stroke-width="1.8"/>
+        <circle cx="50" cy="32" r="3.6" fill="#C98B84" stroke="#4A3B2C" stroke-width="1.8"/>
+        <circle cx="46" cy="36" r="3.2" fill="#B26A54" stroke="#4A3B2C" stroke-width="1.8"/>
+        <path d="M52 24 q3 -3 1 -7" fill="none" stroke="#6E5B48" stroke-width="2"/>
+      </g>`),
   };
 
   /* ---------- adornos compartidos ---------- */

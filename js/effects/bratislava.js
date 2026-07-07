@@ -81,4 +81,23 @@ window.DESTINO_EFFECTS = {
     });
     gsap.to('#btsSalchicha', { y: -8, rotate: 4, duration: 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
   },
+
+  /* ambiente: salchichas voladoras y algún pretzel a la deriva */
+  ambient(layer, reduced){
+    if (reduced) return;
+    const salchicha = `
+      <svg viewBox="0 0 54 26" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linecap="round">
+        <path d="M6 16 Q26 2 46 12 Q52 15 48 20 Q30 30 10 22 Q4 20 6 16 Z" fill="#B26A54"/>
+        <path d="M14 14 q14 -6 28 0" stroke="#7C3B34" stroke-width="2"/>
+      </svg>`;
+    const pretzel = `
+      <svg viewBox="0 0 40 32" fill="none" stroke="#4A3B2C" stroke-width="2.2">
+        <path d="M20 6 Q34 6 34 17 Q34 27 24 27 Q16 27 12 18 M20 6 Q6 6 6 17 Q6 27 16 27 Q24 27 28 18"
+          stroke="#C88F4F" stroke-width="5"/>
+        <path d="M14 12 l2 2 M24 12 l-2 2 M20 22 l0 2" stroke="#F3ECDA" stroke-width="2"/>
+      </svg>`;
+    App.ambienteCruzar(layer, salchicha, { w: 46, op: .75, dur: 15, vaiven: 20 });
+    App.ambienteCruzar(layer, salchicha, { w: 32, op: .6, dur: 21, esperaMax: 13, vaiven: 14 });
+    App.ambienteCaer(layer, pretzel, { w: 26, op: .65, dur: 18, giro: 100, esperaMax: 12 });
+  },
 };

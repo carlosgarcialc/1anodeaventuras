@@ -157,4 +157,16 @@ window.DESTINO_EFFECTS = {
       requestAnimationFrame(tick);
     })();
   },
+
+  /* ambiente: notas que suben del concierto y confeti perdido */
+  ambient(layer, reduced){
+    if (reduced) return;
+    const nota = c => `<svg viewBox="0 0 30 34" fill="${c}"><ellipse cx="8" cy="27" rx="6" ry="4.5" transform="rotate(-20 8 27)"/><path d="M13 27 V6 q10 2 12 9" stroke="${c}" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`;
+    const confeti = c => `<svg viewBox="0 0 10 14"><rect width="10" height="14" rx="2" fill="${c}"/></svg>`;
+    App.ambienteFlotar(layer, nota('#6E5B48'), { w: 24, op: .7, dur: 13 });
+    App.ambienteFlotar(layer, nota('#B26A54'), { w: 18, op: .6, dur: 17, esperaMax: 12 });
+    App.ambienteFlotar(layer, nota('#C9A24B'), { w: 21, op: .65, dur: 15, esperaMax: 9 });
+    App.ambienteCaer(layer, confeti('#C98B84'), { w: 9, op: .8, dur: 12, giro: 160 });
+    App.ambienteCaer(layer, confeti('#9BBAC0'), { w: 8, op: .7, dur: 15, giro: 200, esperaMax: 11 });
+  },
 };

@@ -106,4 +106,14 @@ window.DESTINO_EFFECTS = {
     gsap.to('#prgAgujas line:first-child', { rotate: 360, svgOrigin: '50 46', duration: 24, repeat: -1, ease: 'none' });
     gsap.to('#prgAgujas line:last-child', { rotate: 360, svgOrigin: '50 46', duration: 8, repeat: -1, ease: 'none' });
   },
+
+  /* ambiente: reflejos de la bola de disco vagando por toda la página */
+  ambient(layer, reduced){
+    if (reduced) return;
+    const brillo = (c, o) => `<svg viewBox="0 0 24 24" fill="${c}" opacity="${o}"><path d="M12 0 C13 7 15 9 24 12 C15 15 13 17 12 24 C11 17 9 15 0 12 C9 9 11 7 12 0 Z"/></svg>`;
+    App.ambienteCaer(layer, brillo('#C9A24B', .9), { w: 16, op: .85, dur: 16, giro: 120 });
+    App.ambienteCaer(layer, brillo('#F3ECDA', .9), { w: 11, op: .7, dur: 20, giro: 90, esperaMax: 12 });
+    App.ambienteCaer(layer, brillo('#9BBAC0', .8), { w: 13, op: .6, dur: 24, giro: 150, esperaMax: 16 });
+    App.ambienteFlotar(layer, brillo('#C9A24B', .8), { w: 10, op: .6, dur: 18, esperaMax: 14 });
+  },
 };

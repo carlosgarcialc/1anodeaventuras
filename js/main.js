@@ -159,5 +159,73 @@ window.App = (function(){
       { opacity: 1, scale: 1, filter: 'sepia(0)', duration: .9, ease: 'power2.out', clearProps: 'all' });
   }
 
-  return { reduced, hasGsap, lenis, overlaysGlobales, footer, crearMedia, crearPolaroid, activarReveals, viajarA, llegada };
+  /* ---------- objetos de ambiente (deambulan por toda la página) ----------
+     Cada efecto puede definir DESTINO_EFFECTS.ambient(layer, reduced) y usar
+     estos helpers para soltar objetos que cruzan, suben o caen por el viewport. */
+  function crearAmbObj(layer, html, o){
+    const el = document.createElement('div');
+    el.className = 'amb-obj';
+    el.style.width = (o.w || 40) + 'px';
+    if (o.op != null) el.style.opacity = o.op;
+    el.innerHTML = html;
+    layer.appendChild(el);
+    return el;
+  }
+
+  // cruza la pantalla de lado a lado, a altura aleatoria, en bucle
+  function ambienteCruzar(layer, html, o = {}){
+    if (reduced || !hasGsap) return;
+    const el = crearAmbObj(layer, html, o);
+    const vuelo = primera => {
+      const izq = Math.random() > .5;
+      el.style.top = ((o.yMin ?? 6) + Math.random() * ((o.yMax ?? 72) - (o.yMin ?? 6))) + '%';
+      const svg = el.querySelector('svg');
+      if (svg) svg.style.transform = `scaleX(${izq ? 1 : -1})`;
+      gsap.fromTo(el,
+        { x: izq ? -110 : innerWidth + 110 },
+        { x: izq ? innerWidth + 110 : -110,
+          duration: (o.dur ?? 20) * (.75 + Math.random() * .5), ease: 'none',
+          delay: (primera ? 0 : 1.5) + Math.random() * (o.esperaMax ?? 8),
+          onComplete: () => vuelo(false) });
+    };
+    gsap.to(el, { y: '+=' + (o.vaiven ?? 16), duration: 2.2 + Math.random() * 1.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    vuelo(true);
+  }
+
+  // sube desde abajo por los laterales (o.borde = % de anchura del carril)
+  function ambienteFlotar(layer, html, o = {}){
+    if (reduced || !hasGsap) return;
+    const el = crearAmbObj(layer, html, o);
+    const subir = () => {
+      const carril = o.borde ?? 16;
+      el.style.left = (Math.random() > .5
+        ? 2 + Math.random() * carril
+        : 94 - carril + Math.random() * carril) + '%';
+      gsap.fromTo(el,
+        { y: innerHeight + 90, rotation: -10 + Math.random() * 20 },
+        { y: -150, rotation: '+=10',
+          duration: (o.dur ?? 18) * (.8 + Math.random() * .4), ease: 'none',
+          delay: Math.random() * (o.esperaMax ?? 10), onComplete: subir });
+    };
+    subir();
+  }
+
+  // cae desde arriba, con balanceo, por cualquier punto del ancho
+  function ambienteCaer(layer, html, o = {}){
+    if (reduced || !hasGsap) return;
+    const el = crearAmbObj(layer, html, o);
+    const caer = () => {
+      el.style.left = (2 + Math.random() * 94) + '%';
+      gsap.fromTo(el,
+        { y: -90, rotation: -14 + Math.random() * 28 },
+        { y: innerHeight + 90, rotation: '+=' + (o.giro ?? 24),
+          duration: (o.dur ?? 14) * (.8 + Math.random() * .5), ease: 'none',
+          delay: Math.random() * (o.esperaMax ?? 8), onComplete: caer });
+    };
+    gsap.to(el, { x: '+=' + (o.vaiven ?? 26), duration: 2 + Math.random() * 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    caer();
+  }
+
+  return { reduced, hasGsap, lenis, overlaysGlobales, footer, crearMedia, crearPolaroid, activarReveals, viajarA, llegada,
+    ambienteCruzar, ambienteFlotar, ambienteCaer };
 })();

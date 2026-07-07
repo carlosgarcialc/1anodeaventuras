@@ -1,56 +1,163 @@
 /* ============================================================
-   Madrid — heladería fresa y limón
-   Bolas que gotean con el scroll + atardecer cálido de ciudad.
+   Madrid — dos personas comiendo MUCHO
+   Banquete a mesa puesta: brazos que no paran, vapor de la
+   paella, torres de platos que crecen con el scroll y contador
+   de platos retirados. Ambiente: tapas flotando por los lados.
    ============================================================ */
 
 window.DESTINO_EFFECTS = {
   init(section, reduced){
     section.innerHTML = `
       <style>
-        .mad-escena{
-          position:relative; overflow:hidden; text-align:center;
-          background:linear-gradient(180deg, #E8C9A0 0%, #DBA57F 40%, #C98B84 75%, #B26A54 100%);
-          padding:44px 20px 0;
+        .mad-banquete{ text-align:center; }
+        .mad-mesa-svg{ width:min(760px,100%); margin:6px auto 0; display:block; }
+        .mad-contador{
+          font-family:var(--font-display); font-size:1rem; letter-spacing:.18em;
+          text-transform:uppercase; color:var(--ink-soft); margin-top:4px;
         }
-        .mad-titulo{ font-family:var(--font-hand); font-size:clamp(1.5rem,5.5vw,2.1rem); color:#4A3B2C; transform:rotate(-2deg); position:relative; z-index:3; }
-        .mad-helado{ width:min(230px,52vw); margin:16px auto -4px; position:relative; z-index:2; }
-        .mad-gota{ transform-origin:top center; }
-        .mad-skyline{ display:block; width:100%; position:relative; z-index:1; margin-top:-40px; }
-        .mad-sol{ position:absolute; left:14%; top:26%; width:80px; height:80px; border-radius:50%;
-          background:radial-gradient(circle, #F3ECDA, #C9A24B 60%, transparent 72%); opacity:.85; }
+        .mad-contador b{ color:var(--terracotta); font-size:1.3em; }
+        .mad-burbuja{ opacity:0; }
       </style>
 
-      <div class="mad-escena" id="madEscena">
-        <div class="mad-sol"></div>
-        <div class="mad-titulo">fresa y limón, la pareja original (después de nosotros)</div>
-        <svg class="mad-helado" viewBox="0 0 160 240" xmlns="http://www.w3.org/2000/svg">
-          <path d="M55 130 L80 225 L105 130 Z" fill="#DDCFB2" stroke="#4A3B2C" stroke-width="3.5" stroke-linejoin="round"/>
-          <path d="M58 140 h44 M63 158 h34 M68 176 h24 M73 194 h14" stroke="#B26A54" stroke-width="2" opacity=".6"/>
-          <circle cx="62" cy="96" r="34" fill="#C98B84" stroke="#4A3B2C" stroke-width="3.5"/>
-          <circle cx="100" cy="88" r="36" fill="#E8D98F" stroke="#4A3B2C" stroke-width="3.5"/>
-          <circle cx="80" cy="52" r="10" fill="#7C3B34" stroke="#4A3B2C" stroke-width="3"/>
-          <path class="mad-gota" id="madGota1" d="M56 126 q4 0 4 6 q0 8 -4 8 q-4 0 -4 -8 q0 -6 4 -6" fill="#C98B84"/>
-          <path class="mad-gota" id="madGota2" d="M104 120 q4 0 4 6 q0 8 -4 8 q-4 0 -4 -8 q0 -6 4 -6" fill="#E8D98F"/>
-          <path d="M40 30 l6 6 M124 26 l-6 6 M80 14 v8" stroke="#C9A24B" stroke-width="3" stroke-linecap="round"/>
+      <div class="escena-abierta mad-banquete" id="madBanquete">
+        <div class="escena-titulo">dos personas normales en una cata «ligerita»</div>
+
+        <svg class="mad-mesa-svg" viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <!-- sol de atardecer -->
+          <circle cx="380" cy="60" r="34" fill="#C9A24B" opacity=".35" stroke="none"/>
+
+          <!-- torres de platos (crecen con el scroll) -->
+          <g id="madTorreIzq">
+            ${Array.from({length:8},(_,i)=>`<rect class="mad-plato" x="60" y="${218-i*13}" width="76" height="10" rx="5" fill="#F7F1E1"/>`).join('')}
+          </g>
+          <g id="madTorreDer">
+            ${Array.from({length:8},(_,i)=>`<rect class="mad-plato" x="624" y="${218-i*13}" width="76" height="10" rx="5" fill="#F7F1E1"/>`).join('')}
+          </g>
+
+          <!-- comensal A (izquierda) -->
+          <g id="madPersonaA">
+            <circle cx="215" cy="150" r="30" fill="#E8C9A0"/>
+            <path d="M203 144 q4 -5 8 0 M223 144 q4 -5 8 0" stroke-width="2.5"/>
+            <ellipse id="madBocaA" cx="217" cy="163" rx="7" ry="4" fill="#7C3B34" stroke-width="2"/>
+            <path d="M196 132 q18 -18 40 -2" stroke-width="4"/>
+            <path d="M185 216 q0 -38 30 -38 q30 0 30 38" fill="#B26A54"/>
+            <g id="madBrazoA">
+              <path d="M242 196 Q262 176 250 158" stroke-width="6" stroke="#E8C9A0"/>
+              <path d="M250 158 l-2 -12 M247 157 l-6 -10 M253 158 l2 -12" stroke-width="2.5"/>
+            </g>
+          </g>
+
+          <!-- comensal B (derecha) -->
+          <g id="madPersonaB">
+            <circle cx="545" cy="150" r="30" fill="#E8C9A0"/>
+            <path d="M533 144 q4 -5 8 0 M553 144 q4 -5 8 0" stroke-width="2.5"/>
+            <ellipse id="madBocaB" cx="543" cy="163" rx="7" ry="4" fill="#7C3B34" stroke-width="2"/>
+            <path d="M523 128 q22 -14 44 4 l-4 10 q-18 -12 -36 -4 Z" fill="#6E5B48"/>
+            <path d="M515 216 q0 -38 30 -38 q30 0 30 38" fill="#5F7355"/>
+            <g id="madBrazoB">
+              <path d="M518 196 Q498 176 510 158" stroke-width="6" stroke="#E8C9A0"/>
+              <ellipse cx="508" cy="152" rx="7" ry="5" fill="#DDCFB2" stroke-width="2.5"/>
+            </g>
+          </g>
+
+          <!-- bocadillos de diálogo -->
+          <g class="mad-burbuja" id="madBurbujaA">
+            <rect x="130" y="66" width="130" height="36" rx="16" fill="#F7F1E1"/>
+            <path d="M195 102 l-6 14 l16 -14" fill="#F7F1E1"/>
+            <text x="195" y="90" text-anchor="middle" font-family="Caveat, cursive" font-size="22" fill="#4A3B2C" stroke="none">¿otra ración?</text>
+          </g>
+          <g class="mad-burbuja" id="madBurbujaB">
+            <rect x="510" y="66" width="80" height="36" rx="16" fill="#F7F1E1"/>
+            <path d="M552 102 l6 14 l-16 -14" fill="#F7F1E1"/>
+            <text x="550" y="91" text-anchor="middle" font-family="Caveat, cursive" font-size="23" fill="#4A3B2C" stroke="none">obvio.</text>
+          </g>
+
+          <!-- mesa -->
+          <rect x="150" y="216" width="460" height="16" rx="6" fill="#B26A54"/>
+          <path d="M150 224 l-14 86 M610 224 l14 86" stroke-width="6"/>
+          <path d="M160 216 h440 l-10 -12 h-420 Z" fill="#F3ECDA"/>
+          <path d="M170 210 h60 M250 208 h40 M470 208 h60" stroke="#C98B84" stroke-width="2" opacity=".6"/>
+
+          <!-- festín: paella, bravas, bocata de calamares, jarras -->
+          <g id="madPaella">
+            <ellipse cx="380" cy="206" rx="58" ry="14" fill="#B26A54"/>
+            <ellipse cx="380" cy="202" rx="48" ry="10" fill="#E8D98F"/>
+            <circle cx="362" cy="200" r="4" fill="#C98B84" stroke-width="2"/>
+            <circle cx="396" cy="203" r="4" fill="#8B9A78" stroke-width="2"/>
+            <circle cx="380" cy="198" r="3.5" fill="#7C3B34" stroke-width="2"/>
+            <path d="M322 206 h-16 M438 206 h16" stroke-width="5"/>
+            <path class="mad-vapor" d="M360 184 q-5 -9 0 -18 q5 -9 0 -16" stroke="#DDCFB2" stroke-width="3.5"/>
+            <path class="mad-vapor" d="M400 184 q5 -9 0 -18 q-5 -9 0 -16" stroke="#DDCFB2" stroke-width="3.5"/>
+          </g>
+          <g>
+            <ellipse cx="272" cy="208" rx="26" ry="8" fill="#F7F1E1"/>
+            <circle cx="264" cy="203" r="5.5" fill="#C88F4F" stroke-width="2"/>
+            <circle cx="278" cy="202" r="5.5" fill="#C88F4F" stroke-width="2"/>
+            <circle cx="271" cy="197" r="5.5" fill="#C88F4F" stroke-width="2"/>
+          </g>
+          <g>
+            <ellipse cx="490" cy="208" rx="28" ry="8" fill="#F7F1E1"/>
+            <path d="M468 204 q22 -14 44 0 q-8 -4 -10 -1 q-6 -6 -12 -1 q-6 -5 -12 1 q-4 -3 -10 1 Z" fill="#DDCFB2" stroke-width="2.5"/>
+          </g>
+          <path d="M330 176 h14 v26 h-14 Z M416 176 h14 v26 h-14 Z" fill="#C9A24B" opacity=".85"/>
+
+          <!-- migas volanderas -->
+          <circle class="mad-miga" cx="310" cy="160" r="2.5" fill="#B26A54" stroke="none"/>
+          <circle class="mad-miga" cx="452" cy="150" r="2.5" fill="#C88F4F" stroke="none"/>
+          <circle class="mad-miga" cx="380" cy="140" r="2" fill="#6E5B48" stroke="none"/>
         </svg>
-        <svg class="mad-skyline" viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg" fill="#4A3B2C" opacity=".88">
-          <path d="M0,120 L0,70 h30 v-16 h18 v16 h24 V50 h14 l4,-14 4,14 h12 v70 h40 V64 h34 v-22 h10 v-8 h6 v8 h10 v22 h26 v56 h36 V58 h44 l6,-18 6,18 h30 v62 h38 V70 h28 V44 h8 l3,-12 3,12 h8 v26 h30 v50 h44 V60 h36 v-14 h20 v14 h28 v60 h36 V72 h30 v48 Z"/>
-        </svg>
+
+        <div class="mad-contador">platos retirados: <b id="madPlatos">3</b> · arrepentimiento: 0</div>
+        <div class="escena-caption">‹‹ CAPTION BANQUETE — EDITAR ›› (qué pedimos, qué repetimos y qué juramos no volver a contar)</div>
       </div>`;
 
-    if (reduced || !App.hasGsap || typeof ScrollTrigger === 'undefined') return;
+    const platos = section.querySelectorAll('.mad-plato');
+    const contador = section.querySelector('#madPlatos');
 
-    /* las gotas caen y se regeneran con el scroll */
-    ['#madGota1', '#madGota2'].forEach((sel, i) => {
-      gsap.fromTo(sel, { y: 0, scaleY: .4, opacity: 0 }, {
-        y: 84 + i * 16, scaleY: 1.35, opacity: 1, ease: 'power1.in',
-        scrollTrigger: { trigger: '#madEscena', start: 'top 75%', end: 'bottom 40%', scrub: 1.2 },
-      });
+    if (reduced || !App.hasGsap || typeof ScrollTrigger === 'undefined'){
+      contador.textContent = '19';
+      section.querySelectorAll('.mad-burbuja').forEach(b => b.style.opacity = 1);
+      return;
+    }
+
+    /* brazos tenedor-boca sin descanso, a ritmos distintos */
+    gsap.to('#madBrazoA', { rotation: -32, svgOrigin: '242 196', duration: .5, repeat: -1, yoyo: true, ease: 'power1.inOut' });
+    gsap.to('#madBrazoB', { rotation: 32, svgOrigin: '518 196', duration: .62, repeat: -1, yoyo: true, ease: 'power1.inOut', delay: .3 });
+    gsap.to('#madBocaA', { scaleY: .3, svgOrigin: '217 163', duration: .5, repeat: -1, yoyo: true, ease: 'power1.inOut' });
+    gsap.to('#madBocaB', { scaleY: .3, svgOrigin: '543 163', duration: .62, repeat: -1, yoyo: true, ease: 'power1.inOut', delay: .3 });
+
+    /* vapor de la paella y migas saltarinas */
+    section.querySelectorAll('.mad-vapor').forEach((v, i) => {
+      gsap.to(v, { y: -8, opacity: .25, duration: 1.6 + i * .3, repeat: -1, yoyo: true, ease: 'sine.inOut' });
     });
-    /* el sol se pone despacio con el scroll */
-    gsap.to('.mad-sol', { y: 60, opacity: .55, ease: 'none',
-      scrollTrigger: { trigger: '#madEscena', start: 'top 80%', end: 'bottom 30%', scrub: true } });
-    /* palpito goloso del helado */
-    gsap.to('.mad-helado', { y: -6, duration: 2.4, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    section.querySelectorAll('.mad-miga').forEach((m, i) => {
+      gsap.to(m, { y: -12 - i * 4, x: i % 2 ? 8 : -8, opacity: 0, duration: 1 + i * .3, repeat: -1, ease: 'power1.out', repeatDelay: .6 });
+    });
+
+    /* bocadillos de diálogo alternándose */
+    const charla = gsap.timeline({ repeat: -1, repeatDelay: 2.5 });
+    charla.to('#madBurbujaA', { opacity: 1, duration: .3 })
+      .to('#madBurbujaA', { opacity: 0, duration: .3 }, '+=1.4')
+      .to('#madBurbujaB', { opacity: 1, duration: .3 }, '+=.2')
+      .to('#madBurbujaB', { opacity: 0, duration: .3 }, '+=1.2');
+
+    /* las torres de platos crecen con el scroll + contador */
+    platos.forEach(p => gsap.set(p, { opacity: 0, y: -14 }));
+    const st = { trigger: '#madBanquete', start: 'top 78%', end: 'bottom 40%', scrub: .8 };
+    gsap.to(platos, { opacity: 1, y: 0, stagger: .06, ease: 'none', scrollTrigger: st });
+    const n = { v: 3 };
+    gsap.to(n, { v: 19, ease: 'none', scrollTrigger: st,
+      onUpdate: () => contador.textContent = Math.round(n.v) });
+  },
+
+  /* tapas flotando por los laterales de toda la página */
+  ambient(layer, reduced){
+    if (reduced) return;
+    const croqueta = `<svg viewBox="0 0 40 26"><ellipse cx="20" cy="13" rx="17" ry="10" fill="#C88F4F" stroke="#4A3B2C" stroke-width="2.5"/><path d="M10 10 q10 -5 20 0 M9 16 q11 5 22 0" stroke="#8a5a2e" stroke-width="2" fill="none"/></svg>`;
+    const churro = `<svg viewBox="0 0 44 14"><rect x="2" y="3" width="40" height="8" rx="4" fill="#C9A24B" stroke="#4A3B2C" stroke-width="2.5"/><path d="M6 7 h32" stroke="#8a5a2e" stroke-width="2"/></svg>`;
+    const calamar = `<svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="11" fill="#E8D98F" stroke="#4A3B2C" stroke-width="2.5"/><circle cx="15" cy="15" r="4.5" fill="var(--paper)" stroke="#4A3B2C" stroke-width="2"/></svg>`;
+    App.ambienteFlotar(layer, croqueta, { w: 38, op: .7, dur: 17 });
+    App.ambienteFlotar(layer, churro, { w: 44, op: .65, dur: 21, esperaMax: 12 });
+    App.ambienteFlotar(layer, calamar, { w: 30, op: .6, dur: 19, esperaMax: 14 });
   },
 };

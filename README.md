@@ -6,15 +6,16 @@ Sitio 100% estático (HTML + CSS + JS vanilla, GSAP/Lenis por CDN). Sin build, s
 
 ---
 
-## 1. Poner el mapa
+## 1. El mapa
 
-Guarda tu mapa (1536×1024) como:
+Hay **dos versiones** del mapa, ambas con geografía real de Europa (datos Natural Earth, proyección azimutal como los mapas europeos de verdad) y España sutilmente agrandada con una "lupa":
 
-```
-assets/mapa.png
-```
+- **`assets/mapa.svg`** — la que usa la web. Sin textos: solo los 10 iconos de destino (con NFC) y los 4 easter eggs (oso de Cervera, cochinillo de Segovia, piscina de Guadalajara y tienda de Huesca — decoración, sin página).
+- **`assets/mapa-imprimir.svg`** — la del **cuadro físico**: igual pero con el cartucho del título ("1 año de Aventuras… por ahora") y la nota "psst: acerca el móvil a cada dibujo…". Ábrela en el navegador (con internet, para que cargue las fuentes) e imprímela o expórtala a PNG grande (Figma/Inkscape). Al ser vectorial no pierde calidad a ningún tamaño. Las pegatinas NFC van detrás de cada icono principal.
 
-Nada más. Los marcadores y la ruta ya están anclados encima (coordenadas en `js/data/destinos.js`, campo `x`/`y` en %, por si quieres afinarlas).
+Si algún día quieres usar una foto/escaneo del cuadro en la web: guárdala como `assets/mapa.png` y se usará si falta el SVG. Los marcadores están anclados en % en `js/data/destinos.js` (campo `x`/`y`).
+
+> El mapa se genera con dos scripts de Python (proyección + composición). Si quieres retocarlo en serio (mover decoración, cambiar el aumento de España…), pídemelo o edita el SVG directamente.
 
 ## 2. Añadir fotos y vídeos
 

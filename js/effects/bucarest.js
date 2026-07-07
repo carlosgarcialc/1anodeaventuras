@@ -117,4 +117,20 @@ window.DESTINO_EFFECTS = {
     /* luna con halo que respira */
     gsap.to('.buc-luna', { boxShadow: '0 0 50px rgba(243,236,218,.5)', duration: 3.2, repeat: -1, yoyo: true, ease: 'sine.inOut' });
   },
+
+  /* ambiente: murciélagos sueltos por toda la página (mono pero gótico) */
+  ambient(layer, reduced){
+    if (reduced) return;
+    /* reutiliza la animación de aleteo definida en la escena */
+    const bat = `
+      <svg viewBox="0 0 60 30" fill="#4A3B2C" style="overflow:visible">
+        <path class="buc-ala" d="M28 14 Q18 2 4 6 Q10 10 8 16 Q16 12 28 18 Z"/>
+        <path class="buc-ala" d="M32 14 Q42 2 56 6 Q50 10 52 16 Q44 12 32 18 Z"/>
+        <ellipse cx="30" cy="15" rx="5" ry="7"/>
+        <path d="M27 9 l-2 -5 3 3 M33 9 l2 -5 -3 3"/>
+      </svg>`;
+    App.ambienteCruzar(layer, bat, { w: 40, op: .8, dur: 12, yMax: 55, vaiven: 22 });
+    App.ambienteCruzar(layer, bat, { w: 28, op: .65, dur: 16, yMax: 65, vaiven: 30, esperaMax: 12 });
+    App.ambienteCruzar(layer, bat, { w: 20, op: .5, dur: 20, yMax: 70, vaiven: 26, esperaMax: 18 });
+  },
 };

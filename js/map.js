@@ -14,17 +14,21 @@
 
   const esMovil = window.matchMedia('(max-width: 759px)').matches;
 
-  /* ---------- imagen del mapa + fallback ---------- */
+  /* ---------- imagen del mapa + fallback ----------
+     El mapa dibujado vive en assets/mapa.svg. Si algún día lo
+     sustituyes por una foto/escaneo, ponla como assets/mapa.png
+     y se usará automáticamente como alternativa. */
   const img = document.createElement('img');
   img.className = 'mapa-img';
-  img.src = 'assets/mapa.png';
+  img.src = 'assets/mapa.svg';
   img.alt = 'Mapa ilustrado de Europa con nuestros destinos';
   img.addEventListener('error', () => {
+    if (!img.src.endsWith('mapa.png')){ img.src = 'assets/mapa.png'; return; }
     const fb = document.createElement('div');
     fb.className = 'mapa-fallback';
     fb.innerHTML = `<div>
       <div style="width:70px;margin:0 auto 10px;color:var(--ink-soft)">${ADORNOS.brujula}</div>
-      <div class="ph-txt">‹‹ MAPA — coloca tu mapa en <b>assets/mapa.png</b> ››<br>los marcadores ya funcionan igual</div>
+      <div class="ph-txt">‹‹ MAPA — falta <b>assets/mapa.svg</b> ››<br>los marcadores ya funcionan igual</div>
     </div>`;
     img.replaceWith(fb);
   });

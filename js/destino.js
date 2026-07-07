@@ -99,8 +99,16 @@
   App.llegada();
   App.footer(ROOT);
 
-  if (window.DESTINO_EFFECTS && typeof DESTINO_EFFECTS.init === 'function'){
-    try { DESTINO_EFFECTS.init(efecto, App.reduced); }
+  /* capa de ambiente: objetos que deambulan por los lados de toda la página */
+  const ambiente = document.createElement('div');
+  ambiente.className = 'ambiente';
+  document.body.appendChild(ambiente);
+
+  if (window.DESTINO_EFFECTS){
+    try {
+      if (typeof DESTINO_EFFECTS.init === 'function') DESTINO_EFFECTS.init(efecto, App.reduced);
+      if (typeof DESTINO_EFFECTS.ambient === 'function') DESTINO_EFFECTS.ambient(ambiente, App.reduced);
+    }
     catch (err){ console.warn('Efecto temático falló (la página sigue bien):', err); }
   }
   App.activarReveals();
