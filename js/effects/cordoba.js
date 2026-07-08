@@ -159,23 +159,21 @@ window.DESTINO_EFFECTS = {
               <path d="M0 218 h460" stroke="#B26A54" stroke-width="3"/>
             </g>
 
-            <!-- ELLA (pelo largo, posando) -->
+            <!-- ELLA (chica de pelo largo castaño, posando) -->
             <g>
-              <path d="M156 154 Q154 122 180 120 Q206 122 204 154 L202 204 Q196 210 191 203 L189 154 Q189 130 180 126 Q171 130 171 154 L169 203 Q164 210 158 204 Z" fill="#8a6a4d"/>
               <path d="M156 218 q0 -42 24 -42 q24 0 24 42" fill="#C98B84"/>
               <path d="M158 192 Q147 198 151 208" stroke="#C98B84" stroke-width="7"/>
               <path d="M202 190 Q214 178 210 164" stroke="#C98B84" stroke-width="7"/>
-              <circle cx="180" cy="154" r="20" fill="#E8C9A0"/>
-              <path d="M161 149 Q180 130 199 149 Q190 141 180 142 Q170 141 161 149 Z" fill="#8a6a4d"/>
-              <path d="M172 153 q3 -4 6 0 M184 153 q3 -4 6 0" stroke-width="2.2"/>
-              <path d="M176 162 q4 3 8 0" stroke-width="2.2"/>
+              ${CARAS.chica(180, 154, 1)}
+              <path d="M172 155 q3 -4 6 0 M184 155 q3 -4 6 0" stroke-width="2.2"/>
+              <path d="M176 164 q4 3 8 0" stroke-width="2.2"/>
             </g>
 
-            <!-- ÉL (con la cámara) -->
+            <!-- ÉL (chico de pelo castaño, con la cámara) -->
             <g>
               <path d="M320 218 q0 -40 24 -40 q24 0 24 40" fill="#5F7355"/>
-              <circle cx="344" cy="150" r="20" fill="#E8C9A0"/>
-              <path d="M325 145 Q344 128 363 145 Q354 138 344 139 Q334 138 325 145 Z" fill="#6E5B48"/>
+              ${CARAS.chico(344, 150, 1)}
+              <path d="M337 151 q3 -4 6 0 M349 151 q3 -4 6 0" stroke-width="2.2"/>
               <path d="M340 190 L312 178 M348 190 L316 184" stroke="#5F7355" stroke-width="6"/>
               <rect x="292" y="166" width="24" height="17" rx="3" fill="#4A3B2C" stroke="#4A3B2C"/>
               <circle cx="304" cy="174" r="4.5" fill="#9BBAC0" stroke="#F3ECDA" stroke-width="1.6"/>
@@ -190,6 +188,13 @@ window.DESTINO_EFFECTS = {
       const hist = document.querySelector('.d-historia');
       if (hist) hist.before(esc); else section.appendChild(esc);
       sembrarDestellos(esc, 4);
+    })();
+
+    /* la ducha se va detrás de la historia: nunca dos escenas seguidas */
+    (function(){
+      const ducha = section.querySelector('#corDucha');
+      const notaEl = document.querySelector('.d-nota');
+      if (ducha && notaEl) notaEl.before(ducha);
     })();
 
     const merc = document.getElementById('corMercurio');

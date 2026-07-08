@@ -119,49 +119,60 @@ window.DESTINO_EFFECTS = {
       esc.innerHTML = `
         <div class="escena-titulo">clase de historia otomana (nivel: incómodo)</div>
         <div class="escena-figuras">
-          <svg viewBox="0 0 460 240" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <!-- cúpulas de Topkapi -->
+          <svg viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- ====== Topkapi: Puerta de la Salutación ====== -->
+            <!-- muralla con almenas -->
+            <path d="M0 224 V128 h12 v-10 h14 v10 h14 v-10 h14 v10 h14 v-10 h14 v10 h14 v-10 h14 v10 h10 V224 Z" fill="#F3ECDA" opacity=".9"/>
+            <path d="M340 224 V128 h10 v-10 h14 v10 h14 v-10 h14 v10 h14 v-10 h14 v10 h14 v-10 h12 v10 h10 V224 Z" fill="#F3ECDA" opacity=".9"/>
+            <!-- cuerpo central con portal apuntado -->
+            <rect x="120" y="96" width="220" height="128" fill="#F7F1E1"/>
+            <path d="M120 96 h220 M120 110 h220" stroke="#6E5B48" stroke-width="1.6" opacity=".5"/>
+            <path d="M186 224 V168 Q186 138 230 138 Q274 138 274 168 V224" fill="#DDCFB2" stroke-width="2.5"/>
+            <path d="M196 224 V170 Q196 146 230 146 Q264 146 264 170 V224" fill="#6E5B48" opacity=".55"/>
+            <!-- ventanitas -->
+            <path d="M146 130 h16 v20 q-8 -6 -16 0 Z M298 130 h16 v20 q-8 -6 -16 0 Z" fill="#9BBAC0" stroke-width="2"/>
+            <!-- torreones octogonales con techo cónico (sello de Topkapi) -->
             <g>
-              <path d="M40 82 Q40 44 70 44 Q100 44 100 82 Z" fill="#9BBAC0"/>
-              <rect x="44" y="78" width="52" height="8" fill="#F3ECDA"/>
-              <path d="M70 44 V30" stroke="#C9A24B"/><path d="M66 28 a4 4 0 1 0 6 3" stroke="#C9A24B" stroke-width="2" fill="none"/>
-              <path d="M360 90 Q360 52 388 52 Q416 52 416 90 Z" fill="#C98B84"/>
-              <rect x="364" y="86" width="56" height="8" fill="#F3ECDA"/>
-              <path d="M388 52 V38" stroke="#C9A24B"/><path d="M384 36 a4 4 0 1 0 6 3" stroke="#C9A24B" stroke-width="2" fill="none"/>
+              <rect x="88" y="90" width="34" height="134" fill="#F3ECDA"/>
+              <path d="M84 90 h42 l-21 -52 Z" fill="#8B9A78"/>
+              <path d="M105 38 V24" stroke="#C9A24B"/>
+              <path d="M101 22 a5 5 0 1 0 7 4" stroke="#C9A24B" stroke-width="2" fill="none"/>
+              <path d="M96 120 h18 v16 q-9 -6 -18 0 Z" fill="#9BBAC0" stroke-width="2"/>
             </g>
-            <!-- arco otomano detrás -->
-            <path d="M150 214 V150 Q150 104 230 104 Q310 104 310 150 V214" fill="#F3ECDA" opacity=".45"/>
-            <path d="M150 214 V150 Q150 104 230 104 Q310 104 310 150 V214" stroke="#6E5B48" stroke-width="2" opacity=".4"/>
-            <path d="M0 214 h460" stroke="#B26A54" stroke-width="3"/>
-            <!-- tulipanes otomanos -->
-            <g stroke-width="2">
-              <path d="M60 214 v-14 M60 200 q-7 -2 -6 -9 q6 1 6 6 q0 -8 6 -9 q4 6 0 11 q6 -3 8 2 q-4 6 -14 4 Z" fill="#B26A54"/>
-              <path d="M410 214 v-12 M410 202 q-6 -2 -5 -8 q5 1 5 5 q0 -7 5 -8 q4 5 0 10 q5 -2 7 2 q-4 5 -12 3 Z" fill="#C9A24B"/>
+            <g>
+              <rect x="338" y="90" width="34" height="134" fill="#F3ECDA"/>
+              <path d="M334 90 h42 l-21 -52 Z" fill="#8B9A78"/>
+              <path d="M355 38 V24" stroke="#C9A24B"/>
+              <path d="M351 22 a5 5 0 1 0 7 4" stroke="#C9A24B" stroke-width="2" fill="none"/>
+              <path d="M346 120 h18 v16 q-9 -6 -18 0 Z" fill="#9BBAC0" stroke-width="2"/>
+            </g>
+            <!-- cúpula asomando detrás -->
+            <path d="M196 96 Q196 62 230 62 Q264 62 264 96 Z" fill="#9BBAC0"/>
+            <path d="M230 62 V50" stroke="#C9A24B"/>
+            <path d="M226 48 a5 5 0 1 0 7 4" stroke="#C9A24B" stroke-width="2" fill="none"/>
+            <!-- suelo -->
+            <path d="M0 224 h460" stroke="#B26A54" stroke-width="3"/>
+
+            <!-- ÉL (chico de pelo castaño, explicando) -->
+            <g>
+              <path d="M126 224 q0 -42 24 -42 q24 0 24 42" fill="#5F7355"/>
+              <path d="M170 198 Q190 190 192 160" stroke="#5F7355" stroke-width="8"/>
+              <circle cx="192" cy="157" r="4" fill="#E8C9A0"/>
+              <path d="M130 200 Q120 188 124 176" stroke="#5F7355" stroke-width="7"/>
+              ${CARAS.chico(150, 160, 1)}
+              <path d="M142 161 q3 -4 6 0 M152 161 q3 -4 6 0" stroke-width="2.2"/>
+              <path d="M146 170 q4 3 8 0" stroke-width="2.2"/>
             </g>
 
-            <!-- ÉL (explicando, mano en alto) -->
+            <!-- ELLA (chica de pelo largo castaño, cara de susto) -->
             <g>
-              <path d="M126 214 q0 -42 24 -42 q24 0 24 42" fill="#5F7355"/>
-              <path d="M170 188 Q190 180 192 150" stroke="#5F7355" stroke-width="8"/>
-              <circle cx="192" cy="147" r="4" fill="#E8C9A0"/>
-              <path d="M130 190 Q120 178 124 166" stroke="#5F7355" stroke-width="7"/>
-              <circle cx="150" cy="150" r="20" fill="#E8C9A0"/>
-              <path d="M131 145 Q150 127 169 145 Q160 137 150 138 Q140 137 131 145 Z" fill="#6E5B48"/>
-              <path d="M142 149 q3 -4 6 0 M152 149 q3 -4 6 0" stroke-width="2.2"/>
-              <path d="M146 159 q4 3 8 0" stroke-width="2.2"/>
-            </g>
-
-            <!-- ELLA (pelo largo, cara de susto) -->
-            <g>
-              <path d="M288 150 Q286 118 312 116 Q338 118 336 150 L334 200 Q328 206 323 199 L321 150 Q321 126 312 122 Q303 126 303 150 L301 199 Q296 206 288 200 Z" fill="#8a6a4d"/>
-              <path d="M288 214 q0 -42 24 -42 q24 0 24 42" fill="#C98B84"/>
-              <path d="M293 186 Q297 168 301 158" stroke="#C98B84" stroke-width="7"/>
-              <path d="M331 186 Q327 168 323 158" stroke="#C98B84" stroke-width="7"/>
-              <circle cx="312" cy="150" r="20" fill="#E8C9A0"/>
-              <path d="M293 145 Q312 126 331 145 Q322 137 312 138 Q302 137 293 145 Z" fill="#8a6a4d"/>
-              <circle cx="306" cy="150" r="3" fill="#F7F1E1" stroke-width="1.5"/><circle cx="306" cy="150" r="1.3" fill="#4A3B2C" stroke="none"/>
-              <circle cx="318" cy="150" r="3" fill="#F7F1E1" stroke-width="1.5"/><circle cx="318" cy="150" r="1.3" fill="#4A3B2C" stroke="none"/>
-              <ellipse cx="312" cy="161" rx="3.4" ry="4.4" fill="#7C3B34" stroke-width="1.5"/>
+              <path d="M288 224 q0 -42 24 -42 q24 0 24 42" fill="#C98B84"/>
+              <path d="M293 196 Q297 178 301 168" stroke="#C98B84" stroke-width="7"/>
+              <path d="M331 196 Q327 178 323 168" stroke="#C98B84" stroke-width="7"/>
+              ${CARAS.chica(312, 160, 1)}
+              <circle cx="306" cy="160" r="3" fill="#F7F1E1" stroke-width="1.5"/><circle cx="306" cy="160" r="1.3" fill="#4A3B2C" stroke="none"/>
+              <circle cx="318" cy="160" r="3" fill="#F7F1E1" stroke-width="1.5"/><circle cx="318" cy="160" r="1.3" fill="#4A3B2C" stroke="none"/>
+              <ellipse cx="312" cy="171" rx="3.4" ry="4.4" fill="#7C3B34" stroke-width="1.5"/>
             </g>
           </svg>
           <div class="escena-boca" style="left:2%;top:-6px;--tail:78%">‹‹ ÉL EXPLICA — EDITAR ››<small>“…y a los guardianes del harén los llamaban eunucos.”</small></div>
@@ -171,6 +182,13 @@ window.DESTINO_EFFECTS = {
       const hist = document.querySelector('.d-historia');
       if (hist) hist.before(esc); else section.appendChild(esc);
       sembrarDestellos(esc, 4);
+    })();
+
+    /* la cama se va detrás de la historia: nunca dos escenas seguidas */
+    (function(){
+      const cama = section.querySelector('.cap-cama');
+      const notaEl = document.querySelector('.d-nota');
+      if (cama && notaEl) notaEl.before(cama);
     })();
 
     if (reduced || !App.hasGsap || typeof ScrollTrigger === 'undefined') return;

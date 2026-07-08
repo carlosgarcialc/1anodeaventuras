@@ -34,29 +34,24 @@ window.DESTINO_EFFECTS = {
             ${Array.from({length:8},(_,i)=>`<rect class="mad-plato" x="624" y="${218-i*13}" width="76" height="10" rx="5" fill="#F7F1E1"/>`).join('')}
           </g>
 
-          <!-- comensal A (izquierda) -->
+          <!-- comensal A (izquierda): chico de pelo castaño -->
           <g id="madPersonaA">
-            <circle cx="215" cy="150" r="30" fill="#E8C9A0"/>
-            <path d="M203 144 q4 -5 8 0 M223 144 q4 -5 8 0" stroke-width="2.5"/>
-            <ellipse id="madBocaA" cx="217" cy="163" rx="7" ry="4" fill="#7C3B34" stroke-width="2"/>
-            <path d="M196 132 q18 -18 40 -2" stroke-width="4"/>
             <path d="M185 216 q0 -38 30 -38 q30 0 30 38" fill="#B26A54"/>
+            ${CARAS.chico(215, 150, 1.5)}
+            <path d="M203 148 q4 -5 8 0 M223 148 q4 -5 8 0" stroke-width="2.5"/>
+            <ellipse id="madBocaA" cx="217" cy="165" rx="7" ry="4" fill="#7C3B34" stroke-width="2"/>
             <g id="madBrazoA">
               <path d="M242 196 Q262 176 250 158" stroke-width="6" stroke="#E8C9A0"/>
               <path d="M250 158 l-2 -12 M247 157 l-6 -10 M253 158 l2 -12" stroke-width="2.5"/>
             </g>
           </g>
 
-          <!-- comensal B (derecha): chica de pelo largo -->
+          <!-- comensal B (derecha): chica de pelo largo castaño -->
           <g id="madPersonaB">
-            <!-- melena castaña (por detrás) -->
-            <path d="M512 150 Q510 116 545 114 Q580 116 578 150 L576 206 Q570 212 565 205 L563 150 Q563 124 545 120 Q527 124 527 150 L525 205 Q520 212 514 206 Z" fill="#8a6a4d"/>
-            <circle cx="545" cy="150" r="30" fill="#E8C9A0"/>
-            <!-- flequillo -->
-            <path d="M521 134 Q545 116 569 134 Q559 126 545 127 Q531 126 521 134 Z" fill="#8a6a4d"/>
+            <path d="M515 216 q0 -38 30 -38 q30 0 30 38" fill="#5F7355"/>
+            ${CARAS.chica(545, 150, 1.5)}
             <path d="M533 148 q4 -5 8 0 M553 148 q4 -5 8 0" stroke-width="2.5"/>
             <ellipse id="madBocaB" cx="543" cy="165" rx="7" ry="4" fill="#7C3B34" stroke-width="2"/>
-            <path d="M515 216 q0 -38 30 -38 q30 0 30 38" fill="#5F7355"/>
             <g id="madBrazoB">
               <path d="M518 196 Q498 176 510 158" stroke-width="6" stroke="#E8C9A0"/>
               <ellipse cx="508" cy="152" rx="7" ry="5" fill="#DDCFB2" stroke-width="2.5"/>

@@ -170,6 +170,38 @@
     corazon: `<svg viewBox="0 0 48 44" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M24 42 C10 32 2 24 2 14 C2 6 8 2 14 2 C19 2 22 5 24 9 C26 5 29 2 34 2 C40 2 46 6 46 14 C46 24 38 32 24 42 Z"/></svg>`,
   };
 
+  /* ---------- cabezas de los muñecos (pelo bien puesto, no pelucas) ----------
+     Devuelven cabeza + pelo SIN rasgos: cada escena pinta ojos/boca encima.
+     Coordenadas locales: centro de la cara = (0,0), radio 20, escalable con s. */
+  window.CARAS = {
+    ink: '#4A3B2C',
+    /* chico de pelo castaño: casquete sólido con flequillo ondulado */
+    chico(x, y, s = 1, pelo = '#6E5B48', piel = '#E8C9A0'){
+      return `<g transform="translate(${x},${y}) scale(${s})">
+        <circle r="20" fill="${piel}" stroke="${CARAS.ink}" stroke-width="2.5"/>
+        <path d="M-18.7,-7 A20,20 0 0 1 18.7,-7 Q11,-13 4,-10 Q-3,-14 -10,-10 Q-15,-10.5 -18.7,-7 Z"
+          fill="${pelo}" stroke="${CARAS.ink}" stroke-width="2" stroke-linejoin="round"/>
+      </g>`;
+    },
+    /* chica de pelo largo castaño: melena sólida detrás + flequillo con raya al medio */
+    chica(x, y, s = 1, pelo = '#8a6a4d', piel = '#E8C9A0'){
+      return `<g transform="translate(${x},${y}) scale(${s})">
+        <path d="M-21,28 Q-26,0 -19,-11 Q-12,-27 0,-27 Q12,-27 19,-11 Q26,0 21,28 Q11,34 0,31 Q-11,34 -21,28 Z"
+          fill="${pelo}" stroke="${CARAS.ink}" stroke-width="2.2" stroke-linejoin="round"/>
+        <circle r="20" fill="${piel}" stroke="${CARAS.ink}" stroke-width="2.5"/>
+        <path d="M-18.7,-7 A20,20 0 0 1 18.7,-7 Q9,-13.5 2.2,-9.5 Q1,-15.5 0,-16.5 Q-1,-15.5 -2.2,-9.5 Q-9,-13.5 -18.7,-7 Z"
+          fill="${pelo}" stroke="${CARAS.ink}" stroke-width="2" stroke-linejoin="round"/>
+      </g>`;
+    },
+    /* solo el casquete de pelo, para añadirlo a cabezas ya dibujadas */
+    pelo(x, y, s = 1, color = '#6E5B48'){
+      return `<g transform="translate(${x},${y}) scale(${s})">
+        <path d="M-18.7,-7 A20,20 0 0 1 18.7,-7 Q11,-13 4,-10 Q-3,-14 -10,-10 Q-15,-10.5 -18.7,-7 Z"
+          fill="${color}" stroke="${CARAS.ink}" stroke-width="2" stroke-linejoin="round"/>
+      </g>`;
+    },
+  };
+
   /* helper: siembra destellos aleatorios en un contenedor */
   window.sembrarDestellos = function(el, n = 6){
     for (let i = 0; i < n; i++){

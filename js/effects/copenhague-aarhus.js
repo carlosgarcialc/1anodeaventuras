@@ -110,9 +110,9 @@ window.DESTINO_EFFECTS = {
                 <path d="M-6 -13 Q0 -17 6 -13 L4 7 Q0 9 -4 7 Z" fill="#B26A54" stroke="#4A3B2C" stroke-width="2"/>
                 <path d="M-4 -8 L-17 -13 M4 -8 L16 -3" stroke="#B26A54" stroke-width="4"/>
                 <path d="M-5 -11 L7 -9 M6 -10 l2 9" stroke="#C9A24B" stroke-width="2.6"/>
-                <circle cx="0" cy="-20" r="6" fill="#E8C9A0" stroke="#4A3B2C" stroke-width="2"/>
-                <path d="M-6 -22 Q0 -31 6 -22 Z" fill="#7C3B34" stroke="#4A3B2C" stroke-width="2"/>
-                <circle cx="0" cy="-31" r="2.2" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="1.4"/>
+                ${CARAS.chico(0, -21, .34)}
+                <circle cx="-1.6" cy="-20.5" r=".8" fill="#4A3B2C" stroke="none"/>
+                <circle cx="1.6" cy="-20.5" r=".8" fill="#4A3B2C" stroke="none"/>
               </g></g>
 
               <!-- patinador 2 -->
@@ -123,9 +123,9 @@ window.DESTINO_EFFECTS = {
                 <path d="M-6 -13 Q0 -17 6 -13 L4 7 Q0 9 -4 7 Z" fill="#5F7355" stroke="#4A3B2C" stroke-width="2"/>
                 <path d="M4 -8 L17 -13 M-4 -8 L-16 -3" stroke="#5F7355" stroke-width="4"/>
                 <path d="M5 -11 L-7 -9 M-6 -10 l-2 9" stroke="#C98B84" stroke-width="2.6"/>
-                <circle cx="0" cy="-20" r="6" fill="#E8C9A0" stroke="#4A3B2C" stroke-width="2"/>
-                <path d="M-6 -21 Q0 -27 6 -21 L4 -22 Q0 -25 -4 -22 Z" fill="#8a6a4d" stroke="#4A3B2C" stroke-width="1.6"/>
-                <path d="M-5 -19 Q-7 -8 -5 0 M5 -19 Q7 -8 5 0" stroke="#8a6a4d" stroke-width="2.4"/>
+                ${CARAS.chica(0, -21, .34)}
+                <circle cx="-1.6" cy="-20.5" r=".8" fill="#4A3B2C" stroke="none"/>
+                <circle cx="1.6" cy="-20.5" r=".8" fill="#4A3B2C" stroke="none"/>
               </g></g>
 
               <!-- sirenita en su roca -->
@@ -147,6 +147,18 @@ window.DESTINO_EFFECTS = {
           <div class="cph-hygge">esto, señoras y señores, es hygge</div>
         </div>
       </div>`;
+
+    /* la pista se va tras el carrete: nunca dos escenas seguidas */
+    (function(){
+      const hielo = section.querySelector('.cph-hielo');
+      const hist = document.querySelector('.d-historia');
+      if (hielo && hist){
+        hielo.style.maxWidth = '720px';
+        hielo.style.margin = '44px auto 0';
+        hielo.style.padding = '0 20px';
+        hist.before(hielo);
+      }
+    })();
 
     if (reduced || !App.hasGsap || typeof ScrollTrigger === 'undefined'){
       /* sin animación: mostrar directamente el final feliz */

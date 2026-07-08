@@ -84,6 +84,71 @@ window.DESTINO_EFFECTS = {
       motas.push(m);
     }
 
+    /* ===== LA PISTA DE BAILE (interactiva: toca las baldosas) ===== */
+    (function(){
+      const esc = document.createElement('section');
+      esc.className = 'escena-abierta will-reveal';
+      esc.innerHTML = `
+        <style>
+          .prg-suelo{
+            display:grid; grid-template-columns:repeat(6, 1fr); gap:6px;
+            max-width:520px; margin:16px auto 0; padding:14px;
+            background:#3d332a; border-radius:8px; box-shadow:var(--shadow-lift);
+            touch-action:manipulation;
+          }
+          .prg-baldosa{
+            aspect-ratio:1; border-radius:3px; border:none; cursor:pointer; padding:0;
+            background:#5b4a38; box-shadow:inset 0 0 0 1.5px rgba(74,59,44,.8);
+            transition:background .18s;
+          }
+          .prg-nota-fx{
+            position:absolute; font-size:22px; pointer-events:none; z-index:8;
+            color:var(--gold); text-shadow:0 1px 2px rgba(74,59,44,.4);
+          }
+        </style>
+        <div class="escena-titulo">la pista de baile · toca las baldosas 🪩</div>
+        <div class="prg-suelo" id="prgSuelo" style="position:relative"></div>
+        <div class="escena-caption">modo Fiebre del Sábado Noche: actívalo tú (la bola de disco te juzga)</div>`;
+      const hist = document.querySelector('.d-historia');
+      if (hist) hist.before(esc); else section.appendChild(esc);
+
+      const COLORES = ['#C98B84', '#C9A24B', '#9BBAC0', '#8B9A78', '#B26A54', '#F3ECDA'];
+      const suelo = esc.querySelector('#prgSuelo');
+      const NOTAS = ['♪', '♫', '✦'];
+      const baldosas = [];
+      for (let i = 0; i < 24; i++){
+        const b = document.createElement('button');
+        b.className = 'prg-baldosa';
+        b.setAttribute('aria-label', 'baldosa de baile');
+        suelo.appendChild(b);
+        baldosas.push(b);
+        b.addEventListener('pointerdown', () => pisar(b, true));
+      }
+      function pisar(b, conNota){
+        const c = COLORES[(Math.random() * COLORES.length) | 0];
+        b.style.background = c;
+        setTimeout(() => b.style.background = '#5b4a38', 520);
+        if (conNota && !reduced){
+          const n = document.createElement('span');
+          n.className = 'prg-nota-fx';
+          n.textContent = NOTAS[(Math.random() * NOTAS.length) | 0];
+          const r = b.getBoundingClientRect(), rs = suelo.getBoundingClientRect();
+          n.style.left = (r.left - rs.left + r.width / 2 - 8) + 'px';
+          n.style.top = (r.top - rs.top) + 'px';
+          suelo.appendChild(n);
+          if (App.hasGsap) gsap.to(n, { y: -46, opacity: 0, rotation: 14, duration: .9, ease: 'power1.out', onComplete: () => n.remove() });
+          else setTimeout(() => n.remove(), 500);
+        }
+      }
+      if (reduced){
+        /* versión quieta: unas cuantas encendidas */
+        [2, 9, 13, 20].forEach(i => baldosas[i].style.background = COLORES[i % COLORES.length]);
+      } else {
+        /* la pista respira sola, suave, hasta que llegas tú */
+        setInterval(() => pisar(baldosas[(Math.random() * baldosas.length) | 0], false), 1400);
+      }
+    })();
+
     if (reduced || !App.hasGsap){
       motas.forEach(m => m.style.opacity = .5);
       return;

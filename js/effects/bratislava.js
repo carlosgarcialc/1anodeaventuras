@@ -80,6 +80,83 @@ window.DESTINO_EFFECTS = {
         <div class="bts-caption">cameo: la salchicha* navegando el Danubio &nbsp;·&nbsp; <small>*QEPD, estaba buenísima</small></div>
       </div>`;
 
+    /* ===== escena de fiesta (va TRAS el carrete: nunca dos escenas seguidas) ===== */
+    (function(){
+      const esc = document.createElement('section');
+      esc.className = 'escena-abierta will-reveal';
+      esc.innerHTML = `
+        <style>
+          @keyframes btsNeon{ 0%,100%{ opacity:1; } 50%{ opacity:.35; } }
+          .bts-neon{ animation:btsNeon 1.6s ease-in-out infinite; }
+          html.no-motion .bts-neon{ animation:none; }
+        </style>
+        <div class="escena-titulo">itinerario científico de la noche eslovaca</div>
+        <div class="escena-figuras">
+          <svg viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- cielo nocturno + luna -->
+            <rect width="460" height="212" fill="#4A3B2C" opacity=".14"/>
+            <circle cx="428" cy="30" r="13" fill="#F3ECDA"/>
+            <!-- los tres templos de la noche -->
+            <g>
+              <rect x="14" y="60" width="128" height="152" fill="#F3ECDA"/>
+              <rect x="14" y="60" width="128" height="30" fill="#7C3B34"/>
+              <text x="78" y="82" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" letter-spacing="2" font-size="17" fill="#F3ECDA" stroke="none">KLUB39</text>
+              <rect x="58" y="150" width="40" height="62" fill="#6E5B48"/>
+              <circle class="bts-neon" cx="30" cy="104" r="4" fill="#C98B84" stroke="none"/>
+              <circle class="bts-neon" cx="78" cy="104" r="4" fill="#C9A24B" stroke="none" style="animation-delay:.4s"/>
+              <circle class="bts-neon" cx="126" cy="104" r="4" fill="#9BBAC0" stroke="none" style="animation-delay:.8s"/>
+            </g>
+            <g>
+              <rect x="166" y="44" width="128" height="168" fill="#F7F1E1"/>
+              <rect x="166" y="44" width="128" height="30" fill="#5F7355"/>
+              <text x="230" y="66" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" letter-spacing="2" font-size="16" fill="#F3ECDA" stroke="none">CHANNELS</text>
+              <rect x="210" y="150" width="40" height="62" fill="#6E5B48"/>
+              <path class="bts-neon" d="M180 96 h20 M180 104 h14" stroke="#C9A24B" stroke-width="3" style="animation-delay:.2s"/>
+              <path class="bts-neon" d="M280 96 h-20 M280 104 h-14" stroke="#C98B84" stroke-width="3" style="animation-delay:.6s"/>
+            </g>
+            <g>
+              <rect x="318" y="70" width="128" height="142" fill="#F3ECDA"/>
+              <rect x="318" y="70" width="128" height="30" fill="#4A3B2C"/>
+              <text x="382" y="92" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" letter-spacing="5" font-size="17" fill="#C9A24B" stroke="none">DEEP</text>
+              <rect x="362" y="150" width="40" height="62" fill="#6E5B48"/>
+              <circle class="bts-neon" cx="334" cy="114" r="4" fill="#C9A24B" stroke="none" style="animation-delay:.3s"/>
+              <circle class="bts-neon" cx="430" cy="114" r="4" fill="#C98B84" stroke="none" style="animation-delay:.7s"/>
+            </g>
+            <!-- notas musicales escapándose -->
+            <g fill="#6E5B48" stroke="none">
+              <path d="M152 40 v-14 q6 1 7 5" stroke="#6E5B48" stroke-width="2" fill="none"/><ellipse cx="150" cy="41" rx="3.4" ry="2.6"/>
+              <path d="M306 34 v-12 q5 1 6 4" stroke="#6E5B48" stroke-width="2" fill="none"/><ellipse cx="304" cy="35" rx="3" ry="2.4"/>
+            </g>
+            <!-- la cuadrilla -->
+            <path d="M0 212 h460" stroke="#B26A54" stroke-width="3"/>
+            <g>
+              <path d="M52 248 q0 -26 16 -26 q16 0 16 26" fill="#B26A54"/>
+              ${CARAS.chico(68, 210, .62)}
+            </g>
+            <g>
+              <path d="M148 248 q0 -26 16 -26 q16 0 16 26" fill="#5F7355"/>
+              ${CARAS.chica(164, 210, .62)}
+            </g>
+            <g>
+              <path d="M252 248 q0 -26 16 -26 q16 0 16 26" fill="#9BBAC0"/>
+              ${CARAS.chico(268, 210, .62, '#C9A24B')}
+            </g>
+            <g>
+              <path d="M356 248 q0 -26 16 -26 q16 0 16 26" fill="#C98B84"/>
+              ${CARAS.chico(372, 210, .62, '#241c13')}
+            </g>
+          </svg>
+          <div class="escena-boca" style="left:1%;top:44%;--tail:70%;font-size:.98rem">Maksym, que habla ucraniano</div>
+          <div class="escena-boca" style="left:24%;top:58%;--tail:50%;font-size:.98rem">¿luego en Viking's?</div>
+          <div class="escena-boca" style="right:22%;top:47%;--tail:40%;font-size:.98rem">¿after en la 213?</div>
+          <div class="escena-boca" style="right:0%;top:60%;--tail:60%;font-size:.98rem">puto Erasmusdreamland</div>
+        </div>
+        <div class="escena-caption">‹‹ CAPTION FIESTA — EDITAR ›› (orden del peregrinaje: Klub39 → Channels → Deep)</div>`;
+      const hist = document.querySelector('.d-historia');
+      if (hist) hist.before(esc); else section.appendChild(esc);
+      sembrarDestellos(esc, 4);
+    })();
+
     if (reduced || !App.hasGsap) return;
 
     /* el Danubio ondea */

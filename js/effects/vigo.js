@@ -147,9 +147,12 @@ window.DESTINO_EFFECTS = {
                 <path d="M160 92 v-22 M160 74 q16 2 16 12 h-16" fill="#F3ECDA"/>
                 <!-- pasajeros mareados -->
                 <circle cx="112" cy="108" r="8" fill="#8B9A78"/>
-                <path d="M108 106 q2 -3 4 0 M114 106 q2 -3 4 0 M108 113 q4 -3 8 0" stroke-width="2"/>
+                ${CARAS.pelo(112, 108, .4)}
+                <path d="M108 107 q2 -3 4 0 M114 107 q2 -3 4 0 M108 113 q4 -3 8 0" stroke-width="2"/>
                 <circle cx="206" cy="108" r="8" fill="#8B9A78"/>
-                <path d="M202 106 q2 -3 4 0 M208 106 q2 -3 4 0 M202 113 q4 -3 8 0" stroke-width="2"/>
+                ${CARAS.pelo(206, 108, .4, '#8a6a4d')}
+                <path d="M199 106 q-1 6 1 9 M213 106 q1 6 -1 9" stroke="#8a6a4d" stroke-width="2.4"/>
+                <path d="M202 107 q2 -3 4 0 M208 107 q2 -3 4 0 M202 113 q4 -3 8 0" stroke-width="2"/>
               </g>
               <path id="vigOlaCat1" d="M0 150 Q40 134 80 150 T160 150 T240 150 T320 150 L320 190 L0 190 Z" fill="#7FA6AD" stroke="none"/>
               <path id="vigOlaCat2" d="M0 164 Q40 150 80 164 T160 164 T240 164 T320 164 L320 190 L0 190 Z" fill="#5F8B94" stroke="none"/>
@@ -212,11 +215,9 @@ window.DESTINO_EFFECTS = {
           <rect x="288" y="188" width="104" height="14" rx="5" fill="#B26A54"/>
           <rect x="304" y="140" width="72" height="50" rx="8" fill="#DDCFB2"/>
           <!-- Bea: chica de pelo largo castaño -->
-          <path d="M315 120 Q313 91 340 89 Q367 91 365 120 L363 160 Q359 166 353 160 L351 120 Q351 99 340 95 Q329 99 329 120 L327 160 Q321 166 317 160 Z" fill="#8a6a4d"/>
-          <circle cx="340" cy="120" r="22" fill="#E8C9A0"/>
-          <path d="M321 112 Q340 96 359 112 Q350 105 340 106 Q330 105 321 112 Z" fill="#8a6a4d"/>
-          <path d="M331 118 q3 -4 6 0 M343 118 q3 -4 6 0" stroke-width="2.5"/>
-          <path d="M333 128 q7 6 14 0" stroke-width="2.5"/>
+          ${CARAS.chica(340, 120, 1.1)}
+          <path d="M331 120 q3 -4 6 0 M343 120 q3 -4 6 0" stroke-width="2.5"/>
+          <path d="M333 130 q7 6 14 0" stroke-width="2.5"/>
           <g id="vigCorona">
             <path d="M322 96 l4 -16 8 10 6 -14 6 14 8 -10 4 16 Z" fill="#C9A24B" stroke-width="2.5"/>
             <circle cx="340" cy="78" r="2.5" fill="#C98B84" stroke-width="2"/>
@@ -229,7 +230,8 @@ window.DESTINO_EFFECTS = {
         <g id="vigFan1">
           <g id="vigReverencia">
             <circle cx="176" cy="196" r="16" fill="#E8C9A0"/>
-            <path d="M170 192 q3 -3 6 0 M180 192 q3 -3 6 0" stroke-width="2"/>
+            ${CARAS.pelo(176, 196, .8)}
+            <path d="M170 194 q3 -3 6 0 M180 194 q3 -3 6 0" stroke-width="2"/>
             <path d="M162 258 q-2 -30 14 -46" stroke-width="7" stroke="#5F7355"/>
             <path d="M176 212 q18 10 30 2" stroke-width="5" stroke="#E8C9A0"/>
           </g>
@@ -237,7 +239,8 @@ window.DESTINO_EFFECTS = {
         </g>
         <g id="vigBandeja">
           <circle cx="92" cy="188" r="15" fill="#E8C9A0"/>
-          <path d="M86 184 q3 -3 6 0 M96 184 q3 -3 6 0 M87 193 q5 4 10 0" stroke-width="2"/>
+          ${CARAS.pelo(92, 188, .75, '#8a6a4d')}
+          <path d="M86 186 q3 -3 6 0 M96 186 q3 -3 6 0 M87 194 q5 4 10 0" stroke-width="2"/>
           <path d="M80 256 q0 -28 12 -40" stroke-width="7" stroke="#B26A54"/>
           <path d="M96 210 q14 -18 22 -34" stroke-width="4.5" stroke="#E8C9A0"/>
           <g id="vigBandejaTop">
@@ -248,7 +251,8 @@ window.DESTINO_EFFECTS = {
         </g>
         <g id="vigAbanico">
           <circle cx="516" cy="192" r="16" fill="#E8C9A0"/>
-          <path d="M510 188 q3 -3 6 0 M520 188 q3 -3 6 0 M511 197 q5 4 10 0" stroke-width="2"/>
+          ${CARAS.pelo(516, 192, .8)}
+          <path d="M510 190 q3 -3 6 0 M520 190 q3 -3 6 0 M511 198 q5 4 10 0" stroke-width="2"/>
           <path d="M524 258 q0 -30 -8 -50" stroke-width="7" stroke="#8B9A78"/>
           <g id="vigPalma">
             <path d="M500 190 L462 148" stroke-width="4"/>
@@ -258,6 +262,7 @@ window.DESTINO_EFFECTS = {
         <!-- fotógrafo oficial de la casa real -->
         <g id="vigFoto">
           <circle cx="590" cy="200" r="15" fill="#E8C9A0"/>
+          ${CARAS.pelo(590, 200, .75, '#6E5B48')}
           <path d="M596 254 q0 -26 -6 -39" stroke-width="7" stroke="#6E5B48"/>
           <rect x="566" y="192" width="20" height="14" rx="3" fill="#4A3B2C"/>
           <circle cx="576" cy="199" r="4" fill="#DDCFB2" stroke-width="2"/>
@@ -268,6 +273,11 @@ window.DESTINO_EFFECTS = {
     const historia = document.querySelector('.d-historia');
     if (historia) historia.before(reina); else section.appendChild(reina);
     sembrarDestellos(reina, 8);
+
+    /* las catástrofes se van detrás de la historia: nunca dos escenas seguidas */
+    const catastrofes = section.querySelector('.vig-catastrofes');
+    const notaEl = document.querySelector('.d-nota');
+    if (catastrofes && notaEl) notaEl.before(catastrofes);
 
     /* ---------- olas del mar (tres capas) ---------- */
     const mar = document.getElementById('vigMar');
