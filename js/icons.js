@@ -113,9 +113,18 @@
   /* ---------- adornos compartidos ---------- */
   window.ADORNOS = {
     sparkle: `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 0 C13 7 15 9 24 12 C15 15 13 17 12 24 C11 17 9 15 0 12 C9 9 11 7 12 0 Z"/></svg>`,
-    avion: S('0 0 64 40', `
-      <path d="M4 26 L40 18 L56 6 Q60 4 58 9 L48 22 L54 30 L46 30 L40 24 L14 30 Z" fill="#F3ECDA"/>
-      <path d="M40 18 L34 8 L40 8 L48 16" fill="#F3ECDA"/>`),
+    avion: S('0 0 80 48', `
+      <g fill="#F3ECDA" stroke-width="2.4" stroke-linejoin="round">
+        <path d="M14 24 L2 12 L11 12 L22 22 Z"/>
+        <path d="M14 24 L2 36 L11 36 L22 26 Z"/>
+        <path d="M40 22 L20 4 L34 5 L52 21 Z"/>
+        <path d="M40 26 L20 44 L34 43 L52 27 Z"/>
+        <path d="M10 24 Q10 19 17 19 L60 20 Q72 22 76 24 Q72 26 60 28 L17 29 Q10 29 10 24 Z"/>
+        <circle cx="34" cy="24" r="1.7" fill="none" stroke-width="1.5"/>
+        <circle cx="42" cy="24" r="1.7" fill="none" stroke-width="1.5"/>
+        <circle cx="50" cy="24" r="1.7" fill="none" stroke-width="1.5"/>
+        <circle cx="66" cy="24" r="1.5" fill="#9BBAC0" stroke-width="1.4"/>
+      </g>`),
     barquito: S('0 0 64 48', `
       <path d="M10 30 h44 l-8 10 h-28 Z" fill="#B26A54"/>
       <path d="M32 30 V8 M32 10 q14 2 14 12 h-14" fill="#F3ECDA"/>

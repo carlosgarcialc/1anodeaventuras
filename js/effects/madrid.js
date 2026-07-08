@@ -47,12 +47,15 @@ window.DESTINO_EFFECTS = {
             </g>
           </g>
 
-          <!-- comensal B (derecha) -->
+          <!-- comensal B (derecha): chica de pelo largo -->
           <g id="madPersonaB">
+            <!-- melena castaña (por detrás) -->
+            <path d="M512 150 Q510 116 545 114 Q580 116 578 150 L576 206 Q570 212 565 205 L563 150 Q563 124 545 120 Q527 124 527 150 L525 205 Q520 212 514 206 Z" fill="#8a6a4d"/>
             <circle cx="545" cy="150" r="30" fill="#E8C9A0"/>
-            <path d="M533 144 q4 -5 8 0 M553 144 q4 -5 8 0" stroke-width="2.5"/>
-            <ellipse id="madBocaB" cx="543" cy="163" rx="7" ry="4" fill="#7C3B34" stroke-width="2"/>
-            <path d="M523 128 q22 -14 44 4 l-4 10 q-18 -12 -36 -4 Z" fill="#6E5B48"/>
+            <!-- flequillo -->
+            <path d="M521 134 Q545 116 569 134 Q559 126 545 127 Q531 126 521 134 Z" fill="#8a6a4d"/>
+            <path d="M533 148 q4 -5 8 0 M553 148 q4 -5 8 0" stroke-width="2.5"/>
+            <ellipse id="madBocaB" cx="543" cy="165" rx="7" ry="4" fill="#7C3B34" stroke-width="2"/>
             <path d="M515 216 q0 -38 30 -38 q30 0 30 38" fill="#5F7355"/>
             <g id="madBrazoB">
               <path d="M518 196 Q498 176 510 158" stroke-width="6" stroke="#E8C9A0"/>

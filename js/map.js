@@ -34,18 +34,21 @@
   });
   canvas.appendChild(img);
 
-  /* ---------- ruta punteada (SVG, orden = DESTINOS) ---------- */
+  /* ---------- ruta del mini bus: Copenhague–(Berlín)–Bratislava ---------- */
   const NS = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(NS, 'svg');
   svg.setAttribute('class', 'mapa-rutas');
   svg.setAttribute('viewBox', `0 0 ${VB_W} ${VB_H}`);
   svg.setAttribute('preserveAspectRatio', 'none');
 
-  const pts = DESTINOS.map(d => [d.x / 100 * VB_W, d.y / 100 * VB_H]);
-  // curva suave que pasa por todos los puntos (catmull-rom → bézier)
-  let dAttr = `M ${pts[0][0]},${pts[0][1]}`;
-  for (let i = 0; i < pts.length - 1; i++){
-    const p0 = pts[Math.max(0, i - 1)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)];
+  // solo estos destinos (el resto no van conectados)
+  const RUTA = ['copenhague-aarhus', 'berlin', 'bratislava']
+    .map(sl => DESTINOS.find(d => d.slug === sl))
+    .map(d => [d.x / 100 * VB_W, d.y / 100 * VB_H]);
+  // curva suave (catmull-rom → bézier)
+  let dAttr = `M ${RUTA[0][0]},${RUTA[0][1]}`;
+  for (let i = 0; i < RUTA.length - 1; i++){
+    const p0 = RUTA[Math.max(0, i - 1)], p1 = RUTA[i], p2 = RUTA[i + 1], p3 = RUTA[Math.min(RUTA.length - 1, i + 2)];
     const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
     const c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
     dAttr += ` C ${c1[0]},${c1[1]} ${c2[0]},${c2[1]} ${p2[0]},${p2[1]}`;
@@ -56,19 +59,36 @@
       <path id="rutaMaskPath" d="${dAttr}" fill="none" stroke="#fff" stroke-width="26"/>
     </mask></defs>
     <path class="ruta-dots" d="${dAttr}" fill="none" stroke-width="4.5"
-      stroke-dasharray="1 16" stroke-linecap="round" mask="url(#rutaMask)"/>`;
+      stroke-dasharray="1 16" stroke-linecap="round" mask="url(#rutaMask)"/>
+    <g id="rutaBus">
+      <rect x="-16" y="-10" width="32" height="18" rx="4" fill="#C98B84" stroke="#4A3B2C" stroke-width="2.5"/>
+      <path d="M-11 -5 h7 v7 h-7 Z M-1 -5 h7 v7 h-7 Z M9 -5 h5 v7 h-5 Z" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="1.6"/>
+      <circle cx="-9" cy="9" r="3.6" fill="#4A3B2C"/><circle cx="9" cy="9" r="3.6" fill="#4A3B2C"/>
+    </g>`;
   canvas.appendChild(svg);
 
   const maskPath = svg.querySelector('#rutaMaskPath');
   const len = maskPath.getTotalLength();
   maskPath.style.strokeDasharray = len;
   maskPath.style.strokeDashoffset = App.reduced ? 0 : len;
+  const bus = svg.querySelector('#rutaBus');
 
   if (!App.reduced && App.hasGsap && typeof ScrollTrigger !== 'undefined'){
     gsap.to(maskPath, {
       strokeDashoffset: 0, ease: 'none',
       scrollTrigger: { trigger: frame, start: 'top 80%', end: 'bottom 55%', scrub: 1 },
     });
+  } else { maskPath.style.strokeDashoffset = 0; }
+
+  // el mini bus recorre la ruta de ida y vuelta
+  if (!App.reduced && App.hasGsap && typeof MotionPathPlugin !== 'undefined'){
+    gsap.to(bus, {
+      motionPath: { path: maskPath, align: maskPath, alignOrigin: [.5, .9], autoRotate: true },
+      duration: 10, repeat: -1, yoyo: true, ease: 'sine.inOut',
+    });
+  } else {
+    const mid = maskPath.getPointAtLength(len / 2);
+    bus.setAttribute('transform', `translate(${mid.x},${mid.y})`);
   }
 
   /* ---------- marcadores ---------- */

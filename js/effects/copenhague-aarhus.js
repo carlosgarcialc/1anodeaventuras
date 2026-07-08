@@ -91,26 +91,49 @@ window.DESTINO_EFFECTS = {
         <div class="cph-hielo will-reveal">
           <h3 class="cph-hielo-tit">Y luego, hielo (del bueno)</h3>
           <div class="cph-pista">
-            <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg">
-              <path id="cphTrazo1" d="M80,180 C160,80 240,220 320,140 C380,80 440,120 500,90"
-                fill="none" stroke="#F7F1E1" stroke-width="3.5" stroke-dasharray="6 8" stroke-linecap="round" opacity=".9"/>
-              <path id="cphTrazo2" d="M110,90 C200,190 300,60 400,180 C450,236 500,200 530,160"
-                fill="none" stroke="#DDE9EA" stroke-width="3" stroke-dasharray="4 9" stroke-linecap="round" opacity=".8"/>
-              <g id="cphSk1">
-                <circle cx="0" cy="-26" r="8" fill="#4A3B2C"/>
-                <path d="M0 -18 C6 -10 6 2 2 10 L-2 10 C-6 2 -6 -10 0 -18 Z" fill="#B26A54"/>
-                <path d="M-1 10 L-6 22 M1 10 L8 18 M8 18 l6 2" stroke="#4A3B2C" stroke-width="3" stroke-linecap="round" fill="none"/>
-              </g>
-              <g id="cphSk2">
-                <circle cx="0" cy="-24" r="7" fill="#4A3B2C"/>
-                <path d="M0 -17 C5 -9 5 1 2 9 L-2 9 C-5 1 -5 -9 0 -17 Z" fill="#5F7355"/>
-                <path d="M-1 9 L-7 20 M1 9 L7 20" stroke="#4A3B2C" stroke-width="3" stroke-linecap="round" fill="none"/>
-              </g>
-              <g transform="translate(546,196)">
+            <svg viewBox="0 0 600 260" xmlns="http://www.w3.org/2000/svg" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <!-- estelas talladas en el hielo (decoración) -->
+              <path d="M70 150 C150 118 230 182 320 152 C390 128 460 158 540 132"
+                stroke="#F7F1E1" stroke-width="3" stroke-dasharray="5 9" opacity=".85"/>
+              <path d="M540 198 C450 172 360 224 260 196 C190 176 120 210 60 190"
+                stroke="#DDE9EA" stroke-width="2.5" stroke-dasharray="4 9" opacity=".8"/>
+              <!-- guías de deslizamiento (invisibles) -->
+              <path id="cphGlide1" d="M70 152 Q200 122 330 152 T560 148" fill="none" stroke="none"/>
+              <path id="cphGlide2" d="M540 196 Q400 222 260 196 T60 194" fill="none" stroke="none"/>
+
+              <!-- patinador 1 -->
+              <g id="cphSk1"><g class="cph-lean">
+                <path d="M0 6 L-6 22" stroke="#4A3B2C" stroke-width="3.5"/>
+                <path d="M-11 24 L0 24" stroke="#9BBAC0" stroke-width="3"/>
+                <path d="M0 6 L11 15" stroke="#4A3B2C" stroke-width="3.5"/>
+                <path d="M-13 26 L-2 26" stroke="#9BBAC0" stroke-width="2" opacity=".5"/>
+                <path d="M-6 -13 Q0 -17 6 -13 L4 7 Q0 9 -4 7 Z" fill="#B26A54" stroke="#4A3B2C" stroke-width="2"/>
+                <path d="M-4 -8 L-17 -13 M4 -8 L16 -3" stroke="#B26A54" stroke-width="4"/>
+                <path d="M-5 -11 L7 -9 M6 -10 l2 9" stroke="#C9A24B" stroke-width="2.6"/>
+                <circle cx="0" cy="-20" r="6" fill="#E8C9A0" stroke="#4A3B2C" stroke-width="2"/>
+                <path d="M-6 -22 Q0 -31 6 -22 Z" fill="#7C3B34" stroke="#4A3B2C" stroke-width="2"/>
+                <circle cx="0" cy="-31" r="2.2" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="1.4"/>
+              </g></g>
+
+              <!-- patinador 2 -->
+              <g id="cphSk2"><g class="cph-lean">
+                <path d="M0 6 L6 22" stroke="#4A3B2C" stroke-width="3.5"/>
+                <path d="M0 24 L11 24" stroke="#9BBAC0" stroke-width="3"/>
+                <path d="M0 6 L-11 15" stroke="#4A3B2C" stroke-width="3.5"/>
+                <path d="M-6 -13 Q0 -17 6 -13 L4 7 Q0 9 -4 7 Z" fill="#5F7355" stroke="#4A3B2C" stroke-width="2"/>
+                <path d="M4 -8 L17 -13 M-4 -8 L-16 -3" stroke="#5F7355" stroke-width="4"/>
+                <path d="M5 -11 L-7 -9 M-6 -10 l-2 9" stroke="#C98B84" stroke-width="2.6"/>
+                <circle cx="0" cy="-20" r="6" fill="#E8C9A0" stroke="#4A3B2C" stroke-width="2"/>
+                <path d="M-6 -21 Q0 -27 6 -21 L4 -22 Q0 -25 -4 -22 Z" fill="#8a6a4d" stroke="#4A3B2C" stroke-width="1.6"/>
+                <path d="M-5 -19 Q-7 -8 -5 0 M5 -19 Q7 -8 5 0" stroke="#8a6a4d" stroke-width="2.4"/>
+              </g></g>
+
+              <!-- sirenita en su roca -->
+              <g transform="translate(548,198)">
                 <path d="M0 0 q10 -18 2 -34 q14 8 12 26 q16 -6 18 -20 q6 22 -12 32 q-8 4 -20 -4 Z" fill="#9BBAC0" stroke="#4A3B2C" stroke-width="2"/>
                 <circle cx="6" cy="-40" r="7" fill="#C98B84" stroke="#4A3B2C" stroke-width="2"/>
               </g>
-              <text x="562" y="246" text-anchor="middle" font-family="Caveat, cursive" font-size="17" fill="#4A3B2C">hola, Sirenita</text>
+              <text x="560" y="246" text-anchor="middle" font-family="Caveat, cursive" font-size="17" fill="#4A3B2C" stroke="none">hola, Sirenita</text>
             </svg>
           </div>
 
@@ -148,14 +171,16 @@ window.DESTINO_EFFECTS = {
         scrollTrigger: { trigger: '#cphEnfado', start: 'top 55%' } });
     });
 
-    /* patinadores: recorren su trazo mientras este se dibuja */
-    [['#cphTrazo1', '#cphSk1', 14], ['#cphTrazo2', '#cphSk2', 18]].forEach(([trazo, sk, dur]) => {
-      const p = section.querySelector(trazo);
-      const L = p.getTotalLength();
-      p.style.strokeDasharray = `6 8`;
+    /* patinadores: se deslizan por su guía, siempre de pie (con un leve vaivén) */
+    [['#cphGlide1', '#cphSk1', 13], ['#cphGlide2', '#cphSk2', 16]].forEach(([guia, sk, dur]) => {
+      const g = section.querySelector(guia);
       gsap.to(section.querySelector(sk), {
-        motionPath: { path: p, align: p, alignOrigin: [.5, .82], autoRotate: 90 },
+        motionPath: { path: g, align: g, alignOrigin: [.5, .95] },
         duration: dur, repeat: -1, yoyo: true, ease: 'sine.inOut',
+      });
+      gsap.to(section.querySelector(sk + ' .cph-lean'), {
+        rotation: sk.endsWith('1') ? 7 : -7, transformOrigin: '0px 24px',
+        duration: dur / 4, repeat: -1, yoyo: true, ease: 'sine.inOut',
       });
     });
   },

@@ -69,24 +69,23 @@ window.DESTINO_EFFECTS = {
         <div class="vig-cartel">SE BUSCA: gaviota · botín: un (1) bocadillo de pollo empanado</div>
 
         <div class="vig-gaviota" id="vigGaviota">
-          <svg viewBox="0 -6 112 66" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <!-- ala de abajo (gris) -->
-            <path d="M34 30 Q40 46 58 48 Q46 38 44 28 Z" fill="#DDCFB2"/>
-            <!-- cola -->
-            <path d="M20 24 L6 18 L12 26 L6 32 L20 30 Z" fill="#F7F1E1"/>
-            <!-- cuerpo -->
-            <path d="M18 26 Q28 16 46 17 Q60 18 68 25 Q60 33 46 35 Q30 37 18 26 Z" fill="#F7F1E1"/>
-            <!-- ala levantada (aletea) -->
+          <svg viewBox="-4 -18 124 78" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <!-- ala inferior (gris, al fondo) -->
+            <path d="M46 30 Q52 48 72 50 Q56 39 52 28 Z" fill="#DDCFB2"/>
+            <!-- cola bifurcada -->
+            <path d="M20 30 L4 24 L13 31 L4 38 L20 34 Z" fill="#F7F1E1"/>
+            <!-- cuerpo, cuello y cabeza en una silueta -->
+            <path d="M18 32 Q28 22 50 22 Q66 22 76 27 Q80 20 88 20 Q95 20 95 26 Q95 31 87 30 Q78 35 56 36 Q32 38 18 32 Z" fill="#F7F1E1"/>
+            <!-- ala superior levantada (aletea) -->
             <g id="vigAla">
-              <path d="M42 22 Q36 4 18 0 Q32 8 36 22 Z" fill="#F3ECDA"/>
-              <path d="M24 4 q6 1 10 6" stroke="#DDCFB2" stroke-width="2"/>
+              <path d="M48 25 Q44 3 24 -4 Q38 7 44 25 Z" fill="#F3ECDA"/>
+              <path d="M30 1 q7 1 11 7" stroke="#DDCFB2" stroke-width="2"/>
             </g>
-            <!-- cabeza, ojo y pico -->
-            <circle cx="66" cy="21" r="8.5" fill="#F7F1E1"/>
-            <circle cx="69" cy="19" r="1.6" fill="#4A3B2C" stroke="none"/>
-            <path d="M74 21 l10 2 -10 3 Z" fill="#C9A24B" stroke-width="2"/>
-            <!-- el botín, bien agarrado en el pico -->
-            <g transform="translate(80 29) rotate(12)">${VIG_BOCADILLO}</g>
+            <!-- ojo y pico ganchudo -->
+            <circle cx="88" cy="26" r="1.5" fill="#4A3B2C" stroke="none"/>
+            <path d="M95 24 L109 27 L101 29 L108 30 L95 30 Z" fill="#C9A24B" stroke-width="2"/>
+            <!-- el botín, colgando del pico -->
+            <g transform="translate(103 33) rotate(14)">${VIG_BOCADILLO}</g>
           </svg>
         </div>
 
@@ -113,15 +112,19 @@ window.DESTINO_EFFECTS = {
         </div>
 
         <div class="vig-pulpo">
-          <svg viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="3" stroke-linecap="round">
-            <path d="M60 10 Q88 10 88 44 L88 58 Q88 66 82 66 Q76 66 76 58 M32 58 Q32 66 38 66 Q44 66 44 58 L32 44 Q32 10 60 10" fill="#C98B84"/>
-            <path d="M60 10 Q32 10 32 44 L32 58" fill="none"/>
-            <path id="vigTent1" d="M44 62 Q40 84 26 92 Q18 96 14 90" fill="none" stroke="#C98B84" stroke-width="7"/>
-            <path id="vigTent2" d="M58 66 Q58 90 48 100" fill="none" stroke="#C98B84" stroke-width="7"/>
-            <path id="vigTent3" d="M72 64 Q80 86 96 90 Q104 92 106 84" fill="none" stroke="#C98B84" stroke-width="7"/>
-            <circle cx="50" cy="40" r="2.4" fill="#4A3B2C" stroke="none"/>
-            <circle cx="72" cy="40" r="2.4" fill="#4A3B2C" stroke="none"/>
-            <path d="M54 52 q6 5 14 0" stroke-width="2.5"/>
+          <svg viewBox="0 0 120 112" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <!-- tentáculos -->
+            <path id="vigTent1" d="M36 60 Q26 82 12 88 Q4 91 3 83" stroke="#C98B84" stroke-width="8"/>
+            <path d="M50 64 Q46 86 37 97" stroke="#C98B84" stroke-width="8"/>
+            <path d="M60 65 Q60 88 60 101" stroke="#C98B84" stroke-width="8"/>
+            <path d="M70 64 Q74 86 83 97" stroke="#C98B84" stroke-width="8"/>
+            <path id="vigTent3" d="M84 60 Q94 82 108 88 Q116 91 117 83" stroke="#C98B84" stroke-width="8"/>
+            <!-- cabeza / manto -->
+            <path d="M28 46 Q28 15 60 15 Q92 15 92 46 Q92 58 84 63 L36 63 Q28 58 28 46 Z" fill="#C98B84"/>
+            <!-- ojos y sonrisa -->
+            <circle cx="48" cy="42" r="5.5" fill="#F7F1E1"/><circle cx="49" cy="42" r="2.2" fill="#4A3B2C" stroke="none"/>
+            <circle cx="72" cy="42" r="5.5" fill="#F7F1E1"/><circle cx="71" cy="42" r="2.2" fill="#4A3B2C" stroke="none"/>
+            <path d="M52 52 q8 6 16 0" stroke-width="2.5"/>
           </svg>
         </div>
       </div>
@@ -208,9 +211,10 @@ window.DESTINO_EFFECTS = {
           <path d="M296 196 v-74 q0 -16 14 -16 q10 0 12 10 q4 -12 18 -12 q14 0 18 12 q2 -10 12 -10 q14 0 14 16 v74 Z" fill="#C9A24B" opacity=".9"/>
           <rect x="288" y="188" width="104" height="14" rx="5" fill="#B26A54"/>
           <rect x="304" y="140" width="72" height="50" rx="8" fill="#DDCFB2"/>
-          <!-- Bea -->
+          <!-- Bea: chica de pelo largo castaño -->
+          <path d="M315 120 Q313 91 340 89 Q367 91 365 120 L363 160 Q359 166 353 160 L351 120 Q351 99 340 95 Q329 99 329 120 L327 160 Q321 166 317 160 Z" fill="#8a6a4d"/>
           <circle cx="340" cy="120" r="22" fill="#E8C9A0"/>
-          <path d="M322 108 q18 -16 36 0 l2 16 q-4 -4 -6 -2 q-16 -10 -28 0 q-2 -2 -6 2 Z" fill="#6E5B48"/>
+          <path d="M321 112 Q340 96 359 112 Q350 105 340 106 Q330 105 321 112 Z" fill="#8a6a4d"/>
           <path d="M331 118 q3 -4 6 0 M343 118 q3 -4 6 0" stroke-width="2.5"/>
           <path d="M333 128 q7 6 14 0" stroke-width="2.5"/>
           <g id="vigCorona">
@@ -304,7 +308,7 @@ window.DESTINO_EFFECTS = {
       ease: 'none', delay: 1,
       onRepeat(){ gsap.set('#vigGaviota', { y: Math.random() * 40 }); },
     });
-    gsap.to('#vigAla', { rotation: 30, svgOrigin: '42 22', duration: .38, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    gsap.to('#vigAla', { rotation: 34, svgOrigin: '46 25', duration: .38, repeat: -1, yoyo: true, ease: 'sine.inOut' });
 
     /* delfines saltando entre las olas */
     const salto = (sel, delay) => {
@@ -318,7 +322,7 @@ window.DESTINO_EFFECTS = {
     salto('#vigDelfin2', 3.4);
 
     /* pulpo saluda */
-    gsap.to('#vigTent3', { attr: { d: 'M72 64 Q84 80 98 78 Q106 76 104 68' }, duration: 1.1, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    gsap.to('#vigTent3', { attr: { d: 'M84 60 Q96 78 110 76 Q118 74 116 66' }, duration: 1.1, repeat: -1, yoyo: true, ease: 'sine.inOut' });
     gsap.to('.vig-pulpo', { y: 6, duration: 2.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
 
     /* catástrofe 1: el barco se mueve MUCHO */
@@ -345,15 +349,14 @@ window.DESTINO_EFFECTS = {
   ambient(layer, reduced){
     if (reduced) return;
     const gaviota = `
-      <svg viewBox="0 -6 112 66" fill="none" stroke="#6E5B48" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M34 30 Q40 46 58 48 Q46 38 44 28 Z" fill="#DDCFB2"/>
-        <path d="M20 24 L6 18 L12 26 L6 32 L20 30 Z" fill="#F7F1E1"/>
-        <path d="M18 26 Q28 16 46 17 Q60 18 68 25 Q60 33 46 35 Q30 37 18 26 Z" fill="#F7F1E1"/>
-        <path d="M42 22 Q36 4 18 0 Q32 8 36 22 Z" fill="#F3ECDA"/>
-        <circle cx="66" cy="21" r="8.5" fill="#F7F1E1"/>
-        <circle cx="69" cy="19" r="1.4" fill="#6E5B48" stroke="none"/>
-        <path d="M74 21 l10 2 -10 3 Z" fill="#C9A24B" stroke-width="2"/>
-        <g transform="translate(80 29) rotate(12)">${VIG_BOCADILLO}</g>
+      <svg viewBox="-4 -18 124 78" fill="none" stroke="#6E5B48" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M46 30 Q52 48 72 50 Q56 39 52 28 Z" fill="#DDCFB2"/>
+        <path d="M20 30 L4 24 L13 31 L4 38 L20 34 Z" fill="#F7F1E1"/>
+        <path d="M18 32 Q28 22 50 22 Q66 22 76 27 Q80 20 88 20 Q95 20 95 26 Q95 31 87 30 Q78 35 56 36 Q32 38 18 32 Z" fill="#F7F1E1"/>
+        <path d="M48 25 Q44 3 24 -4 Q38 7 44 25 Z" fill="#F3ECDA"/>
+        <circle cx="88" cy="26" r="1.4" fill="#6E5B48" stroke="none"/>
+        <path d="M95 24 L109 27 L101 29 L108 30 L95 30 Z" fill="#C9A24B" stroke-width="2"/>
+        <g transform="translate(103 33) rotate(14)">${VIG_BOCADILLO}</g>
       </svg>`;
     const nube = `<svg viewBox="0 0 80 44" fill="#F3ECDA" opacity=".9"><path d="M16 34 Q4 34 6 25 Q8 17 17 18 Q19 8 30 8 Q40 8 43 16 Q54 12 58 21 Q68 20 68 28 Q68 34 58 34 Z"/></svg>`;
     App.ambienteCruzar(layer, gaviota, { w: 64, op: .8, dur: 18, yMax: 45 });

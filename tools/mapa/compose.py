@@ -94,8 +94,18 @@ mar_decor = "".join([
     f'''<g transform="translate(220,600)">
       <path d="M-60,40 C-90,10 -60,-30 -20,-16 C0,-40 50,-30 44,4 C40,26 10,44 -12,52"
         fill="none" stroke="#6E5B48" stroke-width="3.5" stroke-dasharray="1 12" stroke-linecap="round"/>
-      <g transform="translate(-18,56) rotate(-18)">
-        <path d="M-16,4 L10,-2 L22,-11 Q25,-13 24,-9 L17,0 L22,6 L16,6 L11,2 L-8,7 Z" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="2.5" stroke-linejoin="round"/>
+      <g transform="translate(-4,44) rotate(-30) scale(.62)" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="2.6" stroke-linejoin="round">
+        <g transform="translate(-40,-24)">
+          <path d="M14 24 L2 12 L11 12 L22 22 Z"/>
+          <path d="M14 24 L2 36 L11 36 L22 26 Z"/>
+          <path d="M40 22 L20 4 L34 5 L52 21 Z"/>
+          <path d="M40 26 L20 44 L34 43 L52 27 Z"/>
+          <path d="M10 24 Q10 19 17 19 L60 20 Q72 22 76 24 Q72 26 60 28 L17 29 Q10 29 10 24 Z"/>
+          <circle cx="34" cy="24" r="1.7" fill="none" stroke-width="1.5"/>
+          <circle cx="42" cy="24" r="1.7" fill="none" stroke-width="1.5"/>
+          <circle cx="50" cy="24" r="1.7" fill="none" stroke-width="1.5"/>
+          <circle cx="66" cy="24" r="1.5" fill="#9BBAC0" stroke-width="1.4"/>
+        </g>
       </g>
     </g>''',
     # ballena
@@ -137,11 +147,13 @@ mar_decor = "".join([
       <circle cx="38" cy="-6" r="1.6" fill="#4A3B2C"/>
       <path d="M44,-2 l6,2 -6,3" fill="none" stroke-width="2"/>
     </g>''',
-    # pulpito curioso (Tirreno)
-    f'''<g transform="{T('tirreno', -35, 20)} scale(.8)">
-      <path d="M0,-16 Q16,-16 16,0 L16,6 Q16,11 12,11 Q8,11 8,6 M-16,6 Q-16,11 -12,11 Q-8,11 -8,6 L-16,0 Q-16,-16 0,-16" fill="#C98B84" stroke="#4A3B2C" stroke-width="2.5"/>
-      <path d="M-9,10 q-3,10 -11,13 M0,12 q0,10 -5,15 M9,10 q4,10 12,12" fill="none" stroke="#C98B84" stroke-width="4.5" stroke-linecap="round"/>
-      <circle cx="-5" cy="-4" r="1.7" fill="#4A3B2C"/><circle cx="5" cy="-4" r="1.7" fill="#4A3B2C"/>
+    # pulpito curioso (mar Tirreno, en agua abierta)
+    f'''<g transform="translate(842,955) scale(.92)">
+      <path d="M-13,-2 Q-13,-16 0,-16 Q13,-16 13,-2 Q13,4 8,6 L-8,6 Q-13,4 -13,-2 Z" fill="#C98B84" stroke="#4A3B2C" stroke-width="2.4"/>
+      <path d="M-11,5 q-3,7 -9,9 M-5,6 q-2,8 -6,12 M2,6 q1,8 -2,13 M9,5 q3,7 9,8" fill="none" stroke="#C98B84" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="-5" cy="-5" r="2.1" fill="#F7F1E1" stroke="#4A3B2C" stroke-width="1"/><circle cx="-5" cy="-5" r="0.9" fill="#4A3B2C" stroke="none"/>
+      <circle cx="5" cy="-5" r="2.1" fill="#F7F1E1" stroke="#4A3B2C" stroke-width="1"/><circle cx="5" cy="-5" r="0.9" fill="#4A3B2C" stroke="none"/>
+      <path d="M-3,1 q3,3 6,0" fill="none" stroke="#4A3B2C" stroke-width="1.4"/>
     </g>''',
     # sirenita en su roca (estrecho danés)
     f'''<g transform="{T('copenhague', 34, 16)} scale(.8)">
@@ -154,8 +166,12 @@ mar_decor = "".join([
                         (560,720),(610,900),(760,940),(980,930),(1310,950),(1360,600),(1420,520),(680,430),
                         (900,300),(1060,340),(330,180),(520,120),(1240,140)]]
   + [gaviota(*p) for p in [(350,700),(690,240),(1050,900),(500,300),(240,850),(1300,700)]]
-  + [nube(600,80,1), nube(1180,110,1), nube(70,160,.8), nube(1440,300,.75)]
-  + [destello(*p) for p in [(90,450),(320,240),(660,140),(1330,220),(1460,760),(760,990),(70,660),(1240,470)]])
+  + [nube(600,80,1), nube(1180,110,1), nube(70,160,.8), nube(1440,300,.75)])
+
+# destellos decorativos: SOLO en la web (en la versión impresa el brillo
+# dorado queda reservado para marcar los iconos escaneables)
+destellos_decor = "".join(destello(*p) for p in [
+  (90,450),(320,240),(660,140),(1330,220),(1460,760),(760,990),(70,660),(1240,470)])
 
 # ---------------- decoración de tierra ----------------
 tierra_decor = "".join([
@@ -427,15 +443,15 @@ cartucho = '''
     <path transform="translate(78,74) scale(.8)" fill="#C9A24B" d="M0,-9 C1,-3 3,-1 9,0 C3,1 1,3 0,9 C-1,3 -3,1 -9,0 C-3,-1 -1,-3 0,-9 Z"/>
     <path transform="translate(344,196) scale(.7)" fill="#C9A24B" d="M0,-9 C1,-3 3,-1 9,0 C3,1 1,3 0,9 C-1,3 -3,1 -9,0 C-3,-1 -1,-3 0,-9 Z"/>
   </g>
-  <g transform="translate(211,262)">
-    <g transform="translate(-128,-6)">
+  <g transform="translate(62,250)">
+    <g transform="translate(0,8)">
       <rect x="-9" y="-16" width="18" height="32" rx="4" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="2"/>
       <rect x="-6" y="-12" width="12" height="20" rx="1.5" fill="#BFD3D6" stroke="#6E5B48" stroke-width="1"/>
       <circle cx="0" cy="11.5" r="1.6" fill="#6E5B48"/>
       <path d="M14,-8 q5,8 0,16 M20,-12 q7,12 0,24" fill="none" stroke="#C9A24B" stroke-width="2.2" stroke-linecap="round"/>
     </g>
-    <text x="12" y="-6" text-anchor="middle" font-family="Caveat, 'Bradley Hand', cursive" font-size="21" fill="#4A3B2C">psst: los dibujos con brillito dorado ✦</text>
-    <text x="12" y="18" text-anchor="middle" font-family="Caveat, 'Bradley Hand', cursive" font-size="21" fill="#4A3B2C">esconden una aventura: acércales el móvil</text>
+    <text x="34" y="4" font-family="Caveat, 'Bradley Hand', cursive" font-size="21" fill="#4A3B2C">psst: los dibujos con un brillito dorado ✦</text>
+    <text x="34" y="28" font-family="Caveat, 'Bradley Hand', cursive" font-size="21" fill="#4A3B2C">esconden una aventura: acércales el móvil</text>
   </g>'''
 
 fuentes_imprimir = '''
@@ -444,7 +460,7 @@ fuentes_imprimir = '''
   </style>'''
 
 # ---------------- plantilla común ----------------
-def svg_doc(extra_head, extra_body):
+def svg_doc(extra_head, extra_body, sparkles=""):
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 1024" width="1536" height="1024">
   <!-- ============================================================
        1 año de Aventuras — el mapa (beapa)
@@ -497,6 +513,7 @@ def svg_doc(extra_head, extra_body):
   </g>
 
   {mar_decor}
+  {sparkles}
   {tierra_decor}
   {ruta_bus}
   {iconos}
@@ -517,7 +534,7 @@ def svg_doc(extra_head, extra_body):
 </svg>
 '''
 
-open(f"{DEST}/mapa.svg", "w").write(svg_doc("", ""))
+open(f"{DEST}/mapa.svg", "w").write(svg_doc("", "", destellos_decor))
 open(f"{DEST}/mapa-imprimir.svg", "w").write(svg_doc(fuentes_imprimir, cartucho + badges_nfc))
 
 # coordenadas para js/data/destinos.js
