@@ -98,6 +98,23 @@
   text-align:center; font-family:var(--font-hand); font-size:1.35rem;
   color:var(--ink-soft); padding:10px 24px 0;
 }
+/* lienzo con figuras + bocadillos de cómic (escenas de personajes) */
+.escena-figuras{ position:relative; max-width:640px; margin:8px auto 0; }
+.escena-figuras svg{ width:100%; display:block; }
+.escena-boca{
+  position:absolute; z-index:6; max-width:56%;
+  background:#F7F1E1; border:2.4px solid #4A3B2C; border-radius:16px;
+  padding:.35em .75em; font-family:var(--font-hand); font-weight:700;
+  font-size:1.12rem; line-height:1.2; color:#4A3B2C; text-align:center;
+  box-shadow:var(--shadow-soft);
+}
+.escena-boca small{ display:block; font-weight:400; font-size:.82em; color:var(--ink-soft); }
+.escena-boca::after{
+  content:""; position:absolute; bottom:-10px; left:var(--tail,50%);
+  width:13px; height:13px; background:#F7F1E1;
+  border-right:2.4px solid #4A3B2C; border-bottom:2.4px solid #4A3B2C;
+  transform:translateX(-50%) rotate(45deg);
+}
 
 /* ---------- navegación entre destinos ---------- */
 .d-nav{

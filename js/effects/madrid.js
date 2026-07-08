@@ -159,8 +159,16 @@ window.DESTINO_EFFECTS = {
     const croqueta = `<svg viewBox="0 0 40 26"><ellipse cx="20" cy="13" rx="17" ry="10" fill="#C88F4F" stroke="#4A3B2C" stroke-width="2.5"/><path d="M10 10 q10 -5 20 0 M9 16 q11 5 22 0" stroke="#8a5a2e" stroke-width="2" fill="none"/></svg>`;
     const churro = `<svg viewBox="0 0 44 14"><rect x="2" y="3" width="40" height="8" rx="4" fill="#C9A24B" stroke="#4A3B2C" stroke-width="2.5"/><path d="M6 7 h32" stroke="#8a5a2e" stroke-width="2"/></svg>`;
     const calamar = `<svg viewBox="0 0 30 30"><circle cx="15" cy="15" r="11" fill="#E8D98F" stroke="#4A3B2C" stroke-width="2.5"/><circle cx="15" cy="15" r="4.5" fill="var(--paper)" stroke="#4A3B2C" stroke-width="2"/></svg>`;
-    App.ambienteFlotar(layer, croqueta, { w: 38, op: .7, dur: 17 });
-    App.ambienteFlotar(layer, churro, { w: 44, op: .65, dur: 21, esperaMax: 12 });
-    App.ambienteFlotar(layer, calamar, { w: 30, op: .6, dur: 19, esperaMax: 14 });
+    const pizza = `<svg viewBox="0 0 40 42" fill="none" stroke="#4A3B2C" stroke-width="2.4" stroke-linejoin="round"><path d="M20 4 L34 34 Q20 41 6 34 Z" fill="#E8C06B"/><path d="M6 34 Q20 41 34 34 L33 31 Q20 37 7 31 Z" fill="#C88F4F"/><circle cx="18" cy="20" r="2.6" fill="#B26A54"/><circle cx="25" cy="27" r="2.6" fill="#B26A54"/><circle cx="14" cy="29" r="2.2" fill="#B26A54"/></svg>`;
+    const burger = `<svg viewBox="0 0 40 32" fill="none" stroke="#4A3B2C" stroke-width="2.4" stroke-linejoin="round"><path d="M5 12 Q5 2 20 2 Q35 2 35 12 Z" fill="#C88F4F"/><circle cx="14" cy="8" r="1" fill="#F3ECDA" stroke="none"/><circle cx="22" cy="6" r="1" fill="#F3ECDA" stroke="none"/><circle cx="27" cy="9" r="1" fill="#F3ECDA" stroke="none"/><path d="M4 12 h32 v3 h-32 Z" fill="#8B9A78"/><rect x="4" y="15" width="32" height="6" rx="2" fill="#7C3B34"/><path d="M4 21 q16 8 32 0 v3 q-16 8 -32 0 Z" fill="#E8C06B"/></svg>`;
+    const donut = `<svg viewBox="0 0 34 34" fill="none" stroke="#4A3B2C" stroke-width="2.4"><circle cx="17" cy="17" r="14" fill="#C98B84"/><circle cx="17" cy="17" r="5" fill="var(--paper)"/><path d="M6 12 q3 -3 5 1 M24 9 q3 2 1 5 M9 24 q3 3 6 -1 M26 22 q-2 3 -5 1" stroke="#C9A24B" stroke-width="2"/></svg>`;
+    App.ambienteFlotar(layer, pizza, { w: 42, op: .78, dur: 17 });
+    App.ambienteFlotar(layer, burger, { w: 42, op: .78, dur: 20, esperaMax: 9 });
+    App.ambienteFlotar(layer, croqueta, { w: 36, op: .68, dur: 18, esperaMax: 12 });
+    App.ambienteFlotar(layer, pizza, { w: 30, op: .6, dur: 24, esperaMax: 15 });
+    App.ambienteFlotar(layer, churro, { w: 42, op: .65, dur: 22, esperaMax: 13 });
+    App.ambienteFlotar(layer, donut, { w: 34, op: .7, dur: 19, esperaMax: 11 });
+    App.ambienteFlotar(layer, calamar, { w: 28, op: .58, dur: 21, esperaMax: 16 });
+    App.ambienteFlotar(layer, burger, { w: 30, op: .58, dur: 26, esperaMax: 18 });
   },
 };
