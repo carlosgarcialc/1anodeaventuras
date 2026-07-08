@@ -53,14 +53,27 @@ window.DESTINO_EFFECTS = {
           <svg class="bts-onda" style="top:44px" viewBox="0 0 900 40" preserveAspectRatio="none"><path d="M0,20 Q75,36 150,20 T300,20 T450,20 T600,20 T750,20 T900,20" fill="none" stroke="#DDE9EA" stroke-width="3"/></svg>
 
           <div class="bts-salchicha" id="btsSalchicha">
-            <svg viewBox="0 0 110 70" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="3" stroke-linecap="round">
-              <path d="M8 62 L46 34 M8 62 l-2 6 M4 58 l8 8" stroke-width="3.5"/>
-              <path d="M46 34 l-5 -8 M52 30 l-5 -9 M58 26 l-4 -9" stroke-width="2.5"/>
-              <path d="M38 30 Q60 6 88 18 Q102 24 96 36 Q86 52 60 48 Q42 45 38 30 Z" fill="#B26A54" transform="rotate(-6 65 30)"/>
-              <path d="M52 24 q16 -8 34 0" stroke="#7C3B34" stroke-width="2.5"/>
-              <circle cx="70" cy="28" r="1.8" fill="#4A3B2C" stroke="none"/>
-              <circle cx="82" cy="28" r="1.8" fill="#4A3B2C" stroke="none"/>
-              <path d="M72 36 q5 4 12 0" stroke-width="2.2"/>
+            <svg viewBox="0 0 110 70" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+              <g transform="translate(55,36) rotate(-8) scale(1.1)">
+                <!-- mango del tenedor -->
+                <path d="M0 8 L0 24" stroke-width="4"/>
+                <circle cx="0" cy="25" r="2" fill="#4A3B2C" stroke="none"/>
+                <!-- base y púas -->
+                <path d="M-8 2 Q-8 7 0 8 Q8 7 8 2" fill="#F3ECDA" stroke-width="2.2"/>
+                <path d="M-7.5 -14 V2 M-2.5 -16 V2 M2.5 -16 V2 M7.5 -14 V2" stroke-width="2.6"/>
+                <!-- salchicha atravesada, feliz de navegar -->
+                <path d="M-19 -4 Q-21 -10 -13 -11 L14 -13 Q22 -13 22 -8 Q22 -3 14 -2 L-13 0 Q-19 0 -19 -4 Z" fill="#B26A54" stroke-width="2.2"/>
+                <circle cx="-21" cy="-7" r="2" fill="#B26A54" stroke-width="1.5"/>
+                <circle cx="24" cy="-10" r="2" fill="#B26A54" stroke-width="1.5"/>
+                <path d="M-11 -8 q13 -3 24 -2" stroke="#7C3B34" stroke-width="1.6"/>
+                <circle cx="-3" cy="-7.5" r="1" fill="#4A3B2C" stroke="none"/>
+                <circle cx="4" cy="-8" r="1" fill="#4A3B2C" stroke="none"/>
+                <path d="M-2 -5 q2.5 2 5 -.4" stroke-width="1.3"/>
+                <!-- puntas de las púas asomando -->
+                <path d="M-7.5 -14 V-10.5 M-2.5 -16 V-12.5 M2.5 -16 V-12.6 M7.5 -14 V-11.5" stroke-width="2.6"/>
+                <!-- vapor -->
+                <path d="M-4 -20 q-2 -4 1 -7 M5 -21 q2 -4 -1 -7" stroke="#6E5B48" stroke-width="1.8"/>
+              </g>
             </svg>
           </div>
         </div>

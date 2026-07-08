@@ -43,8 +43,13 @@ def destello(x, y, s=1):
     return (f'<path transform="translate({x},{y}) scale({s})" fill="#C9A24B" opacity=".85" '
             f'd="M0,-9 C1,-3 3,-1 9,0 C3,1 1,3 0,9 C-1,3 -3,1 -9,0 C-3,-1 -1,-3 0,-9 Z"/>')
 
-def gaviota(x, y):
-    return f'<path d="M{x},{y} q6,-6 11,0 q5,-6 11,0" fill="none" stroke="#6E5B48" stroke-width="2.2" stroke-linecap="round" opacity=".75"/>'
+def gaviota(x, y, s=1):
+    # gaviota de verdad: cuerpo blanco, ala gris levantada, pico dorado
+    return (f'<g transform="translate({x},{y}) scale({s})" stroke="#4A3B2C" stroke-width="1.6" stroke-linejoin="round">'
+            f'<path d="M-1,-2 Q-3,-11 -12,-14 Q-5,-9 1,-3 Z" fill="#DDCFB2"/>'
+            f'<path d="M-10,2 L-15,-2 L-10,0 Q-4,-3 3,-3 Q9,-3 12,0 Q7,4 0,4 Q-6,4 -10,2 Z" fill="#F7F1E1"/>'
+            f'<path d="M12,0 l5,1 -5,2 Z" fill="#C9A24B"/>'
+            f'<circle cx="8" cy="-0.5" r="0.9" fill="#4A3B2C" stroke="none"/></g>')
 
 def nube(x, y, s=1):
     return (f'<path transform="translate({x},{y}) scale({s})" fill="#F3ECDA" stroke="#6E5B48" stroke-width="2" opacity=".9" '
@@ -307,13 +312,28 @@ iconos = f'''
     <path d="M-19,8 l-4,3 M19,8 l4,3 M-17,-12 l-4,-3 M17,-12 l4,-3" stroke="#C9A24B" stroke-width="2" stroke-linecap="round"/>
   </g>
 
-  <!-- BRATISLAVA · salchicha en tenedor -->
-  <g transform="{T('bratislava')} rotate(-12)">
-    <path d="M-14,20 L2,-2" stroke="#4A3B2C" stroke-width="3" stroke-linecap="round"/>
-    <path d="M2,-2 l-5,-8 M6,-5 l-4,-9 M10,-8 l-3,-9" stroke="#4A3B2C" stroke-width="2.4" stroke-linecap="round"/>
-    <path d="M-6,-14 Q8,-24 20,-16 Q26,-12 22,-7 Q12,1 -2,-5 Q-9,-9 -6,-14 Z" fill="#B26A54" stroke="#4A3B2C" stroke-width="2.4"/>
-    <path d="M0,-12 q10,-5 18,-1" stroke="#7C3B34" stroke-width="2" fill="none"/>
-    <path d="M6,-24 q-1,-4 2,-6" stroke="#6E5B48" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- BRATISLAVA · salchicha pinchada en un tenedor -->
+  <g transform="{T('bratislava')} rotate(-8)">
+    <!-- mango -->
+    <path d="M0,8 L0,25" stroke="#4A3B2C" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="0" cy="26" r="2.2" fill="#4A3B2C" stroke="none"/>
+    <!-- base y púas del tenedor -->
+    <path d="M-8,2 Q-8,7 0,8 Q8,7 8,2" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="2.4"/>
+    <path d="M-7.5,-14 L-7.5,2 M-2.5,-16 L-2.5,2 M2.5,-16 L2.5,2 M7.5,-14 L7.5,2" stroke="#4A3B2C" stroke-width="2.8" stroke-linecap="round"/>
+    <!-- salchicha atravesada -->
+    <path d="M-19,-4 Q-21,-10 -13,-11 L14,-13 Q22,-13 22,-8 Q22,-3 14,-2 L-13,0 Q-19,0 -19,-4 Z"
+      fill="#B26A54" stroke="#4A3B2C" stroke-width="2.4" stroke-linejoin="round"/>
+    <circle cx="-21" cy="-7" r="2" fill="#B26A54" stroke="#4A3B2C" stroke-width="1.6"/>
+    <circle cx="24" cy="-10" r="2" fill="#B26A54" stroke="#4A3B2C" stroke-width="1.6"/>
+    <path d="M-11,-8 q13,-3 24,-2" stroke="#7C3B34" stroke-width="1.8" fill="none"/>
+    <!-- carita -->
+    <circle cx="-3" cy="-7.5" r="1" fill="#4A3B2C" stroke="none"/>
+    <circle cx="4" cy="-8" r="1" fill="#4A3B2C" stroke="none"/>
+    <path d="M-2,-5 q2.5,2 5,-.4" stroke="#4A3B2C" stroke-width="1.4" fill="none"/>
+    <!-- puntas de las púas asomando por arriba -->
+    <path d="M-7.5,-14 L-7.5,-10.5 M-2.5,-16 L-2.5,-12.5 M2.5,-16 L2.5,-12.6 M7.5,-14 L7.5,-11.5" stroke="#4A3B2C" stroke-width="2.8" stroke-linecap="round"/>
+    <!-- vapor -->
+    <path d="M-4,-20 q-2,-4 1,-7 M5,-21 q2,-4 -1,-7" fill="none" stroke="#6E5B48" stroke-width="2" stroke-linecap="round"/>
   </g>
 
   <!-- TATRAS · cabaña -->
@@ -350,13 +370,16 @@ iconos = f'''
   </g>
 
   <!-- ==== easter eggs ==== -->
-  <g transform="{T('cervera')} scale(.85)" opacity=".85">
-    <ellipse cx="0" cy="6" rx="10" ry="8" fill="#8a6a4d" stroke="#4A3B2C" stroke-width="1.8"/>
-    <circle cx="6" cy="-5" r="6" fill="#8a6a4d" stroke="#4A3B2C" stroke-width="1.8"/>
-    <circle cx="2" cy="-9" r="2" fill="#8a6a4d" stroke="#4A3B2C" stroke-width="1.5"/>
-    <circle cx="10" cy="-9" r="2" fill="#8a6a4d" stroke="#4A3B2C" stroke-width="1.5"/>
-    <circle cx="8" cy="-4" r="1.1" fill="#241c13"/>
-    <path d="M-8,13 l-1,3 M6,13 l1,3" stroke="#4A3B2C" stroke-width="1.8"/>
+  <g transform="{T('cervera')} scale(.9)" opacity=".9">
+    <!-- oso pardo caminando (perfil, con patas y hocico) -->
+    <path d="M-13,4 Q-15,-6 -6,-8 Q0,-10 6,-8 Q12,-7 13,-1 Q14,3 10,5 L10,11 L6,11 L6,6 L-2,6 L-2,11 L-6,11 L-6,5 Q-11,6 -13,4 Z"
+      fill="#8a6a4d" stroke="#4A3B2C" stroke-width="1.8" stroke-linejoin="round"/>
+    <circle cx="-13" cy="-1" r="1.6" fill="#8a6a4d" stroke="#4A3B2C" stroke-width="1.2"/>
+    <circle cx="13" cy="-8" r="5.5" fill="#8a6a4d" stroke="#4A3B2C" stroke-width="1.8"/>
+    <circle cx="9.5" cy="-12.5" r="2" fill="#8a6a4d" stroke="#4A3B2C" stroke-width="1.4"/>
+    <ellipse cx="17" cy="-7" rx="2.6" ry="2" fill="#c9ab84" stroke="#4A3B2C" stroke-width="1.2"/>
+    <circle cx="18" cy="-7.5" r="0.9" fill="#241c13" stroke="none"/>
+    <circle cx="13.5" cy="-9.5" r="0.9" fill="#241c13" stroke="none"/>
   </g>
   <g transform="{T('segovia')} scale(.8)" opacity=".85">
     <ellipse cx="0" cy="8" rx="14" ry="4" fill="#DDCFB2" stroke="#6E5B48" stroke-width="1.6"/>
@@ -377,6 +400,22 @@ iconos = f'''
     <path d="M-13,9 l-4,3 M13,9 l4,3" stroke="#4A3B2C" stroke-width="1.5"/>
   </g>'''
 
+# ---------------- brillitos NFC (solo versión imprimir) ----------------
+# marca qué dibujos se pueden escanear: destello dorado junto a cada icono
+BADGE_OFF = {
+  'vigo': (22, -20), 'madrid': (26, -16), 'cordoba': (-22, -22), 'copenhague': (-24, -16),
+  'berlin': (-24, -14), 'praga': (-28, -20), 'bratislava': (-26, 12), 'tatras': (-24, -14),
+  'bucarest': (24, -16), 'estambul': (-28, -20),
+}
+def badge_nfc(name):
+    x, y = C[name]; dx, dy = BADGE_OFF[name]
+    return f'''
+  <g transform="translate({x+dx:.0f},{y+dy:.0f})">
+    <path d="M0,-8 C1,-3 3,-1 8,0 C3,1 1,3 0,8 C-1,3 -3,1 -8,0 C-3,-1 -1,-3 0,-8 Z" fill="#C9A24B" stroke="#4A3B2C" stroke-width="1.3"/>
+    <path d="M8,-8 c.4,1.8 1.2,2.6 3,3 c-1.8,.4 -2.6,1.2 -3,3 c-.4,-1.8 -1.2,-2.6 -3,-3 c1.8,-.4 2.6,-1.2 3,-3 Z" fill="#C9A24B" opacity=".9"/>
+  </g>'''
+badges_nfc = ''.join(badge_nfc(n) for n in BADGE_OFF)
+
 # ---------------- cartucho del título (solo versión imprimir) ----------------
 cartucho = '''
   <g>
@@ -395,8 +434,8 @@ cartucho = '''
       <circle cx="0" cy="11.5" r="1.6" fill="#6E5B48"/>
       <path d="M14,-8 q5,8 0,16 M20,-12 q7,12 0,24" fill="none" stroke="#C9A24B" stroke-width="2.2" stroke-linecap="round"/>
     </g>
-    <text x="12" y="-6" text-anchor="middle" font-family="Caveat, 'Bradley Hand', cursive" font-size="21" fill="#4A3B2C">psst: acerca el móvil a cada dibujo</text>
-    <text x="12" y="18" text-anchor="middle" font-family="Caveat, 'Bradley Hand', cursive" font-size="21" fill="#4A3B2C">para abrir esa aventura ✨</text>
+    <text x="12" y="-6" text-anchor="middle" font-family="Caveat, 'Bradley Hand', cursive" font-size="21" fill="#4A3B2C">psst: los dibujos con brillito dorado ✦</text>
+    <text x="12" y="18" text-anchor="middle" font-family="Caveat, 'Bradley Hand', cursive" font-size="21" fill="#4A3B2C">esconden una aventura: acércales el móvil</text>
   </g>'''
 
 fuentes_imprimir = '''
@@ -479,7 +518,7 @@ def svg_doc(extra_head, extra_body):
 '''
 
 open(f"{DEST}/mapa.svg", "w").write(svg_doc("", ""))
-open(f"{DEST}/mapa-imprimir.svg", "w").write(svg_doc(fuentes_imprimir, cartucho))
+open(f"{DEST}/mapa-imprimir.svg", "w").write(svg_doc(fuentes_imprimir, cartucho + badges_nfc))
 
 # coordenadas para js/data/destinos.js
 print("Coordenadas para destinos.js (x%, y%):")

@@ -60,14 +60,23 @@
       <path d="M18 31 h28 M20 24 h24 M20 38 h24 M32 17 v28 M25 19 v24 M39 19 v24" stroke="#F3ECDA" stroke-width="1.4"/>
       <circle cx="27" cy="26" r="2" fill="#F7F1E1" stroke="none"/>
       <path d="M12 42 l-4 3 M52 42 l4 3 M14 18 l-4 -3 M50 18 l4 -3" stroke="#C9A24B" stroke-width="2"/>`),
-    /* Bratislava · salchicha en tenedor */
+    /* Bratislava · salchicha pinchada en un tenedor */
     bratislava: S('0 0 64 64', `
-      <g transform="rotate(-12 32 32)">
-        <path d="M18 52 L34 30" stroke="#4A3B2C" stroke-width="3"/>
-        <path d="M34 30 l-5 -8 M38 27 l-4 -9 M42 24 l-3 -9" stroke="#4A3B2C" stroke-width="2.4"/>
-        <path d="M26 18 Q40 8 52 16 Q58 20 54 25 Q44 33 30 27 Q23 23 26 18 Z" fill="#B26A54" stroke="#4A3B2C" stroke-width="2.4"/>
-        <path d="M32 20 q10 -5 18 -1" stroke="#7C3B34" stroke-width="2" fill="none"/>
-        <path d="M38 8 q-1 -4 2 -6" stroke="#6E5B48" stroke-width="2" fill="none"/>
+      <g transform="rotate(-8 32 32)">
+        <path d="M32 40 L32 57" stroke="#4A3B2C" stroke-width="4.5"/>
+        <circle cx="32" cy="58" r="2.2" fill="#4A3B2C" stroke="none"/>
+        <path d="M24 34 Q24 39 32 40 Q40 39 40 34" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="2.4"/>
+        <path d="M24.5 18 V34 M29.5 16 V34 M34.5 16 V34 M39.5 18 V34" stroke="#4A3B2C" stroke-width="2.8"/>
+        <path d="M13 28 Q11 22 19 21 L46 19 Q54 19 54 24 Q54 29 46 30 L19 32 Q13 32 13 28 Z"
+          fill="#B26A54" stroke="#4A3B2C" stroke-width="2.4"/>
+        <circle cx="11" cy="25" r="2" fill="#B26A54" stroke="#4A3B2C" stroke-width="1.6"/>
+        <circle cx="56" cy="22" r="2" fill="#B26A54" stroke="#4A3B2C" stroke-width="1.6"/>
+        <path d="M21 24 q13 -3 24 -2" stroke="#7C3B34" stroke-width="1.8" fill="none"/>
+        <circle cx="29" cy="24.5" r="1" fill="#4A3B2C" stroke="none"/>
+        <circle cx="36" cy="24" r="1" fill="#4A3B2C" stroke="none"/>
+        <path d="M30 27 q2.5 2 5 -.4" stroke="#4A3B2C" stroke-width="1.4" fill="none"/>
+        <path d="M24.5 18 V21.5 M29.5 16 V19.5 M34.5 16 V19.4 M39.5 18 V20.5" stroke="#4A3B2C" stroke-width="2.8"/>
+        <path d="M28 12 q-2 -4 1 -7 M37 11 q2 -4 -1 -7" fill="none" stroke="#6E5B48" stroke-width="2"/>
       </g>`),
     /* Tatras · cabaña */
     tatras: S('0 0 64 64', `

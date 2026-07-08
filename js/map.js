@@ -179,5 +179,10 @@
   function aplicar(){
     canvas.style.transformOrigin = '0 0';
     canvas.style.transform = `translate(${view.x}px, ${view.y}px) scale(${view.s})`;
+    /* los marcadores mantienen su tamaño en pantalla aunque hagas zoom */
+    const inv = 1 / view.s;
+    canvas.querySelectorAll('.marker').forEach(m => {
+      m.style.transform = `translate(-50%,-50%) scale(${inv})`;
+    });
   }
 })();

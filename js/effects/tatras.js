@@ -155,15 +155,23 @@ window.DESTINO_EFFECTS = {
   ambient(layer, reduced){
     if (reduced) return;
     const cabra = `
-      <svg viewBox="0 0 90 64" fill="none" stroke="#4A3B2C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 34 Q18 20 34 20 L58 20 Q70 20 70 32 Q70 42 58 42 L32 42 Q18 42 18 34 Z" fill="#DDCFB2"/>
-        <path d="M26 42 l-2 14 M38 42 l0 14 M52 42 l0 14 M64 40 l2 14" stroke-width="3.5"/>
-        <path d="M66 26 Q78 22 80 12 M70 30 L82 28" stroke-width="3"/>
-        <circle cx="76" cy="20" r="9" fill="#DDCFB2"/>
-        <path d="M72 12 q-3 -7 2 -9 M80 12 q3 -7 -2 -9" stroke-width="2.5"/>
-        <circle cx="78" cy="18" r="1.4" fill="#4A3B2C" stroke="none"/>
-        <path d="M80 26 l0 5" stroke-width="2.5"/>
-        <path d="M18 30 q-6 2 -6 8" stroke-width="3"/>
+      <svg viewBox="0 -18 92 84" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <!-- cola -->
+        <path d="M16 22 Q10 16 14 10" stroke-width="3"/>
+        <!-- cuerpo -->
+        <path d="M16 30 Q14 16 30 15 L52 15 Q62 15 62 25 L62 30 Q62 40 50 40 L28 40 Q16 40 16 30 Z" fill="#EAE0CA"/>
+        <!-- patas con pezuñas oscuras -->
+        <path d="M24 40 L23 56 M34 40 L34 56 M48 40 L48 56 M58 38 L59 56" stroke-width="3.5"/>
+        <path d="M23 56 l0 4 M34 56 l0 4 M48 56 l0 4 M59 56 l0 4" stroke-width="4.5" stroke="#241c13"/>
+        <!-- cuello y cabeza levantada -->
+        <path d="M54 20 L63 4 Q66 -1 72 0 Q80 1 80 8 Q80 14 73 15 L66 16 Q60 22 56 26 Z" fill="#EAE0CA"/>
+        <!-- cuernos curvados hacia atrás -->
+        <path d="M67 0 Q61 -10 51 -12 M73 0 Q71 -12 62 -16" stroke="#6E5B48" stroke-width="3"/>
+        <!-- oreja, ojo, morro y barbita -->
+        <path d="M64 4 q-6 -1 -8 3" stroke-width="2.4"/>
+        <circle cx="72" cy="6" r="1.5" fill="#4A3B2C" stroke="none"/>
+        <circle cx="78.5" cy="8.5" r="1.1" fill="#6E5B48" stroke="none"/>
+        <path d="M71 15 L69 22 Q68 24 66 23" stroke-width="2.4"/>
       </svg>`;
     const copo = `<svg viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="#F7F1E1" opacity=".9"/></svg>`;
     App.ambienteCruzar(layer, cabra, { w: 74, op: .9, dur: 9, yMin: 55, yMax: 80, esperaMax: 14, vaiven: 5 });

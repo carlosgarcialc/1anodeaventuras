@@ -48,6 +48,7 @@
 .d-galeria{
   max-width:1000px; margin:0 auto; padding:30px 22px;
   display:grid; grid-template-columns:repeat(2, 1fr); gap:26px 16px;
+  align-items:start; /* cada polaroid con su altura natural, sin huecos */
 }
 .d-galeria .polaroid:nth-child(3n){ margin-top:18px; }
 .d-galeria-titulo{ text-align:center; padding-top:26px; }

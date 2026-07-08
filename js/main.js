@@ -40,6 +40,15 @@ window.App = (function(){
     document.body.appendChild(f);
   }
 
+  /* al cargar media real cambia la altura de la página: recalcula los
+     triggers de aparición para que ninguna polaroid se quede escondida */
+  let refrescoT;
+  function refrescarScroll(){
+    if (!hasGsap || typeof ScrollTrigger === 'undefined') return;
+    clearTimeout(refrescoT);
+    refrescoT = setTimeout(() => ScrollTrigger.refresh(), 250);
+  }
+
   /* ---------- media con fallback a placeholder vintage ---------- */
   // Intenta cargar assets/destinos/<slug>/<src>; si no existe, muestra
   // un hueco "‹‹ FOTO — EDITAR ››" para que el sitio se vea completo.
@@ -60,6 +69,15 @@ window.App = (function(){
         </div>`;
     };
 
+    /* GitHub Pages distingue mayúsculas: si falla foto.jpg prueba foto.JPG */
+    const conOtroCase = src => {
+      const i = src.lastIndexOf('.');
+      if (i < 0) return null;
+      const ext = src.slice(i + 1);
+      const alt = ext === ext.toLowerCase() ? ext.toUpperCase() : ext.toLowerCase();
+      return src.slice(0, i + 1) + alt;
+    };
+
     if (item.type === 'video'){
       const vid = document.createElement('video');
       vid.setAttribute('playsinline',''); vid.muted = true; vid.loop = true;
@@ -67,7 +85,14 @@ window.App = (function(){
       vid.style.cssText = 'width:100%;height:100%;object-fit:cover;';
       const srcEl = document.createElement('source');
       srcEl.src = base + item.src;
-      srcEl.addEventListener('error', placeholder);
+      vid.addEventListener('loadedmetadata', refrescarScroll);
+      srcEl.addEventListener('error', () => {
+        if (!vid.dataset.reintento){
+          vid.dataset.reintento = '1';
+          srcEl.src = base + conOtroCase(item.src);
+          vid.load();
+        } else placeholder();
+      });
       vid.appendChild(srcEl);
       cont.appendChild(vid);
     } else {
@@ -75,7 +100,20 @@ window.App = (function(){
       img.loading = 'lazy'; img.decoding = 'async';
       img.alt = item.caption || etiqueta || slug;
       img.src = base + item.src;
-      img.addEventListener('error', placeholder);
+      img.addEventListener('load', () => {
+        /* foto apaisada → marco apaisado (sin recortarla por la mitad) */
+        if (img.naturalWidth > img.naturalHeight){
+          const media = cont.closest('.media');
+          if (media) media.classList.add('horizontal');
+        }
+        refrescarScroll();
+      });
+      img.addEventListener('error', () => {
+        if (!img.dataset.reintento){
+          img.dataset.reintento = '1';
+          img.src = base + conOtroCase(item.src);
+        } else placeholder();
+      });
       cont.appendChild(img);
     }
     return cont;
@@ -107,9 +145,11 @@ window.App = (function(){
     document.querySelectorAll('.will-reveal').forEach(el => {
       gsap.to(el, {
         opacity: 1, y: 0, duration: .9, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 88%' },
+        scrollTrigger: { trigger: el, start: 'top 92%' },
       });
     });
+    /* con todo cargado (fotos incluidas), recalcula posiciones */
+    window.addEventListener('load', () => ScrollTrigger.refresh());
   }
 
   /* ---------- transición de viaje (salida): postal + sello ---------- */

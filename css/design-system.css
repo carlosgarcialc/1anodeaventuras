@@ -218,7 +218,9 @@ h1,h2,h3{ font-family:var(--font-display); line-height:1.12; margin:0 0 .5em; fo
     repeating-linear-gradient(-45deg, var(--paper-dark) 0 14px, #D5C6A8 14px 28px);
   border:2px dashed var(--ink-soft);
   color:var(--ink-soft); text-align:center; padding:1em;
+  overflow:hidden; word-break:break-word; /* rutas largas sin desbordar en móvil */
 }
+.ph-media small{ word-break:break-all; }
 .ph-media .ph-icon{ width:34px; height:34px; opacity:.75; }
 .ph-media .ph-txt{ font-family:var(--font-hand); font-size:1.25rem; line-height:1.15; }
 
