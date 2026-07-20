@@ -69,13 +69,19 @@ window.App = (function(){
         </div>`;
     };
 
-    /* GitHub Pages distingue mayúsculas: si falla foto.jpg prueba foto.JPG */
-    const conOtroCase = src => {
+    /* Da igual la extensión/mayúsculas que pongas: probamos variantes.
+       Así valen jpg y jpeg (y JPG/JPEG), y mp4/MP4/mov… en vídeo.
+       GitHub Pages distingue mayúsculas, por eso probamos ambos casos. */
+    const candidatos = (src, tipo) => {
       const i = src.lastIndexOf('.');
-      if (i < 0) return null;
-      const ext = src.slice(i + 1);
-      const alt = ext === ext.toLowerCase() ? ext.toUpperCase() : ext.toLowerCase();
-      return src.slice(0, i + 1) + alt;
+      const nombre = i < 0 ? src : src.slice(0, i);
+      const ext = i < 0 ? '' : src.slice(i + 1);
+      const low = ext.toLowerCase();
+      let exts;
+      if (tipo === 'video') exts = ['mp4', 'MP4', 'mov', 'MOV', 'm4v', 'webm'];
+      else if (low === 'jpg' || low === 'jpeg') exts = ['jpg', 'jpeg', 'JPG', 'JPEG'];
+      else exts = [low, ext.toUpperCase()];        // png, webp, heic…
+      return [...new Set([src, ...exts.map(e => nombre + '.' + e)])];
     };
 
     if (item.type === 'video'){
@@ -83,15 +89,14 @@ window.App = (function(){
       vid.setAttribute('playsinline',''); vid.muted = true; vid.loop = true;
       vid.autoplay = !reduced; vid.controls = true; vid.preload = 'metadata';
       vid.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+      const lista = candidatos(item.src, 'video');
+      let idx = 0;
       const srcEl = document.createElement('source');
-      srcEl.src = base + item.src;
+      srcEl.src = base + lista[idx];
       vid.addEventListener('loadedmetadata', refrescarScroll);
       srcEl.addEventListener('error', () => {
-        if (!vid.dataset.reintento){
-          vid.dataset.reintento = '1';
-          srcEl.src = base + conOtroCase(item.src);
-          vid.load();
-        } else placeholder();
+        if (++idx < lista.length){ srcEl.src = base + lista[idx]; vid.load(); }
+        else placeholder();
       });
       vid.appendChild(srcEl);
       cont.appendChild(vid);
@@ -99,7 +104,9 @@ window.App = (function(){
       const img = document.createElement('img');
       img.loading = 'lazy'; img.decoding = 'async';
       img.alt = item.caption || etiqueta || slug;
-      img.src = base + item.src;
+      const lista = candidatos(item.src, 'img');
+      let idx = 0;
+      img.src = base + lista[idx];
       img.addEventListener('load', () => {
         /* foto apaisada → marco apaisado (sin recortarla por la mitad) */
         if (img.naturalWidth > img.naturalHeight){
@@ -109,10 +116,8 @@ window.App = (function(){
         refrescarScroll();
       });
       img.addEventListener('error', () => {
-        if (!img.dataset.reintento){
-          img.dataset.reintento = '1';
-          img.src = base + conOtroCase(item.src);
-        } else placeholder();
+        if (++idx < lista.length){ img.src = base + lista[idx]; }
+        else placeholder();
       });
       cont.appendChild(img);
     }

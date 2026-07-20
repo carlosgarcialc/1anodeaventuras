@@ -15,13 +15,13 @@ window.DESTINO_DATA = {
 
   hero: { type: 'img', src: 'hero.jpg' },  // cambia a { type:'video', src:'hero.mp4' } si es video
 
-  galeriaSub: 'frío fuera, hygge dentro',
+  galeriaSub: 'frío fuera, alcohol dentro',
   galeria: [
-    { type: 'img',   src: 'foto-1.jpg', caption: '\u2039\u2039 CAPTION 1 \u2014 EDITAR \u203a\u203a' },
-    { type: 'img',   src: 'foto-2.jpg', caption: '\u2039\u2039 CAPTION 2 \u2014 EDITAR \u203a\u203a', horizontal: true },
-    { type: 'img',   src: 'foto-3.jpg', caption: '\u2039\u2039 CAPTION 3 \u2014 EDITAR \u203a\u203a' },
-    { type: 'video', src: 'video-1.mp4', caption: '\u2039\u2039 CAPTION V\u00cdDEO \u2014 EDITAR \u203a\u203a' },
-    { type: 'img',   src: 'foto-4.jpg', caption: '\u2039\u2039 CAPTION 4 \u2014 EDITAR \u203a\u203a', horizontal: true },
+    { type: 'img',   src: 'foto-1.jpg', caption: '\u2039\u2039 TANTA PRUEBA DE ROPA PARA ACABAR CON VAQUEROS \u2014 EDITAR \u203a\u203a' },
+    { type: 'img',   src: 'foto-2.jpg', caption: '\u2039\u2039 SE QUE JAMARÁS ME MIRARÁS COMO MIRAS A UN BOCADILLO \u2014 EDITAR \u203a\u203a', horizontal: true },
+    { type: 'img',   src: 'foto-3.jpg', caption: '\u2039\u2039 UN GRUPO DE MONTAÑEROS SERIOS Y DLS BOLSAS DE BASURA \u2014 EDITAR \u203a\u203a' },
+    { type: 'video', src: 'video-1.mp4', caption: '\u2039\u2039 VLOGSITO POR HACER ALGO EN EL BUS V\u00cdDEO \u2014 EDITAR \u203a\u203a' },
+    { type: 'img',   src: 'foto-4.jpg', caption: '\u2039\u2039 HASTA PARECE QUE CAMINAMOS MAS DE 2 KM\u2014 EDITAR \u203a\u203a', horizontal: true },
     { type: 'img',   src: 'foto-5.jpg', caption: '\u2039\u2039 CAPTION 5 \u2014 EDITAR \u203a\u203a' },
   ],
 
