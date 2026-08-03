@@ -90,7 +90,7 @@ window.DESTINO_EFFECTS = {
 
       <!-- ============ BONUS TRACK: LA DUCHA-PISCINA ============ -->
       <div class="escena-abierta cor-ducha will-reveal" id="corDucha">
-        <div class="escena-titulo">y de repente, la ducha quiso ser piscina</div>
+        <div class="escena-titulo">${TXT('duchaTitulo')}</div>
         <svg class="cor-ducha-svg" viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="3" stroke-linecap="round">
           <!-- pared de azulejos -->
           <rect width="420" height="320" fill="#DCE7E4" stroke="none"/>
@@ -133,7 +133,7 @@ window.DESTINO_EFFECTS = {
             </g>
           </g>
         </svg>
-        <div class="escena-caption">‹‹ CAPTION DUCHA — EDITAR ›› (nivel del agua: tobillo, luego rodilla, luego fe)</div>
+        <div class="escena-caption">${TXT('duchaCaption')}</div>
       </div>`;
 
     /* ===== escena sesión de fotos en la Mezquita (va TRAS el carrete) ===== */
@@ -141,7 +141,7 @@ window.DESTINO_EFFECTS = {
       const esc = document.createElement('section');
       esc.className = 'escena-abierta will-reveal';
       esc.innerHTML = `
-        <div class="escena-titulo">sesión de fotos nº ∞ · en la Mezquita</div>
+        <div class="escena-titulo">${TXT('fotosTitulo')}</div>
         <div class="escena-figuras">
           <svg viewBox="0 0 460 244" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <!-- arcos de la Mezquita (dovelas rojas y blancas) -->
@@ -181,10 +181,10 @@ window.DESTINO_EFFECTS = {
               <path d="M300 156 l-4 -6 M308 154 l0 -7 M316 156 l4 -6" stroke="#C9A24B" stroke-width="2"/>
             </g>
           </svg>
-          <div class="escena-boca" style="left:2%;top:-6px;--tail:80%">¡repite, que salgo fea!<small>‹‹ ELLA — EDITAR ››</small></div>
-          <div class="escena-boca" style="right:2%;top:15%;--tail:24%">estás guapísima…<small>(foto nº 47)</small></div>
+          <div class="escena-boca" style="left:2%;top:-6px;--tail:80%">${TXT('fotosElla')}<small>${TXT('fotosEllaSub')}</small></div>
+          <div class="escena-boca" style="right:2%;top:15%;--tail:24%">${TXT('fotosEl')}<small>${TXT('fotosElSub')}</small></div>
         </div>
-        <div class="escena-caption">‹‹ CAPTION FOTOS — EDITAR ›› (spoiler: sale perfecta en todas)</div>`;
+        <div class="escena-caption">${TXT('fotosCaption')}</div>`;
       const hist = document.querySelector('.d-historia');
       if (hist) hist.before(esc); else section.appendChild(esc);
       sembrarDestellos(esc, 4);

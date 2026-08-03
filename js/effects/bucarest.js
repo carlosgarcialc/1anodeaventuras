@@ -71,7 +71,7 @@ window.DESTINO_EFFECTS = {
             </svg>`).join('')}
         </div>
       </div>
-      <div class="buc-caption">mordiscos confirmados: 0 · sustos: solo por los precios del taxi</div>`;
+      <div class="buc-caption">${TXT('caption')}</div>`;
 
     /* murciélagos */
     const noche = document.getElementById('bucNoche');

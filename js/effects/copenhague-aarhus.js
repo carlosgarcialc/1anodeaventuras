@@ -82,10 +82,10 @@ window.DESTINO_EFFECTS = {
           </div>
 
           <div class="cph-bocadillos">
-            <div class="cph-boca a">‹‹ TU VERSIÓN — EDITAR ››</div>
-            <div class="cph-boca b">‹‹ SU VERSIÓN — EDITAR ››</div>
+            <div class="cph-boca a">${TXT('tuVersion')}</div>
+            <div class="cph-boca b">${TXT('suVersion')}</div>
           </div>
-          <div class="cph-hygge">moraleja: ‹‹ MORALEJA — EDITAR ››</div>
+          <div class="cph-hygge">moraleja: ${TXT('moraleja')}</div>
         </div>
 
         <div class="cph-hielo will-reveal">
@@ -144,7 +144,7 @@ window.DESTINO_EFFECTS = {
                 <path class="cph-llama" style="animation-delay:${i * .4}s" d="M13 4 Q18 12 13 18 Q8 12 13 4 Z" fill="#C9A24B" stroke="#B26A54" stroke-width="1.5"/>
               </svg>`).join('')}
           </div>
-          <div class="cph-hygge">esto, señoras y señores, es hygge</div>
+          <div class="cph-hygge">${TXT('hyggeFinal')}</div>
         </div>
       </div>`;
 

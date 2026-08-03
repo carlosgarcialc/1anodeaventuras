@@ -66,7 +66,7 @@ window.DESTINO_EFFECTS = {
 
       <div class="vig-mar torn-top torn-bottom" id="vigMar">
         <div class="vig-bruma"></div>
-        <div class="vig-cartel">SE BUSCA: gaviota · botín: un (1) bocadillo de pollo empanado</div>
+        <div class="vig-cartel">${TXT('cartel')}</div>
 
         <div class="vig-gaviota" id="vigGaviota">
           <svg viewBox="-4 -18 124 78" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -131,7 +131,7 @@ window.DESTINO_EFFECTS = {
 
       <!-- ============ PARTE OFICIAL DE CATÁSTROFES ============ -->
       <div class="vig-catastrofes will-reveal">
-        <div class="escena-titulo">parte oficial de catástrofes</div>
+        <div class="escena-titulo">${TXT('catastrofesTitulo')}</div>
         <div class="vig-cat-escenas">
 
           <figure class="vig-cat">
@@ -157,7 +157,7 @@ window.DESTINO_EFFECTS = {
               <path id="vigOlaCat1" d="M0 150 Q40 134 80 150 T160 150 T240 150 T320 150 L320 190 L0 190 Z" fill="#7FA6AD" stroke="none"/>
               <path id="vigOlaCat2" d="M0 164 Q40 150 80 164 T160 164 T240 164 T320 164 L320 190 L0 190 Z" fill="#5F8B94" stroke="none"/>
             </svg>
-            <figcaption>‹‹ CAPTION BARCO — EDITAR ›› (el barco a Cíes: 40 min de trayecto, 400 de estómago)</figcaption>
+            <figcaption>${TXT('captionBarco')}</figcaption>
           </figure>
 
           <figure class="vig-cat">
@@ -188,7 +188,7 @@ window.DESTINO_EFFECTS = {
               <path d="M268 146 l7 -13 7 13 Z" fill="#F3ECDA" stroke-width="2"/>
               <text x="160" y="30" text-anchor="middle" font-family="Caveat, cursive" font-size="18" fill="#6E5B48" stroke="none" transform="rotate(-2 160 30)">in memoriam: la avería</text>
             </svg>
-            <figcaption>‹‹ CAPTION BMW — EDITAR ›› (el BMW azul: elegante hasta para averiarse)</figcaption>
+            <figcaption>${TXT('captionBmw')}</figcaption>
           </figure>
 
         </div>
@@ -198,7 +198,7 @@ window.DESTINO_EFFECTS = {
     const reina = document.createElement('section');
     reina.className = 'escena-abierta vig-reina will-reveal';
     reina.innerHTML = `
-      <div class="escena-titulo">interludio real, basado en hechos reales</div>
+      <div class="escena-titulo">${TXT('reinaTitulo')}</div>
       <svg class="vig-reina-svg" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
         <!-- banderines -->
         <path d="M40 26 Q340 60 640 26" stroke="#6E5B48" stroke-width="2.5"/>
@@ -269,7 +269,7 @@ window.DESTINO_EFFECTS = {
           <circle class="vig-flash" cx="562" cy="188" r="6" fill="#F7F1E1" stroke="none" opacity="0"/>
         </g>
       </svg>
-      <div class="escena-caption">‹‹ CAPTION REALEZA — EDITAR ›› (la familia de Carlos recibiendo a Bea con la discreción que les caracteriza)</div>`;
+      <div class="escena-caption">${TXT('captionRealeza')}</div>`;
     const historia = document.querySelector('.d-historia');
     if (historia) historia.before(reina); else section.appendChild(reina);
     sembrarDestellos(reina, 8);

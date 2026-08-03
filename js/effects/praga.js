@@ -67,7 +67,7 @@ window.DESTINO_EFFECTS = {
           <path d="M0 92 q100 10 200 4 q100 -6 200 2 q100 8 200 0 q100 -8 200 2 L800 110 L0 110 Z" fill="#3d332a"/>
         </svg>
       </div>
-      <div class="prg-caption">‹‹ CAPTION FIESTA — EDITAR ›› (qué hacía ahí esa bola de disco, aún no lo sabemos)</div>`;
+      <div class="prg-caption">${TXT('caption')}</div>`;
 
     /* destellos de espejo repartidos */
     const fiesta = document.getElementById('prgFiesta');
@@ -106,9 +106,9 @@ window.DESTINO_EFFECTS = {
             color:var(--gold); text-shadow:0 1px 2px rgba(74,59,44,.4);
           }
         </style>
-        <div class="escena-titulo">la pista de baile · toca las baldosas 🪩</div>
+        <div class="escena-titulo">${TXT('pistaTitulo')}</div>
         <div class="prg-suelo" id="prgSuelo" style="position:relative"></div>
-        <div class="escena-caption">modo Fiebre del Sábado Noche: actívalo tú (la bola de disco te juzga)</div>`;
+        <div class="escena-caption">${TXT('pistaCaption')}</div>`;
       const hist = document.querySelector('.d-historia');
       if (hist) hist.before(esc); else section.appendChild(esc);
 

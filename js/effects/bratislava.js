@@ -77,7 +77,7 @@ window.DESTINO_EFFECTS = {
             </svg>
           </div>
         </div>
-        <div class="bts-caption">cameo: la salchicha* navegando el Danubio &nbsp;·&nbsp; <small>*QEPD, estaba buenísima</small></div>
+        <div class="bts-caption">${TXT('captionSalchicha')}</div>
       </div>`;
 
     /* ===== escena de fiesta (va TRAS el carrete: nunca dos escenas seguidas) ===== */
@@ -90,7 +90,7 @@ window.DESTINO_EFFECTS = {
           .bts-neon{ animation:btsNeon 1.6s ease-in-out infinite; }
           html.no-motion .bts-neon{ animation:none; }
         </style>
-        <div class="escena-titulo">itinerario científico de la noche eslovaca</div>
+        <div class="escena-titulo">${TXT('fiestaTitulo')}</div>
         <div class="escena-figuras">
           <svg viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <!-- cielo nocturno + luna -->
@@ -146,12 +146,12 @@ window.DESTINO_EFFECTS = {
               ${CARAS.chico(372, 210, .62, '#241c13')}
             </g>
           </svg>
-          <div class="escena-boca" style="left:1%;top:44%;--tail:70%;font-size:.98rem">Maksym, que habla ucraniano</div>
-          <div class="escena-boca" style="left:24%;top:58%;--tail:50%;font-size:.98rem">¿luego en Viking's?</div>
-          <div class="escena-boca" style="right:22%;top:47%;--tail:40%;font-size:.98rem">¿after en la 213?</div>
-          <div class="escena-boca" style="right:0%;top:60%;--tail:60%;font-size:.98rem">puto Erasmusdreamland</div>
+          <div class="escena-boca" style="left:1%;top:44%;--tail:70%;font-size:.98rem">${TXT('boca1')}</div>
+          <div class="escena-boca" style="left:24%;top:58%;--tail:50%;font-size:.98rem">${TXT('boca2')}</div>
+          <div class="escena-boca" style="right:22%;top:47%;--tail:40%;font-size:.98rem">${TXT('boca3')}</div>
+          <div class="escena-boca" style="right:0%;top:60%;--tail:60%;font-size:.98rem">${TXT('boca4')}</div>
         </div>
-        <div class="escena-caption">‹‹ CAPTION FIESTA — EDITAR ›› (orden del peregrinaje: Klub39 → Channels → Deep)</div>`;
+        <div class="escena-caption">${TXT('fiestaCaption')}</div>`;
       const hist = document.querySelector('.d-historia');
       if (hist) hist.before(esc); else section.appendChild(esc);
       sembrarDestellos(esc, 4);

@@ -1,31 +1,29 @@
 /* ============================================================
    Bratislava — contenido de la página
-   ✏️ EDITA AQUÍ: fechas, textos y captions.
-   La media va en /assets/destinos/bratislava/ con estos nombres:
-   hero.jpg (o hero.mp4 cambiando type a 'video'), foto-1.jpg…
-   Busca "EDITAR" para ver todos los huecos.
+   ✏️ Lo más cómodo: edítalo con el editor visual (editar.html).
+   La media va en /assets/destinos/bratislava/ con estos nombres.
    ============================================================ */
 
 window.DESTINO_DATA = {
   slug: 'bratislava',
   titulo: 'Bra<em>tis</em>lava',
-  fechas: '\u2039\u2039 FECHAS \u2014 EDITAR \u203a\u203a \u00b7 p. ej. \u00abmarzo 2026\u00bb',
+  fechas: 'septiembre 2025 - enero 2026',
 
-  intro: '\u2039\u2039 INTRO \u2014 EDITAR \u203a\u203a \u2014 El Danubio, el casco antiguo y una salchicha que cambió nuestras vidas.',
+  intro: 'En el edificio de la salchicha donde todo empezó',
 
-  hero: { type: 'img', src: 'hero.jpg' },  // cambia a { type:'video', src:'hero.mp4' } si es video
+  hero: { type: 'img', src: 'hero.jpg' },
 
-  galeriaSub: 'pruebas de que estuvimos (y comimos)',
+  galeriaSub: 'En algunas hasta parecemos monos',
   galeria: [
-    { type: 'img',   src: 'foto-1.jpg', caption: '\u2039\u2039 CAPTION 1 \u2014 EDITAR \u203a\u203a' },
-    { type: 'img',   src: 'foto-2.jpg', caption: '\u2039\u2039 CAPTION 2 \u2014 EDITAR \u203a\u203a', horizontal: true },
-    { type: 'img',   src: 'foto-3.jpg', caption: '\u2039\u2039 CAPTION 3 \u2014 EDITAR \u203a\u203a' },
-    { type: 'video', src: 'video-1.mp4', caption: '\u2039\u2039 CAPTION V\u00cdDEO \u2014 EDITAR \u203a\u203a' },
-    { type: 'img',   src: 'foto-4.jpg', caption: '\u2039\u2039 CAPTION 4 \u2014 EDITAR \u203a\u203a', horizontal: true },
-    { type: 'img',   src: 'foto-5.jpg', caption: '\u2039\u2039 CAPTION 5 \u2014 EDITAR \u203a\u203a' },
+    { type: 'img', src: 'foto-1.jpg', caption: 'Una de nuestras primeras dates ' },
+    { type: 'img', src: 'foto-2.jpg', caption: 'LA FOTO DEL ERASMUS', horizontal: true },
+    { type: 'img', src: 'foto-3.jpg', caption: 'Que tortolitos' },
+    { type: 'video', src: 'video-1.mp4', caption: 'Desde el primerito día' },
+    { type: 'img', src: 'foto-4.jpg', caption: 'Tenía que haber una de la 408B, y tenía que ser esta', horizontal: true },
+    { type: 'img', src: 'foto-5.jpg', caption: 'Hasta así me diste besos...' },
   ],
 
-  historia: '\u2039\u2039 HISTORIA \u2014 EDITAR \u203a\u203a \u2014 Aqu\u00ed va nuestra an\u00e9cdota de Bratislava: c\u00f3mo empez\u00f3, qu\u00e9 sali\u00f3 (m\u00e1s o menos) seg\u00fan el plan y qu\u00e9 no olvidaremos.',
+  historia: 'La 408B donde todo empezó. Yo sé que tuviste otros momentos más importantes para nuestra relación pero yo tengo claro que me enamoré de ti ahí. En el día a día, en la rutina, en los momentos buenos, en los malos, en exámenes, en fiestas, en escapadas de la previa, en días que sin darnos cuenta pasábamos enteros juntos solos y parecían minutos. Y ahí podían pasar muchas cosas; muchos enfados malentendidos, nos podíamos ir a dormir sin mirarnos a la cara pero siempre uno al lado del otro. Me parece muy especial convivir tanto con una persona desde el principio y que saliera taaan bien. Bratislava para mí siempre será el más especial del mapa.',
 
-  nota: '‹‹ INSIDE JOKE — EDITAR ›› <br>(en memoria de aquella salchicha)',
+  nota: 'Cuantas peleas han solucionado las palomitas y cuantas excusas nos han dado!',
 };

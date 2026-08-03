@@ -1,31 +1,29 @@
 /* ============================================================
    Córdoba — contenido de la página
-   ✏️ EDITA AQUÍ: fechas, textos y captions.
-   La media va en /assets/destinos/cordoba/ con estos nombres:
-   hero.jpg (o hero.mp4 cambiando type a 'video'), foto-1.jpg…
-   Busca "EDITAR" para ver todos los huecos.
+   ✏️ Lo más cómodo: edítalo con el editor visual (editar.html).
+   La media va en /assets/destinos/cordoba/ con estos nombres.
    ============================================================ */
 
 window.DESTINO_DATA = {
   slug: 'cordoba',
   titulo: 'Cór<em>do</em>ba',
-  fechas: '\u2039\u2039 FECHAS \u2014 EDITAR \u203a\u203a \u00b7 p. ej. \u00abmarzo 2026\u00bb',
+  fechas: 'junio 2026',
 
-  intro: '\u2039\u2039 INTRO \u2014 EDITAR \u203a\u203a \u2014 Patios en flor, 45 grados y la firme decisión de no volver en agosto.',
+  intro: 'Altibajos depende del día pero siempre muucho calor',
 
-  hero: { type: 'img', src: 'hero.jpg' },  // cambia a { type:'video', src:'hero.mp4' } si es video
+  hero: { type: 'img', src: 'hero.jpg' },
 
-  galeriaSub: 'derritiéndonos con estilo',
+  galeriaSub: 'Aún disimulamos bien los 40º a la sombra',
   galeria: [
-    { type: 'img',   src: 'foto-1.jpg', caption: '\u2039\u2039 CAPTION 1 \u2014 EDITAR \u203a\u203a' },
-    { type: 'img',   src: 'foto-2.jpg', caption: '\u2039\u2039 CAPTION 2 \u2014 EDITAR \u203a\u203a', horizontal: true },
-    { type: 'img',   src: 'foto-3.jpg', caption: '\u2039\u2039 CAPTION 3 \u2014 EDITAR \u203a\u203a' },
-    { type: 'video', src: 'video-1.mp4', caption: '\u2039\u2039 CAPTION V\u00cdDEO \u2014 EDITAR \u203a\u203a' },
-    { type: 'img',   src: 'foto-4.jpg', caption: '\u2039\u2039 CAPTION 4 \u2014 EDITAR \u203a\u203a', horizontal: true },
-    { type: 'img',   src: 'foto-5.jpg', caption: '\u2039\u2039 CAPTION 5 \u2014 EDITAR \u203a\u203a' },
+    { type: 'img', src: 'foto-1.jpg', caption: '‹‹ CAPTION 1 — EDITAR ››' },
+    { type: 'img', src: 'foto-2.jpg', caption: 'El guiri fotógrafo, de rodillas haciéndonos la foto el tío', horizontal: true },
+    { type: 'img', src: 'foto-3.jpg', caption: '‹‹ CAPTION 3 — EDITAR ››' },
+    { type: 'video', src: 'video-1.mp4', caption: '‹‹ CAPTION VÍDEO — EDITAR ››' },
+    { type: 'img', src: 'foto-4.jpg', caption: 'Oye salimos guapetes eh? Menos mal que de vez en cuando te acuerdas de sacar fotos...', horizontal: true },
+    { type: 'img', src: 'foto-5.jpg', caption: 'Simplemente: mi fondo de pantalla ' },
   ],
 
-  historia: '\u2039\u2039 HISTORIA \u2014 EDITAR \u203a\u203a \u2014 Aqu\u00ed va nuestra an\u00e9cdota de Córdoba: c\u00f3mo empez\u00f3, qu\u00e9 sali\u00f3 (m\u00e1s o menos) seg\u00fan el plan y qu\u00e9 no olvidaremos.',
+  historia: 'Córdoba yo creo que nos enseño mucho. Creo que nuestro primer día en Córdoba es de mis días favoritos juntos, tu te acuerdas lo que nos reímos? Todo el día con tonterías diciendo tonterías sin parar contigo a solas y no necesitaba nada más. Fue de esos días que mientras estaba viviendo me sentía completamente afortunado y mira que el contexto no era genial (Córdoba en junio) pero tu lo haces todo divertido y entretenido. También tuvimos ahí por el medio un día de bajoncillo malos entendidos , malas actitudes y poca comunicación pero no hay que olvidarlo, una relación también es eso. Y más que aprendimos porque el tercero volvió a ser absolutamente espectacular. Y lo que nos apoyamos y reímos durante la travesía por el desierto ese día.',
 
-  nota: '‹‹ INSIDE JOKE — EDITAR ›› <br>(¿cuántos grados dijiste que hacía?)',
+  nota: 'Que conste que a mi me apetecía mas Granada pero no tuviste la visión.',
 };

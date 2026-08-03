@@ -30,13 +30,29 @@ Cada destino busca su media en `assets/destinos/<slug>/` con estos nombres:
 
 Mientras un archivo no exista, se muestra un hueco vintage `‹‹ FOTO — … ››`, así que puedes ir rellenando poco a poco. Para cambiar nombres, cantidad de polaroids, orientación (`horizontal: true`) o usar vídeo de hero (`type: 'video'`), edita el array `galeria` en `js/data/<slug>.js`.
 
-## 3. Escribir los textos
+## 3. Escribir los textos ✏️
 
-**Busca `EDITAR` en el proyecto**: todos los huecos están marcados como `‹‹ … — EDITAR ››`.
+### La forma cómoda: el editor visual
 
-- **Dedicatoria de la home** → directamente en `index.html` (sección "bienvenida").
-- **Textos de cada destino** (fechas, intro, historia, nota manuscrita, captions) → `js/data/<slug>.js`. Todo centralizado ahí.
-- Algunos efectos tienen captions propios (setlist de Berlín, bocadillos del enfado de Copenhague, la cama de Capadocia) → están en `js/effects/<slug>.js`, también marcados con `EDITAR`.
+**Doble clic en `abrir-editor.command`**. Se abre una página con formularios normales donde escribes texto tal cual — sin comillas, sin códigos raros. Los huecos por rellenar salen resaltados y hay un contador que baja según escribes.
+
+Arriba hay **dos desplegables**:
+- **Destino** — cuál de los 10 estás editando.
+- **Qué editar**:
+  - *Ficha del destino* → título, fecha, intro, el pie de cada foto, historia y nota. (guarda en `js/data/<slug>.js`)
+  - *Textos de las escenas* → los bocadillos y títulos de los dibujos animados: la fiesta de Bratislava, el setlist de Berlín, la clase de Topkapi, los gritos de la cabaña… (guarda en `js/data/textos-efectos.js`)
+
+Cuando termines: **"guardar en el proyecto"** (la primera vez te pedirá que elijas la carpeta `Mapa interactivo`; dale a *Permitir*) y luego doble clic en `actualizar.command` para publicarlo.
+
+> Guardar directo funciona en **Chrome**. Si usas Safari, el botón **"descargar archivo"** te baja el archivo y solo tienes que meterlo en `js/data/` reemplazando el que había.
+
+### A mano (si lo prefieres)
+
+- **Ficha de cada destino** → `js/data/<slug>.js`
+- **Textos de las escenas** → `js/data/textos-efectos.js` (todos juntos, agrupados por destino)
+- **Dedicatoria de la home** → `index.html`, sección "bienvenida".
+
+En todos los casos, los huecos están marcados como `‹‹ … — EDITAR ››`: busca `EDITAR` y ve reemplazando.
 
 ## 4. Los efectos temáticos
 

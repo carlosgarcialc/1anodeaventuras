@@ -20,7 +20,7 @@ window.DESTINO_EFFECTS = {
       </style>
 
       <div class="escena-abierta mad-banquete" id="madBanquete">
-        <div class="escena-titulo">dos personas normales en una cata «ligerita»</div>
+        <div class="escena-titulo">${TXT('tituloEscena')}</div>
 
         <svg class="mad-mesa-svg" viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
           <!-- sol de atardecer -->
@@ -62,12 +62,12 @@ window.DESTINO_EFFECTS = {
           <g class="mad-burbuja" id="madBurbujaA">
             <rect x="130" y="66" width="130" height="36" rx="16" fill="#F7F1E1"/>
             <path d="M195 102 l-6 14 l16 -14" fill="#F7F1E1"/>
-            <text x="195" y="90" text-anchor="middle" font-family="Caveat, cursive" font-size="22" fill="#4A3B2C" stroke="none">¿otra ración?</text>
+            <text x="195" y="90" text-anchor="middle" font-family="Caveat, cursive" font-size="22" fill="#4A3B2C" stroke="none">${TXT('burbujaA')}</text>
           </g>
           <g class="mad-burbuja" id="madBurbujaB">
             <rect x="510" y="66" width="80" height="36" rx="16" fill="#F7F1E1"/>
             <path d="M552 102 l6 14 l-16 -14" fill="#F7F1E1"/>
-            <text x="550" y="91" text-anchor="middle" font-family="Caveat, cursive" font-size="23" fill="#4A3B2C" stroke="none">obvio.</text>
+            <text x="550" y="91" text-anchor="middle" font-family="Caveat, cursive" font-size="23" fill="#4A3B2C" stroke="none">${TXT('burbujaB')}</text>
           </g>
 
           <!-- mesa -->
@@ -106,7 +106,7 @@ window.DESTINO_EFFECTS = {
         </svg>
 
         <div class="mad-contador">platos retirados: <b id="madPlatos">3</b> · arrepentimiento: 0</div>
-        <div class="escena-caption">‹‹ CAPTION BANQUETE — EDITAR ›› (qué pedimos, qué repetimos y qué juramos no volver a contar)</div>
+        <div class="escena-caption">${TXT('caption')}</div>
       </div>`;
 
     const platos = section.querySelectorAll('.mad-plato');

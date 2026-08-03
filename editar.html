@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor de textos — 1 año de Aventuras</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,900&family=EB+Garamond:ital,wght@0,400;1,400&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-system.css">
+  <style>
+    body{ overflow-x:hidden; }
+    .ed-wrap{ max-width:760px; margin:0 auto; padding:28px 20px 80px; }
+    .ed-head{ text-align:center; margin-bottom:26px; }
+    .ed-head h1{ font-size:clamp(2rem,7vw,2.8rem); margin-bottom:.1em; }
+    .ed-head .sub{ font-family:var(--font-hand); font-size:1.4rem; color:var(--ink-soft); }
+
+    .ed-barra{
+      position:sticky; top:0; z-index:20; margin:0 -20px 24px; padding:14px 20px;
+      background:rgba(234,224,202,.94); backdrop-filter:blur(6px);
+      border-bottom:1.5px solid rgba(110,91,72,.3);
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    }
+    .ed-barra select{
+      font-family:var(--font-display); font-size:1rem; color:var(--ink);
+      background:var(--paper-light); border:1.5px solid var(--ink-soft);
+      border-radius:4px; padding:.5em .7em; flex:1; min-width:170px;
+    }
+    .ed-estado{ font-family:var(--font-hand); font-size:1.2rem; color:var(--ink-soft); flex-basis:100%; }
+    .ed-estado.ok{ color:var(--sage-deep); }
+    .ed-estado.err{ color:var(--wine); }
+
+    .ed-grupo{
+      background:var(--paper-light); background-image:var(--noise);
+      border:1.5px solid rgba(110,91,72,.35); border-radius:6px;
+      padding:18px 18px 20px; margin-bottom:20px; box-shadow:var(--shadow-soft);
+    }
+    .ed-grupo > h2{
+      font-size:1.25rem; margin:0 0 .1em; display:flex; align-items:center; gap:.4em;
+    }
+    .ed-grupo > .pista{ font-family:var(--font-hand); font-size:1.15rem; color:var(--ink-soft); margin:0 0 14px; }
+
+    .ed-campo{ margin-bottom:16px; }
+    .ed-campo:last-child{ margin-bottom:0; }
+    .ed-campo label{
+      display:block; font-family:var(--font-display); font-size:.78rem;
+      letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:5px;
+    }
+    .ed-campo input[type=text], .ed-campo textarea{
+      width:100%; font-family:var(--font-body); font-size:1.05rem; color:var(--ink);
+      background:var(--paper); border:1.5px solid rgba(110,91,72,.45);
+      border-radius:4px; padding:.6em .8em; outline:none; resize:vertical;
+    }
+    .ed-campo input:focus, .ed-campo textarea:focus{ border-color:var(--gold); border-width:2px; padding:calc(.6em - .5px) calc(.8em - .5px); }
+    .ed-campo .ayuda{ font-family:var(--font-hand); font-size:1.05rem; color:var(--ink-soft); margin-top:4px; }
+    .ed-campo.pendiente input, .ed-campo.pendiente textarea{ background:rgba(201,162,75,.12); border-style:dashed; }
+
+    .ed-item{
+      border-top:1px dashed rgba(110,91,72,.4); padding-top:14px; margin-top:14px;
+    }
+    .ed-item:first-of-type{ border-top:0; padding-top:0; margin-top:0; }
+    .ed-item .fila{ display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end; }
+    .ed-item .fila .ed-campo{ margin-bottom:0; }
+    .ed-item .fila .archivo{ flex:1; min-width:150px; }
+    .ed-mini{ font-family:var(--font-display); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--terracotta); }
+
+    .ed-acciones{
+      position:sticky; bottom:0; margin:26px -20px 0; padding:16px 20px;
+      background:rgba(234,224,202,.94); backdrop-filter:blur(6px);
+      border-top:1.5px solid rgba(110,91,72,.3);
+      display:flex; gap:10px; justify-content:center; flex-wrap:wrap;
+    }
+    .ed-acciones .ticket{ font-size:.82rem; }
+    .ed-acciones .principal{ background:var(--gold); border-color:var(--ink); }
+
+    .ed-nota-final{
+      font-family:var(--font-hand); font-size:1.2rem; color:var(--ink-soft);
+      text-align:center; margin-top:22px; line-height:1.4;
+    }
+    code{ background:rgba(110,91,72,.12); padding:.1em .35em; border-radius:3px; font-size:.9em; }
+  </style>
+</head>
+<body>
+
+<div class="ed-wrap">
+  <header class="ed-head">
+    <h1>Editor de textos</h1>
+    <div class="sub">escribe normal, que de las comillas me encargo yo</div>
+  </header>
+
+  <div class="ed-barra">
+    <select id="edDestino" aria-label="Destino a editar"></select>
+    <select id="edModo" aria-label="Qué editar">
+      <option value="ficha">Ficha del destino</option>
+      <option value="escenas">Textos de las escenas</option>
+    </select>
+    <button class="ticket" id="edRecargar" type="button">↻ recargar</button>
+    <div class="ed-estado" id="edEstado">elige un destino…</div>
+  </div>
+
+  <form id="edForm" autocomplete="off"></form>
+
+  <div class="ed-acciones">
+    <button class="ticket principal" id="edGuardar" type="button">💾 &nbsp;guardar en el proyecto</button>
+    <button class="ticket" id="edDescargar" type="button">⬇ descargar archivo</button>
+    <a class="ticket" id="edVer" href="#" target="_blank">👁 ver la página</a>
+  </div>
+
+  <p class="ed-nota-final" id="edPie"></p>
+</div>
+
+<script src="js/data/destinos.js"></script>
+<script src="js/data/textos-efectos.js"></script>
+<script src="js/data/textos-efectos-labels.js"></script>
+<script>
+/* ============================================================
+   Editor de textos — genera js/data/<slug>.js sin que tengas
+   que pelearte con comillas ni caracteres raros.
+   ============================================================ */
+(function(){
+  const $ = s => document.querySelector(s);
+  const form = $('#edForm'), sel = $('#edDestino'), estado = $('#edEstado');
+  const modoSel = $('#edModo');
+  const PLACEHOLDER = /‹‹|EDITAR/;
+  let datos = null, slug = null, dirHandle = null;
+  let modo = 'ficha';                       // 'ficha' | 'escenas'
+  const escenas = JSON.parse(JSON.stringify(window.TEXTOS_EFECTOS || {}));
+
+  const puedeGuardar = 'showDirectoryPicker' in window;
+
+  /* ---------- barra de destinos ---------- */
+  DESTINOS.forEach(d => {
+    const o = document.createElement('option');
+    o.value = d.slug; o.textContent = d.nombre;
+    sel.appendChild(o);
+  });
+
+  /* ---------- helpers de UI ---------- */
+  function di(msg, tipo){ estado.textContent = msg; estado.className = 'ed-estado' + (tipo ? ' ' + tipo : ''); }
+
+  function campo({ label, valor, ayuda, largo, key, idx, prop }){
+    const wrap = document.createElement('div');
+    wrap.className = 'ed-campo' + (PLACEHOLDER.test(valor || '') ? ' pendiente' : '');
+    const id = 'f_' + (key || '') + '_' + (idx ?? '') + '_' + (prop || '');
+    wrap.innerHTML = `<label for="${id}">${label}</label>` +
+      (largo
+        ? `<textarea id="${id}" rows="${largo}"></textarea>`
+        : `<input id="${id}" type="text">`) +
+      (ayuda ? `<div class="ayuda">${ayuda}</div>` : '');
+    const inp = wrap.querySelector('input,textarea');
+    inp.value = valor || '';
+    inp.addEventListener('input', () => {
+      wrap.classList.toggle('pendiente', PLACEHOLDER.test(inp.value));
+      if (modo === 'escenas') escenas[slug][key] = inp.value;
+      else if (idx == null) datos[key] = inp.value;
+      else datos.galeria[idx][prop] = inp.value;
+      contar();
+    });
+    return wrap;
+  }
+
+  function contar(){
+    const pend = form.querySelectorAll('.ed-campo.pendiente').length;
+    di(pend ? `te quedan ${pend} hueco${pend > 1 ? 's' : ''} por rellenar` : '¡todo escrito! ✓', pend ? '' : 'ok');
+  }
+
+  function grupo(titulo, pista){
+    const g = document.createElement('section');
+    g.className = 'ed-grupo';
+    g.innerHTML = `<h2>${titulo}</h2>` + (pista ? `<p class="pista">${pista}</p>` : '');
+    form.appendChild(g);
+    return g;
+  }
+
+  /* ---------- formulario: textos de las escenas dibujadas ---------- */
+  function pintarEscenas(){
+    form.innerHTML = '';
+    const labels = (window.TEXTOS_EFECTOS_LABELS || {})[slug] || [];
+    if (!labels.length){
+      form.innerHTML = '<section class="ed-grupo"><h2>Sin textos</h2>' +
+        '<p class="pista">este destino no tiene textos de escena editables</p></section>';
+      $('#edVer').href = 'destinos/' + slug + '/index.html';
+      di('nada que editar aquí'); return;
+    }
+    const g = grupo('Textos de las escenas',
+      'los bocadillos, títulos y pies de los dibujos animados de esta página');
+    labels.forEach(([clave, etiqueta]) => {
+      const v = (escenas[slug] || {})[clave] || '';
+      g.append(campo({ label: etiqueta, valor: v, key: clave, largo: v.length > 70 ? 2 : 0 }));
+    });
+    $('#edVer').href = 'destinos/' + slug + '/index.html';
+    $('#edPie').innerHTML = puedeGuardar
+      ? 'Se guarda en <code>js/data/textos-efectos.js</code> (un solo archivo para todas las escenas). Luego: doble clic en <code>actualizar.command</code>.'
+      : 'Usa <b>descargar</b> y mete <code>textos-efectos.js</code> en <code>js/data/</code> reemplazando el que hay.';
+    contar();
+  }
+
+  /* ---------- pintar el formulario ---------- */
+  function pintar(){
+    if (modo === 'escenas') return pintarEscenas();
+    form.innerHTML = '';
+
+    const g1 = grupo('Cabecera', 'lo primero que se ve al abrir la página');
+    g1.append(
+      campo({ label:'Título', valor:datos.titulo, key:'titulo',
+        ayuda:'lo que va entre &lt;em&gt; y &lt;/em&gt; sale en color. Ej: Ta&lt;em&gt;tras&lt;/em&gt;' }),
+      campo({ label:'Fecha (dateline)', valor:datos.fechas, key:'fechas',
+        ayuda:'p. ej. «enero 2026» o «aquel finde de febrero»' }),
+    );
+
+    const g2 = grupo('Entradilla', 'el textito de arriba, bajo la foto grande');
+    g2.append(campo({ label:'Intro', valor:datos.intro, key:'intro', largo:3 }));
+
+    const g3 = grupo('El carrete', 'el subtítulo de la galería y el pie de cada foto o vídeo');
+    g3.append(campo({ label:'Subtítulo de la galería', valor:datos.galeriaSub, key:'galeriaSub' }));
+    datos.galeria.forEach((it, i) => {
+      const item = document.createElement('div');
+      item.className = 'ed-item';
+      const tipo = it.type === 'video' ? 'VÍDEO' : 'FOTO';
+      item.innerHTML = `<div class="ed-mini">${tipo} ${i + 1} · ${it.src}</div>`;
+      item.append(campo({ label:'Pie de foto', valor:it.caption, idx:i, prop:'caption' }));
+      g3.appendChild(item);
+    });
+
+    const g4 = grupo('La historia', 'el bloque largo: la anécdota del viaje');
+    g4.append(campo({ label:'Historia', valor:datos.historia, key:'historia', largo:6 }));
+
+    const g5 = grupo('La nota manuscrita', 'el papelito con el chiste privado, al final');
+    g5.append(campo({ label:'Nota', valor:datos.nota, key:'nota', largo:3,
+      ayuda:'para partir la línea escribe &lt;br&gt;' }));
+
+    $('#edVer').href = 'destinos/' + slug + '/index.html';
+    $('#edPie').innerHTML = puedeGuardar
+      ? 'Al pulsar <b>guardar</b> te pedirá la carpeta del proyecto (<code>Mapa interactivo</code>) la primera vez. Luego, para publicar: doble clic en <code>actualizar.command</code>.'
+      : 'Tu navegador no deja escribir archivos: usa <b>descargar</b> y mete el archivo en <code>js/data/</code> (reemplazando el que hay). Para poder guardar directo, abre el editor con <code>abrir-editor.command</code> en Chrome.';
+    contar();
+  }
+
+  /* ---------- cargar un destino ---------- */
+  function cargar(s){
+    slug = s;
+    di('cargando…');
+    const sc = document.createElement('script');
+    sc.src = 'js/data/' + s + '.js?v=' + Date.now();
+    sc.onload = () => {
+      datos = JSON.parse(JSON.stringify(window.DESTINO_DATA));
+      sc.remove();
+      pintar();
+    };
+    sc.onerror = () => { di('no pude cargar ese destino', 'err'); sc.remove(); };
+    document.head.appendChild(sc);
+  }
+
+  /* ---------- generar el archivo ---------- */
+  const q = t => "'" + String(t == null ? '' : t).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\r?\n/g, ' ') + "'";
+
+  /* archivo con TODOS los textos de escenas (todos los destinos) */
+  function generarEscenas(){
+    const L = window.TEXTOS_EFECTOS_LABELS || {};
+    let out = `/* ============================================================
+   Textos de las ESCENAS dibujadas (bocadillos, títulos, pies).
+   ✏️ Lo más cómodo: edítalo con el editor visual (editar.html),
+      opción «Textos de las escenas».
+   ============================================================ */
+
+window.TEXTOS_EFECTOS = {\n`;
+    Object.keys(L).forEach(s => {
+      out += `  '${s}': {\n`;
+      L[s].forEach(([clave, etiqueta]) => {
+        out += `    ${clave}: ${q((escenas[s] || {})[clave] || '')},   // ${etiqueta}\n`;
+      });
+      out += '  },\n';
+    });
+    return out + '};\n';
+  }
+
+  function generar(){
+    const d = datos;
+    const nombre = (DESTINOS.find(x => x.slug === slug) || {}).nombre || slug;
+    const items = d.galeria.map(it => {
+      const extras = it.horizontal ? ', horizontal: true' : '';
+      return `    { type: '${it.type}', src: '${it.src}', caption: ${q(it.caption)}${extras} },`;
+    }).join('\n');
+    return `/* ============================================================
+   ${nombre} — contenido de la página
+   ✏️ Lo más cómodo: edítalo con el editor visual (editar.html).
+   La media va en /assets/destinos/${d.slug}/ con estos nombres.
+   ============================================================ */
+
+window.DESTINO_DATA = {
+  slug: '${d.slug}',
+  titulo: ${q(d.titulo)},
+  fechas: ${q(d.fechas)},
+
+  intro: ${q(d.intro)},
+
+  hero: { type: '${d.hero.type}', src: '${d.hero.src}' },
+
+  galeriaSub: ${q(d.galeriaSub)},
+  galeria: [
+${items}
+  ],
+
+  historia: ${q(d.historia)},
+
+  nota: ${q(d.nota)},
+};
+`;
+  }
+
+  /* ---------- guardar / descargar ---------- */
+  $('#edGuardar').addEventListener('click', async () => {
+    if (!datos) return;
+    if (!puedeGuardar){ di('este navegador no puede escribir archivos: usa «descargar»', 'err'); return; }
+    try {
+      if (!dirHandle){
+        di('elige la carpeta del proyecto…');
+        dirHandle = await window.showDirectoryPicker({ mode: 'readwrite' });
+      }
+      const js = await dirHandle.getDirectoryHandle('js');
+      const data = await js.getDirectoryHandle('data');
+      const nombre = modo === 'escenas' ? 'textos-efectos.js' : slug + '.js';
+      const fh = await data.getFileHandle(nombre, { create: true });
+      const w = await fh.createWritable();
+      await w.write(modo === 'escenas' ? generarEscenas() : generar());
+      await w.close();
+      di('guardado ✓ — recuerda: doble clic en actualizar.command para publicarlo', 'ok');
+    } catch (e){
+      if (e && e.name === 'AbortError'){ di('cancelado'); return; }
+      dirHandle = null;
+      di('no pude guardar (' + (e.message || e) + '). Prueba con «descargar».', 'err');
+    }
+  });
+
+  $('#edDescargar').addEventListener('click', () => {
+    if (!datos) return;
+    const nombre = modo === 'escenas' ? 'textos-efectos.js' : slug + '.js';
+    const blob = new Blob([modo === 'escenas' ? generarEscenas() : generar()],
+      { type: 'text/javascript;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = nombre;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    di('descargado ✓ — mete ' + nombre + ' en js/data/ reemplazando el antiguo', 'ok');
+  });
+
+  $('#edRecargar').addEventListener('click', () => cargar(slug));
+  sel.addEventListener('change', () => cargar(sel.value));
+  modoSel.addEventListener('change', () => { modo = modoSel.value; pintar(); });
+
+  cargar(DESTINOS[0].slug);
+})();
+</script>
+</body>
+</html>

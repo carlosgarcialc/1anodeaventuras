@@ -69,7 +69,7 @@ window.DESTINO_EFFECTS = {
 
         <div class="blz-video">
           <div class="marco"><div id="blzVideoSlot"></div>
-            <div style="font-family:var(--font-hand);font-size:1.3rem;color:var(--ink-soft);text-align:center;padding-top:8px">‹‹ CAPTION CONCIERTO — EDITAR ››</div>
+            <div style="font-family:var(--font-hand);font-size:1.3rem;color:var(--ink-soft);text-align:center;padding-top:8px">${TXT('captionConcierto')}</div>
           </div>
         </div>
 
@@ -77,10 +77,10 @@ window.DESTINO_EFFECTS = {
           <div class="stamp-inner">
             <h3>Setlist</h3>
             <ol>
-              <li>‹‹ CANCIÓN 1 — EDITAR ››</li>
-              <li>‹‹ CANCIÓN 2 — EDITAR ››</li>
-              <li>‹‹ LA NUESTRA — EDITAR ››</li>
-              <li>bis (siempre hay bis)</li>
+              <li>${TXT('cancion1')}</li>
+              <li>${TXT('cancion2')}</li>
+              <li>${TXT('cancion3')}</li>
+              <li>${TXT('cancion4')}</li>
             </ol>
             <div class="valor" style="margin-top:.8em">ENTRADA Nº 000 · PISTA</div>
           </div>

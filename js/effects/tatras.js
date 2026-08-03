@@ -76,14 +76,14 @@ window.DESTINO_EFFECTS = {
         <canvas class="tat-nieve" id="tatNieve"></canvas>
 
         <!-- grandes éxitos de la cabaña, en riguroso directo -->
-        <div class="tat-boca" style="left:6%;  bottom:52%; transform:scale(.3) rotate(-4deg)">¡AY, MI RODILLA!</div>
-        <div class="tat-boca" style="right:4%; bottom:56%; transform:scale(.3) rotate(3deg)">¿Qué tamaño de palo es vuestro favorito?</div>
-        <div class="tat-boca" style="left:30%; bottom:64%; transform:scale(.3) rotate(-2deg)">¡UNA CABRA!</div>
+        <div class="tat-boca" style="left:6%;  bottom:52%; transform:scale(.3) rotate(-4deg)">${TXT('boca1')}</div>
+        <div class="tat-boca" style="right:4%; bottom:56%; transform:scale(.3) rotate(3deg)">${TXT('boca2')}</div>
+        <div class="tat-boca" style="left:30%; bottom:64%; transform:scale(.3) rotate(-2deg)">${TXT('boca3')}</div>
         <div class="tat-jaja" style="left:18%; bottom:40%; font-size:1.5rem; transform:rotate(-8deg)">jajajaja</div>
         <div class="tat-jaja" style="right:14%; bottom:38%; font-size:1.2rem; transform:rotate(6deg)">JAJAJA</div>
         <div class="tat-jaja" style="left:55%; bottom:46%; font-size:1.05rem; transform:rotate(-3deg)">jsjsjsjs</div>
       </div>
-      <div class="tat-caption">‹‹ CAPTION CABAÑA — EDITAR ›› (p. ej. quién ganó al monopoly)</div>`;
+      <div class="tat-caption">${TXT('caption')}</div>`;
 
     /* nieve en canvas, dos profundidades */
     const cv = document.getElementById('tatNieve');

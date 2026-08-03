@@ -9,23 +9,23 @@
 window.DESTINO_DATA = {
   slug: 'tatras',
   titulo: 'Ta<em>tras</em>',
-  fechas: '\u2039\u2039 FECHAS \u2014 EDITAR \u203a\u203a \u00b7 p. ej. \u00abmarzo 2026\u00bb',
+  fechas: '‹‹ FECHAS — EDITAR ›› · p. ej. «marzo 2026»',
 
-  intro: '\u2039\u2039 INTRO \u2014 EDITAR \u203a\u203a \u2014 Montañas, nieve cayendo a cámara lenta y una cabaña con la ventanita encendida.',
+  intro: '‹‹ INTRO — EDITAR ›› — Montañas, nieve cayendo a cámara lenta y una cabaña con la ventanita encendida.',
 
   hero: { type: 'img', src: 'hero.jpg' },  // cambia a { type:'video', src:'hero.mp4' } si es video
 
   galeriaSub: 'frío fuera, alcohol dentro',
   galeria: [
-    { type: 'img',   src: 'foto-1.jpg', caption: '\u2039\u2039 TANTA PRUEBA DE ROPA PARA ACABAR CON VAQUEROS \u2014 EDITAR \u203a\u203a' },
-    { type: 'img',   src: 'foto-2.jpg', caption: '\u2039\u2039 SE QUE JAMARÁS ME MIRARÁS COMO MIRAS A UN BOCADILLO \u2014 EDITAR \u203a\u203a', horizontal: true },
-    { type: 'img',   src: 'foto-3.jpg', caption: '\u2039\u2039 UN GRUPO DE MONTAÑEROS SERIOS Y DLS BOLSAS DE BASURA \u2014 EDITAR \u203a\u203a' },
-    { type: 'video', src: 'video-1.mp4', caption: '\u2039\u2039 VLOGSITO POR HACER ALGO EN EL BUS V\u00cdDEO \u2014 EDITAR \u203a\u203a' },
-    { type: 'img',   src: 'foto-4.jpg', caption: '\u2039\u2039 HASTA PARECE QUE CAMINAMOS MAS DE 2 KM\u2014 EDITAR \u203a\u203a', horizontal: true },
-    { type: 'img',   src: 'foto-5.jpg', caption: '\u2039\u2039 CAPTION 5 \u2014 EDITAR \u203a\u203a' },
+    { type: 'img',   src: 'foto-1.jpg', caption: '‹‹ TANTA PRUEBA DE ROPA PARA ACABAR CON VAQUEROS — EDITAR ››' },
+    { type: 'img',   src: 'foto-2.jpg', caption: '‹‹ SE QUE JAMARÁS ME MIRARÁS COMO MIRAS A UN BOCADILLO — EDITAR ››', horizontal: true },
+    { type: 'img',   src: 'foto-3.jpg', caption: '‹‹ UN GRUPO DE MONTAÑEROS SERIOS Y DLS BOLSAS DE BASURA — EDITAR ››' },
+    { type: 'video', src: 'video-1.mp4', caption: '‹‹ VLOGSITO POR HACER ALGO EN EL BUS VÍDEO — EDITAR ››' },
+    { type: 'img',   src: 'foto-4.jpg', caption: '‹‹ HASTA PARECE QUE CAMINAMOS MAS DE 2 KM— EDITAR ››', horizontal: true },
+    { type: 'img',   src: 'foto-5.jpg', caption: '‹‹ CAPTION 5 — EDITAR ››' },
   ],
 
-  historia: '\u2039\u2039 HISTORIA \u2014 EDITAR \u203a\u203a \u2014 Aqu\u00ed va nuestra an\u00e9cdota de Tatras: c\u00f3mo empez\u00f3, qu\u00e9 sali\u00f3 (m\u00e1s o menos) seg\u00fan el plan y qu\u00e9 no olvidaremos.',
+  historia: '‹‹ HISTORIA — EDITAR ›› — Aquí va nuestra anécdota de Tatras: cómo empezó, qué salió (más o menos) según el plan y qué no olvidaremos.',
 
   nota: '‹‹ INSIDE JOKE — EDITAR ›› <br>(la estufa era el tercer miembro del viaje)',
 };

@@ -3,6 +3,14 @@
    Lenis + GSAP + overlays + transiciones + helpers de media
    ============================================================ */
 
+/* Texto de una escena dibujada. Los textos viven en
+   js/data/textos-efectos.js (editables desde editar.html). */
+window.TXT = function(clave){
+  const slug = window.DESTINO_DATA && DESTINO_DATA.slug;
+  const t = window.TEXTOS_EFECTOS && TEXTOS_EFECTOS[slug] && TEXTOS_EFECTOS[slug][clave];
+  return t == null ? '' : t;
+};
+
 window.App = (function(){
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced) document.documentElement.classList.add('no-motion');

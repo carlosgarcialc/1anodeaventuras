@@ -68,7 +68,7 @@ window.DESTINO_EFFECTS = {
           <path d="M120 60 q6 -18 24 -14 M300 58 q-6 -18 -24 -14" stroke="#6E5B48" stroke-width="2.5"/>
           <text x="210" y="52" text-anchor="middle" font-family="Caveat, cursive" font-size="30" fill="#7C3B34" stroke="none" transform="rotate(-3 210 52)">tamaño: provincia</text>
         </svg>
-        <div class="cap-caption">‹‹ CAPTION DE LA CAMA — EDITAR ›› (guiño al hotel-cueva)</div>
+        <div class="cap-caption">${TXT('camaCaption')}</div>
       </div>`;
 
     /* globos: SVG generado con variaciones de la paleta */
@@ -117,7 +117,7 @@ window.DESTINO_EFFECTS = {
       const esc = document.createElement('section');
       esc.className = 'escena-abierta will-reveal';
       esc.innerHTML = `
-        <div class="escena-titulo">clase de historia otomana (nivel: incómodo)</div>
+        <div class="escena-titulo">${TXT('topkapiTitulo')}</div>
         <div class="escena-figuras">
           <svg viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <!-- ====== Topkapi: Puerta de la Salutación ====== -->
@@ -175,10 +175,10 @@ window.DESTINO_EFFECTS = {
               <ellipse cx="312" cy="171" rx="3.4" ry="4.4" fill="#7C3B34" stroke-width="1.5"/>
             </g>
           </svg>
-          <div class="escena-boca" style="left:2%;top:-6px;--tail:78%">‹‹ ÉL EXPLICA — EDITAR ››<small>“…y a los guardianes del harén los llamaban eunucos.”</small></div>
-          <div class="escena-boca" style="right:2%;top:16%;--tail:26%">espera… ¿les hacían QUÉ?<small>‹‹ SU CARA — EDITAR ››</small></div>
+          <div class="escena-boca" style="left:2%;top:-6px;--tail:78%">${TXT('topkapiEl')}<small>${TXT('topkapiElSub')}</small></div>
+          <div class="escena-boca" style="right:2%;top:16%;--tail:26%">${TXT('topkapiElla')}<small>${TXT('topkapiEllaSub')}</small></div>
         </div>
-        <div class="escena-caption">‹‹ CAPTION TOPKAPI — EDITAR ›› (lo que se aprende visitando un palacio)</div>`;
+        <div class="escena-caption">${TXT('topkapiCaption')}</div>`;
       const hist = document.querySelector('.d-historia');
       if (hist) hist.before(esc); else section.appendChild(esc);
       sembrarDestellos(esc, 4);

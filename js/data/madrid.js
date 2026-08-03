@@ -1,31 +1,29 @@
 /* ============================================================
    Madrid — contenido de la página
-   ✏️ EDITA AQUÍ: fechas, textos y captions.
-   La media va en /assets/destinos/madrid/ con estos nombres:
-   hero.jpg (o hero.mp4 cambiando type a 'video'), foto-1.jpg…
-   Busca "EDITAR" para ver todos los huecos.
+   ✏️ Lo más cómodo: edítalo con el editor visual (editar.html).
+   La media va en /assets/destinos/madrid/ con estos nombres.
    ============================================================ */
 
 window.DESTINO_DATA = {
   slug: 'madrid',
   titulo: 'Ma<em>dri</em>d',
-  fechas: '\u2039\u2039 FECHAS \u2014 EDITAR \u203a\u203a \u00b7 p. ej. \u00abmarzo 2026\u00bb',
+  fechas: 'enero 2026 - toda la vidaa',
 
-  intro: '\u2039\u2039 INTRO \u2014 EDITAR \u203a\u203a \u2014 Madrid: el principio de todo, con la mesa siempre puesta y cero remordimientos.',
+  intro: 'Madrid, nuestro hogar ahora',
 
-  hero: { type: 'img', src: 'hero.jpg' },  // cambia a { type:'video', src:'hero.mp4' } si es video
+  hero: { type: 'img', src: 'hero.jpg' },
 
-  galeriaSub: 'pruebas del banquete perpetuo',
+  galeriaSub: 'Igual en alguna no salimos comiendo o bebiendo',
   galeria: [
-    { type: 'img',   src: 'foto-1.jpg', caption: '\u2039\u2039 CAPTION 1 \u2014 EDITAR \u203a\u203a' },
-    { type: 'img',   src: 'foto-2.jpg', caption: '\u2039\u2039 CAPTION 2 \u2014 EDITAR \u203a\u203a', horizontal: true },
-    { type: 'img',   src: 'foto-3.jpg', caption: '\u2039\u2039 CAPTION 3 \u2014 EDITAR \u203a\u203a' },
-    { type: 'video', src: 'video-1.mp4', caption: '\u2039\u2039 CAPTION V\u00cdDEO \u2014 EDITAR \u203a\u203a' },
-    { type: 'img',   src: 'foto-4.jpg', caption: '\u2039\u2039 CAPTION 4 \u2014 EDITAR \u203a\u203a', horizontal: true },
-    { type: 'img',   src: 'foto-5.jpg', caption: '\u2039\u2039 CAPTION 5 \u2014 EDITAR \u203a\u203a' },
+    { type: 'img', src: 'foto-1.jpg', caption: 'Camuflándome entre chulapos, con una copa siempre es más fácil' },
+    { type: 'img', src: 'foto-2.jpg', caption: 'Conociendo a la family, hasta parezco formal', horizontal: true },
+    { type: 'img', src: 'foto-3.jpg', caption: '‹‹ CAPTION 3 — EDITAR ››' },
+    { type: 'video', src: 'video-1.mp4', caption: '‹‹ CAPTION VÍDEO — EDITAR ››' },
+    { type: 'img', src: 'foto-4.jpg', caption: 'Presentación en sociedad, cagados estábamos', horizontal: true },
+    { type: 'img', src: 'foto-5.jpg', caption: '‹‹ CAPTION 5 — EDITAR ››' },
   ],
 
-  historia: '\u2039\u2039 HISTORIA \u2014 EDITAR \u203a\u203a \u2014 Aqu\u00ed va nuestra an\u00e9cdota de Madrid: c\u00f3mo empez\u00f3, qu\u00e9 sali\u00f3 (m\u00e1s o menos) seg\u00fan el plan y qu\u00e9 no olvidaremos.',
+  historia: 'Que vamos a decir de Madrid no? Donde empezó nuestra relación de verdad. Donde conocí a tu familia y amigos y tu a los míos. Donde empezó a ser una relación de verdad (bueno después de los 4 meses que pasaron hasta que te pedí salir). Pienso en nosotros y en Madrid y pienso en malabares imposibles para poder vernos 5 minutitos, en entrelazar nuestras vidas y en comida. En dates super guays, sorpresas tuyas, sorpresas mías, flores, abrazos, findes en tu casa y findes de cagalera. He descubierto mucho mas Madrid contigo y puedo decir que cada día me gusta más. Tengo que ir preparándome igual va a ser mi hogar para muucho tiempo.',
 
-  nota: '‹‹ INSIDE JOKE — EDITAR ›› <br>(aquí va lo de aquella comilona… tú ya sabes)',
+  nota: 'Me he dado cuenta que muchas fotos e historias son cerca de mi casa, igual es porque vivo más cerca del centro',
 };
