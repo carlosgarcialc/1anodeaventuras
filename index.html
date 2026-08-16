@@ -29,39 +29,34 @@
   <header class="hero" id="hero">
     <div class="hero-corazon" id="heroCorazon" aria-hidden="true"></div>
     <div class="hero-olivo" aria-hidden="true" data-adorno="olivo"></div>
-    <h1 class="hero-titulo"><span class="num">1</span> <span class="anio">año</span> de Aventuras</h1>
-    <div class="hero-porahora">por ahora…</div>
-    <div class="hero-sub"></div>
-    <div class="hero-scroll">baja, que esto sigue ↓</div>
+    <h1 class="hero-titulo"><span class="num" data-p="heroNum"></span> <span class="anio" data-p="heroAnio"></span> <span data-p="heroResto"></span></h1>
+    <div class="hero-porahora" data-p="heroPorAhora"></div>
+    <div class="hero-sub" data-p="heroSub"></div>
+    <div class="hero-scroll" data-p="heroScroll"></div>
   </header>
 
   <!-- ============ BIENVENIDA (dedicatoria) ============ -->
   <section class="bienvenida torn-top" aria-label="Dedicatoria">
-    <div class="postmark">1er<br>aniversario<br>· beapa ·</div>
-    <h2>Querida copiloto,</h2>
+    <div class="postmark"><div><span data-p="selloLinea1"></span><br><span data-p="selloLinea2"></span><br><span data-p="selloLinea3"></span></div></div>
+    <h2 data-p="saludo"></h2>
 
-    <!-- ✏️ ‹‹ TEXTO DE BIENVENIDA — EDITAR ›› -->
-    <p class="ph-texto">
-      ‹‹ TEXTO DE BIENVENIDA — EDITAR ››<br>
-      Aquí va tu dedicatoria: por qué este mapa, por qué este año,
-      y por qué "por ahora". Escríbelo en este mismo archivo
-      (<code>index.html</code>, sección "bienvenida").
-    </p>
+    <!-- ✏️ los textos se editan en editar.html (o en js/data/portada.js) -->
+    <p class="ph-texto" data-p="dedicatoria"></p>
 
-    <span class="firma">‹‹ FIRMA — EDITAR ››</span>
+    <span class="firma" data-p="firma"></span>
   </section>
 
   <!-- ============ EL MAPA VIVO ============ -->
   <section class="mapa-seccion" aria-label="Selector de destinos">
     <div class="mapa-titulo">
-      <h2>El mapa vivo</h2>
-      <div class="pista">cada destino esconde una página (igual que el mapa esconde chips)</div>
+      <h2 data-p="mapaTitulo"></h2>
+      <div class="pista" data-p="mapaPista"></div>
     </div>
 
     <div class="mapa-frame" id="mapaFrame">
       <div class="mapa-canvas" id="mapaCanvas"></div>
     </div>
-    <p class="mapa-ayuda">en el móvil: pellizca para hacer zoom · toca un destino para desplegarlo · toca otra vez para viajar ✈</p>
+    <p class="mapa-ayuda" data-p="mapaAyuda"></p>
 
     <!-- índice de respaldo (accesible y práctico) -->
     <nav class="indice-destinos" id="indiceDestinos" aria-label="Todos los destinos"></nav>
@@ -70,12 +65,12 @@
   <!-- ============ NUEVAS AVENTURAS (se añaden desde la propia web) ============ -->
   <section class="aventuras-nuevas torn-top" id="nuevasAventuras" aria-label="Nuevas aventuras">
     <div class="mapa-titulo">
-      <h2>Próximas paradas</h2>
-      <div class="pista">las que vayamos viviendo, apuntadas al vuelo</div>
+      <h2 data-p="aventurasTitulo"></h2>
+      <div class="pista" data-p="aventurasPista"></div>
     </div>
     <div class="av-grid" id="avGrid"></div>
-    <button class="ticket av-add" id="avAdd">✚ &nbsp;nueva aventura</button>
-    <p class="av-pie">psst: estas se guardan en el dispositivo donde las creas</p>
+    <button class="ticket av-add" id="avAdd" data-p="aventurasBoton"></button>
+    <p class="av-pie" data-p="aventurasPie"></p>
   </section>
 
   <noscript><p style="text-align:center;padding:2em">Este álbum necesita JavaScript para volar. Los destinos están en <code>/destinos/&lt;nombre&gt;/</code>.</p></noscript>
@@ -88,10 +83,17 @@
 
   <script src="js/icons.js"></script>
   <script src="js/data/destinos.js"></script>
+  <script src="js/data/portada.js"></script>
   <script src="js/main.js"></script>
   <script src="js/map.js"></script>
   <script src="js/aventuras.js"></script>
   <script>
+    /* rellena los textos de la portada desde js/data/portada.js */
+    document.querySelectorAll('[data-p]').forEach(el => {
+      const v = (window.TEXTOS_PORTADA || {})[el.dataset.p];
+      if (v != null) el.innerHTML = v;
+    });
+
     App.overlaysGlobales();
     App.llegada();
     App.footer('');

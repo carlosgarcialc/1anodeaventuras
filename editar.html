@@ -112,6 +112,7 @@
 </div>
 
 <script src="js/data/destinos.js"></script>
+<script src="js/data/portada.js"></script>
 <script src="js/data/textos-efectos.js"></script>
 <script src="js/data/textos-efectos-labels.js"></script>
 <script>
@@ -127,10 +128,42 @@
   let datos = null, slug = null, dirHandle = null;
   let modo = 'ficha';                       // 'ficha' | 'escenas'
   const escenas = JSON.parse(JSON.stringify(window.TEXTOS_EFECTOS || {}));
+  const portada = Object.assign({}, window.TEXTOS_PORTADA || {});
+  const PORTADA = '__portada__';
+
+  /* campos de la portada, en el orden en que aparecen en la página */
+  const CAMPOS_PORTADA = [
+    ['— Título grande —', null],
+    ['heroNum',        'Número (el «1»)'],
+    ['heroAnio',       'Palabra en color rosa'],
+    ['heroResto',      'Resto del título'],
+    ['heroPorAhora',   'Debajo, a mano («por ahora…»)'],
+    ['heroSub',        'Línea pequeña (opcional)'],
+    ['heroScroll',     'Invitación a bajar'],
+    ['— Dedicatoria —', null],
+    ['selloLinea1',    'Sello redondo · línea 1'],
+    ['selloLinea2',    'Sello redondo · línea 2'],
+    ['selloLinea3',    'Sello redondo · línea 3'],
+    ['saludo',         'Saludo («Querida copiloto,»)'],
+    ['dedicatoria',    'La dedicatoria'],
+    ['firma',          'Firma'],
+    ['— El mapa —', null],
+    ['mapaTitulo',     'Título de la sección'],
+    ['mapaPista',      'Frase bajo el título'],
+    ['mapaAyuda',      'Instrucciones del mapa'],
+    ['— Próximas paradas —', null],
+    ['aventurasTitulo','Título de la sección'],
+    ['aventurasPista', 'Frase bajo el título'],
+    ['aventurasBoton', 'Texto del botón'],
+    ['aventurasPie',   'Aviso pequeño del final'],
+  ];
 
   const puedeGuardar = 'showDirectoryPicker' in window;
 
   /* ---------- barra de destinos ---------- */
+  const oPortada = document.createElement('option');
+  oPortada.value = PORTADA; oPortada.textContent = '★ Portada (la página de inicio)';
+  sel.appendChild(oPortada);
   DESTINOS.forEach(d => {
     const o = document.createElement('option');
     o.value = d.slug; o.textContent = d.nombre;
@@ -153,7 +186,8 @@
     inp.value = valor || '';
     inp.addEventListener('input', () => {
       wrap.classList.toggle('pendiente', PLACEHOLDER.test(inp.value));
-      if (modo === 'escenas') escenas[slug][key] = inp.value;
+      if (slug === PORTADA) portada[key] = inp.value;
+      else if (modo === 'escenas') escenas[slug][key] = inp.value;
       else if (idx == null) datos[key] = inp.value;
       else datos.galeria[idx][prop] = inp.value;
       contar();
@@ -172,6 +206,26 @@
     g.innerHTML = `<h2>${titulo}</h2>` + (pista ? `<p class="pista">${pista}</p>` : '');
     form.appendChild(g);
     return g;
+  }
+
+  /* ---------- formulario: textos de la portada ---------- */
+  function pintarPortada(){
+    form.innerHTML = '';
+    let g = null;
+    CAMPOS_PORTADA.forEach(([clave, etiqueta]) => {
+      if (etiqueta === null){                      // es un separador de grupo
+        g = grupo(clave.replace(/—/g, '').trim(), '');
+        return;
+      }
+      if (!g) g = grupo('Portada', '');
+      const v = portada[clave] || '';
+      g.append(campo({ label: etiqueta, valor: v, key: clave, largo: v.length > 80 ? 3 : 0 }));
+    });
+    $('#edVer').href = 'index.html';
+    $('#edPie').innerHTML = puedeGuardar
+      ? 'Se guarda en <code>js/data/portada.js</code>. Luego: doble clic en <code>actualizar.command</code>.'
+      : 'Usa <b>descargar</b> y mete <code>portada.js</code> en <code>js/data/</code> reemplazando el que hay.';
+    contar();
   }
 
   /* ---------- formulario: textos de las escenas dibujadas ---------- */
@@ -199,6 +253,7 @@
 
   /* ---------- pintar el formulario ---------- */
   function pintar(){
+    if (slug === PORTADA) return pintarPortada();
     if (modo === 'escenas') return pintarEscenas();
     form.innerHTML = '';
 
@@ -241,6 +296,9 @@
   /* ---------- cargar un destino ---------- */
   function cargar(s){
     slug = s;
+    if (sel.value !== s) sel.value = s;
+    modoSel.style.display = (s === PORTADA) ? 'none' : '';
+    if (s === PORTADA){ datos = portada; pintar(); return; }
     di('cargando…');
     const sc = document.createElement('script');
     sc.src = 'js/data/' + s + '.js?v=' + Date.now();
@@ -255,6 +313,22 @@
 
   /* ---------- generar el archivo ---------- */
   const q = t => "'" + String(t == null ? '' : t).replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\r?\n/g, ' ') + "'";
+
+  /* archivo con los textos de la portada */
+  function generarPortada(){
+    let out = `/* ============================================================
+   Textos de la PORTADA (la página de inicio).
+   ✏️ Lo más cómodo: edítalo con el editor visual (editar.html),
+      eligiendo «Portada» en el desplegable de arriba.
+   ============================================================ */
+
+window.TEXTOS_PORTADA = {\n`;
+    CAMPOS_PORTADA.forEach(([clave, etiqueta]) => {
+      if (etiqueta === null){ out += `\n  // ${clave.replace(/—/g, '').trim()}\n`; return; }
+      out += `  ${clave}: ${q(portada[clave] || '')},   // ${etiqueta}\n`;
+    });
+    return out + '};\n';
+  }
 
   /* archivo con TODOS los textos de escenas (todos los destinos) */
   function generarEscenas(){
@@ -321,10 +395,12 @@ ${items}
       }
       const js = await dirHandle.getDirectoryHandle('js');
       const data = await js.getDirectoryHandle('data');
-      const nombre = modo === 'escenas' ? 'textos-efectos.js' : slug + '.js';
+      const nombre = slug === PORTADA ? 'portada.js'
+                   : modo === 'escenas' ? 'textos-efectos.js' : slug + '.js';
       const fh = await data.getFileHandle(nombre, { create: true });
       const w = await fh.createWritable();
-      await w.write(modo === 'escenas' ? generarEscenas() : generar());
+      await w.write(slug === PORTADA ? generarPortada()
+                  : modo === 'escenas' ? generarEscenas() : generar());
       await w.close();
       di('guardado ✓ — recuerda: doble clic en actualizar.command para publicarlo', 'ok');
     } catch (e){
@@ -336,8 +412,10 @@ ${items}
 
   $('#edDescargar').addEventListener('click', () => {
     if (!datos) return;
-    const nombre = modo === 'escenas' ? 'textos-efectos.js' : slug + '.js';
-    const blob = new Blob([modo === 'escenas' ? generarEscenas() : generar()],
+    const nombre = slug === PORTADA ? 'portada.js'
+                 : modo === 'escenas' ? 'textos-efectos.js' : slug + '.js';
+    const blob = new Blob([slug === PORTADA ? generarPortada()
+                         : modo === 'escenas' ? generarEscenas() : generar()],
       { type: 'text/javascript;charset=utf-8' });
     const a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
@@ -351,7 +429,7 @@ ${items}
   sel.addEventListener('change', () => cargar(sel.value));
   modoSel.addEventListener('change', () => { modo = modoSel.value; pintar(); });
 
-  cargar(DESTINOS[0].slug);
+  cargar(PORTADA);
 })();
 </script>
 </body>

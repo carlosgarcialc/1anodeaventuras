@@ -36,9 +36,11 @@ Mientras un archivo no exista, se muestra un hueco vintage `‹‹ FOTO — … 
 
 **Doble clic en `abrir-editor.command`**. Se abre una página con formularios normales donde escribes texto tal cual — sin comillas, sin códigos raros. Los huecos por rellenar salen resaltados y hay un contador que baja según escribes.
 
+> ⚠️ **Nunca abras los archivos `.html` o `.js` con TextEdit.** Los reescribe como documento de texto y destruye el código (si pasa: `git checkout HEAD -- index.html` lo recupera). Usa el editor visual, o un editor de código si te apañas.
+
 Arriba hay **dos desplegables**:
-- **Destino** — cuál de los 10 estás editando.
-- **Qué editar**:
+- **Destino** — la **★ Portada** (título, dedicatoria, firma, títulos de sección…) o cualquiera de los 10 destinos.
+- **Qué editar** (solo para destinos):
   - *Ficha del destino* → título, fecha, intro, el pie de cada foto, historia y nota. (guarda en `js/data/<slug>.js`)
   - *Textos de las escenas* → los bocadillos y títulos de los dibujos animados: la fiesta de Bratislava, el setlist de Berlín, la clase de Topkapi, los gritos de la cabaña… (guarda en `js/data/textos-efectos.js`)
 
@@ -48,9 +50,10 @@ Cuando termines: **"guardar en el proyecto"** (la primera vez te pedirá que eli
 
 ### A mano (si lo prefieres)
 
+- **La página falsa de Bucarest** (la parodia cutre del castillo de Drácula) → `destinos/bucarest/index.html`. Es una página aparte, escrita a mano y a propósito horrible; su botón del final lleva a la página buena, que vive en `destinos/bucarest/real.html`. No la toques con el editor visual.
+- **Textos de la portada** → `js/data/portada.js`
 - **Ficha de cada destino** → `js/data/<slug>.js`
 - **Textos de las escenas** → `js/data/textos-efectos.js` (todos juntos, agrupados por destino)
-- **Dedicatoria de la home** → `index.html`, sección "bienvenida".
 
 En todos los casos, los huecos están marcados como `‹‹ … — EDITAR ››`: busca `EDITAR` y ve reemplazando.
 

@@ -16,7 +16,9 @@ window.DESTINOS = [
   { slug:'tatras',              nombre:'Tatras',              x:65.21, y:62.64, icono:'cabana',     accent:'#5F7355', tag:'nieve y cabaña' },
   { slug:'copenhague-aarhus',   nombre:'Copenhague–Aarhus',   x:55.96, y:45.68, icono:'cafe',       accent:'#9BBAC0', tag:'hygge (y un enfado)' },
   { slug:'berlin',              nombre:'Berlín',              x:57.31, y:54.28, icono:'microfono',  accent:'#4A3B2C', tag:'Carolina Durante' },
-  { slug:'praga',               nombre:'Praga',               x:58.89, y:60.89, icono:'discoball',  accent:'#C9A24B', tag:'bola de disco' },
+  // Praga está OCULTO por ahora. Para volver a activarlo: quita las dos barras
+  // del principio de la línea de abajo y regenera el mapa (tools/mapa/README.md).
+  // { slug:'praga',            nombre:'Praga',               x:58.89, y:60.89, icono:'discoball',  accent:'#C9A24B', tag:'bola de disco' },
   { slug:'estambul-capadocia',  nombre:'Estambul–Capadocia',  x:79.80, y:81.38, icono:'kebab',      accent:'#C98B84', tag:'globos al amanecer' },
 ];
 

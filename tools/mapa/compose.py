@@ -430,7 +430,8 @@ def badge_nfc(name):
     <path d="M0,-8 C1,-3 3,-1 8,0 C3,1 1,3 0,8 C-1,3 -3,1 -8,0 C-3,-1 -1,-3 0,-8 Z" fill="#C9A24B" stroke="#4A3B2C" stroke-width="1.3"/>
     <path d="M8,-8 c.4,1.8 1.2,2.6 3,3 c-1.8,.4 -2.6,1.2 -3,3 c-.4,-1.8 -1.2,-2.6 -3,-3 c1.8,-.4 2.6,-1.2 3,-3 Z" fill="#C9A24B" opacity=".9"/>
   </g>'''
-badges_nfc = ''.join(badge_nfc(n) for n in BADGE_OFF)
+# Praga no tiene página por ahora: sin brillito (su dibujo se queda de adorno)
+badges_nfc = ''.join(badge_nfc(n) for n in BADGE_OFF if n != 'praga')
 
 # ---------------- cartucho del título (solo versión imprimir) ----------------
 cartucho = '''
@@ -534,7 +535,27 @@ def svg_doc(extra_head, extra_body, sparkles=""):
 </svg>
 '''
 
-open(f"{DEST}/mapa.svg", "w").write(svg_doc("", "", destellos_decor))
+
+# ---------------- variantes ----------------
+def sin_praga(svg):
+    """Quita el icono de Praga y su halo (solo en la versión web)."""
+    x, y = C['praga']
+    svg = svg.replace(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="34" fill="url(#halo)"/>', '')
+    i = svg.find('<!-- PRAGA · bola de disco -->')
+    if i >= 0:
+        svg = svg[:i] + svg[svg.find('</g>', i) + 4:]
+    return svg
+
+def sin_bus(svg):
+    """Quita el mini bus dibujado (en la web ya hay uno animado encima)."""
+    marca = 'rotate(64) scale(.62)" opacity=".9">'
+    i = svg.find(marca)
+    if i >= 0:
+        svg = svg[:svg.rfind('<g ', 0, i)] + svg[svg.find('</g>', i) + 4:]
+    return svg
+
+web = sin_bus(sin_praga(svg_doc("", "", destellos_decor)))
+open(f"{DEST}/mapa.svg", "w").write(web)
 open(f"{DEST}/mapa-imprimir.svg", "w").write(svg_doc(fuentes_imprimir, cartucho + badges_nfc))
 
 # coordenadas para js/data/destinos.js

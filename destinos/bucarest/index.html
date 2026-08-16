@@ -1,43 +1,274 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Bucarest — 1 año de Aventuras</title>
-  <meta name="description" content="Transilvania de andar por casa: murciélagos, niebla, velas y cero mordiscos (confirmados).">
-  <meta property="og:title" content="Bucarest — 1 año de Aventuras">
-  <meta property="og:description" content="Transilvania de andar por casa: murciélagos, niebla, velas y cero mordiscos (confirmados).">
-  <meta property="og:type" content="article">
-  <meta property="og:image" content="../../assets/og.jpg">
-  <meta name="theme-color" content="#EAE0CA">
-  <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>::: CASTILLO DE DRACULA - PAGINA OFICIAL :::</title>
+<meta name="description" content="La atracción MAS TERRORIFICA de toda Transilvania!!!">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<style>
+  /* ======================================================
+     Página falsa, cutre a propósito (parodia de web de 2003)
+     El botón del final lleva a la página buena: real.html
+     ====================================================== */
+  * { box-sizing: border-box; }
+  body{
+    margin:0; padding:0;
+    font-family:"Comic Sans MS","Comic Sans","Chalkboard SE",cursive;
+    color:#00FF00;
+    background-color:#000;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(90,0,0,.55) 0 18px, rgba(20,0,0,.55) 18px 36px),
+      radial-gradient(circle at 30% 20%, #3a0000, #000 70%);
+    text-align:center;
+    overflow-x:hidden;
+  }
+  .cutre-wrap{ max-width:760px; margin:0 auto; padding:8px 8px 40px; }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600;1,900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+  @keyframes parpadeo { 0%,49%{opacity:1} 50%,100%{opacity:.15} }
+  .blink{ animation:parpadeo 1s steps(1) infinite; }
+  @keyframes arcoiris {
+    0%{color:#FF0000} 16%{color:#FFFF00} 33%{color:#00FF00}
+    50%{color:#00FFFF} 66%{color:#0000FF} 83%{color:#FF00FF} 100%{color:#FF0000}
+  }
+  .rainbow{ animation:arcoiris 2s linear infinite; }
+  @keyframes tiembla { 0%,100%{transform:rotate(-2deg)} 50%{transform:rotate(2deg)} }
+  .tiembla{ animation:tiembla .35s ease-in-out infinite; display:inline-block; }
+  @keyframes gira { to { transform:rotate(360deg); } }
+  .gira{ animation:gira 3s linear infinite; display:inline-block; }
 
-  <link rel="stylesheet" href="../../css/design-system.css">
-  <link rel="stylesheet" href="../../css/destino.css">
+  h1.titulaco{
+    font-size:clamp(1.5rem,6.4vw,2.9rem); margin:6px 0;
+    color:#FF0000; letter-spacing:1px; line-height:1.1;
+    text-shadow:3px 3px 0 #FFFF00, -2px -2px 0 #0000FF, 0 0 12px #f00;
+    -webkit-text-stroke:1px #000;
+  }
+  .subtitulaco{ color:#FFFF00; font-size:1.05rem; margin:2px 0 10px; }
 
-  <script>/* anti-flash si llegamos via transicion de viaje */
-    if (sessionStorage.getItem('beapa-arrive')) document.documentElement.classList.add('arriving');
-  </script>
+  .marquesina{
+    background:#000080; color:#FFFF00; border:3px ridge #C0C0C0;
+    padding:5px 0; margin:10px 0; overflow:hidden; white-space:nowrap; font-size:1rem;
+  }
+  .marquesina span{ display:inline-block; padding-left:100%; animation:desliza 14s linear infinite; }
+  @keyframes desliza { to { transform:translateX(-100%); } }
+
+  .caja{
+    border:4px ridge #808080; background:#1a1a1a;
+    margin:14px 0; padding:12px; text-align:left;
+  }
+  .caja h2{
+    margin:0 0 8px; font-size:1.2rem; color:#FF00FF;
+    text-decoration:underline; text-align:center;
+  }
+  .caja p{ color:#E0E0E0; font-size:.95rem; line-height:1.5; margin:6px 0; }
+  .caja p b{ color:#FFFF00; }
+
+  /* "fotos de stock" con marca de agua */
+  .galeria-cutre{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+  .foto-stock{
+    position:relative; width:170px; border:3px inset #A0A0A0; background:#111; overflow:hidden;
+  }
+  .foto-stock svg{ display:block; width:100%; }
+  .foto-stock .marca{
+    position:absolute; inset:0; display:grid; place-items:center;
+    font-size:.62rem; color:rgba(255,255,255,.55); font-family:Arial,Helvetica,sans-serif;
+    font-weight:bold; letter-spacing:.5px; transform:rotate(-24deg); line-height:2.4;
+    text-shadow:0 1px 1px rgba(0,0,0,.9); pointer-events:none;
+  }
+  .foto-stock .pie{
+    background:#000; color:#00FF00; font-size:.62rem; padding:3px 4px;
+    font-family:Arial,Helvetica,sans-serif;
+  }
+
+  table.tabla-cutre{
+    width:100%; border:3px outset #C0C0C0; border-collapse:separate;
+    background:#000; color:#FFF; font-size:.85rem;
+  }
+  table.tabla-cutre th{ background:#800000; color:#FFFF00; padding:5px; }
+  table.tabla-cutre td{ border:1px solid #444; padding:5px; }
+
+  .estrellas{ color:#FFD700; font-size:1.3rem; letter-spacing:2px; }
+
+  .boton-cutre{
+    display:inline-block; margin:6px 4px; padding:9px 16px;
+    font-family:"Comic Sans MS",cursive; font-size:1rem; font-weight:bold;
+    color:#000; background:linear-gradient(#f5f5f5,#9a9a9a);
+    border:4px outset #DDD; cursor:pointer; text-decoration:none;
+  }
+  .boton-cutre:active{ border-style:inset; }
+
+  .boton-salida{
+    display:inline-block; margin:10px auto; padding:16px 22px;
+    font-family:"Comic Sans MS",cursive; font-size:clamp(1rem,4.4vw,1.35rem); font-weight:bold;
+    color:#000; background:linear-gradient(#FFF7A0,#FFD700);
+    border:6px outset #FFEC8B; cursor:pointer; text-decoration:none;
+    text-shadow:1px 1px 0 #FFF;
+  }
+  .boton-salida:active{ border-style:inset; }
+
+  .contador{
+    display:inline-block; background:#000; border:2px solid #444; padding:3px 6px;
+    font-family:"Courier New",monospace; color:#0F0; font-size:1.15rem; letter-spacing:3px;
+  }
+  .mini{ font-size:.7rem; color:#888; font-family:Arial,Helvetica,sans-serif; }
+  hr.cutre{ border:0; border-top:3px double #FF0000; margin:14px 0; }
+  .bicho{ width:44px; vertical-align:middle; }
+</style>
 </head>
 <body>
-  <main id="app"></main>
-  <noscript><p style="text-align:center;padding:2em">Este recuerdo necesita JavaScript. <a href="../../index.html">Volver al mapa</a>.</p></noscript>
+<div class="cutre-wrap">
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <p class="mini blink" style="color:#FF0000">⚠ ESTA WEB ESTA EN CONSTRUCCION DESDE 2003 ⚠</p>
 
-  <script src="../../js/icons.js"></script>
-  <script src="../../js/data/destinos.js"></script>
-  <script src="../../js/data/textos-efectos.js"></script>
-  <script src="../../js/main.js"></script>
-  <script src="../../js/data/bucarest.js"></script>
-  <script src="../../js/effects/bucarest.js"></script>
-  <script src="../../js/destino.js"></script>
+  <h1 class="titulaco">🦇 CASTILLO DE DRACULA 🦇<br>PAGINA OFICIAL(*)</h1>
+  <p class="subtitulaco tiembla">*(no oficial) — LA ATRACCION MAS TERRORIFICA DE TRANSILVANIA!!!</p>
+
+  <div class="marquesina"><span>
+    ★★★ BIENVENIDO A NUESTRA PAGINA WEB ★★★ ABIERTO TODOS LOS DIAS ★★★ PARKING GRATIS(NO) ★★★
+    TENEMOS ARAÑAS DE PLASTICO MUY REALISTAS ★★★ NO SE ADMITEN DEVOLUCIONES ★★★
+  </span></div>
+
+  <!-- ====== las fotos de "stock" ====== -->
+  <div class="caja">
+    <h2>📸 GALERIA DE FOTOS 📸</h2>
+    <div class="galeria-cutre">
+
+      <div class="foto-stock">
+        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="140" fill="#4b6274"/>
+          <circle cx="160" cy="28" r="14" fill="#e8e8d0"/>
+          <path d="M0 140 L0 96 L30 96 L30 60 L44 40 L58 60 L58 96 L86 96 L86 46 L104 22 L122 46 L122 96 L150 96 L150 62 L164 42 L178 62 L178 96 L200 96 L200 140 Z" fill="#2b3540"/>
+          <g fill="#f2c14e"><rect x="98" y="60" width="10" height="14"/><rect x="38" y="72" width="8" height="11"/><rect x="158" y="74" width="8" height="11"/></g>
+          <path d="M0 140 L0 118 Q50 108 100 118 Q150 128 200 116 L200 140 Z" fill="#1c2530"/>
+        </svg>
+        <div class="marca">STOCK PHOTO · SIN LICENCIA<br>STOCK PHOTO · SIN LICENCIA<br>STOCK PHOTO · SIN LICENCIA</div>
+        <div class="pie">castillo_transilvania_FINAL_v2.jpg</div>
+      </div>
+
+      <div class="foto-stock">
+        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="140" fill="#6b3a3a"/>
+          <ellipse cx="100" cy="120" rx="70" ry="12" fill="#4a2626"/>
+          <path d="M60 96 L74 62 L86 92 Z M140 96 L126 62 L114 92 Z" fill="#111"/>
+          <path d="M66 104 Q100 78 134 104 L128 116 L72 116 Z" fill="#7a1414" stroke="#000" stroke-width="2"/>
+          <circle cx="100" cy="66" r="26" fill="#dcd0b8" stroke="#000" stroke-width="2"/>
+          <path d="M74 56 Q80 34 100 34 Q120 34 126 56 L122 60 Q110 46 100 52 Q90 46 78 60 Z" fill="#141414"/>
+          <circle cx="91" cy="66" r="3" fill="#8b0000"/><circle cx="109" cy="66" r="3" fill="#8b0000"/>
+          <path d="M92 78 q8 6 16 0" stroke="#000" stroke-width="2" fill="none"/>
+          <path d="M95 80 l2 7 M105 80 l-2 7" stroke="#FFF" stroke-width="3" stroke-linecap="round"/>
+          <text x="100" y="136" text-anchor="middle" font-family="Arial" font-size="9" fill="#ffd7d7">plástico 100%</text>
+        </svg>
+        <div class="marca">STOCK PHOTO · SIN LICENCIA<br>STOCK PHOTO · SIN LICENCIA<br>STOCK PHOTO · SIN LICENCIA</div>
+        <div class="pie">vampiro_muy_realista.png</div>
+      </div>
+
+      <div class="foto-stock">
+        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="140" fill="#2f2f38"/>
+          <g stroke="#c9c9d6" stroke-width="2" fill="none" opacity=".8">
+            <path d="M100 20 L100 120 M50 70 L150 70 M62 34 L138 106 M138 34 L62 106"/>
+            <path d="M100 40 m-18 0 a18 18 0 1 0 36 0 a18 18 0 1 0 -36 0" transform="translate(0,30)"/>
+            <path d="M100 40 m-34 0 a34 34 0 1 0 68 0 a34 34 0 1 0 -68 0" transform="translate(0,30)"/>
+          </g>
+          <g fill="#15151c" stroke="#000" stroke-width="1.5">
+            <ellipse cx="100" cy="70" rx="13" ry="10"/>
+            <path d="M89 64 L74 50 M89 70 L70 68 M89 76 L74 90 M111 64 L126 50 M111 70 L130 68 M111 76 L126 90" stroke="#15151c" stroke-width="4" fill="none"/>
+          </g>
+          <circle cx="96" cy="67" r="2" fill="#e33"/><circle cx="104" cy="67" r="2" fill="#e33"/>
+          <text x="100" y="132" text-anchor="middle" font-family="Arial" font-size="9" fill="#aaa">telaraña de bazar</text>
+        </svg>
+        <div class="marca">STOCK PHOTO · SIN LICENCIA<br>STOCK PHOTO · SIN LICENCIA<br>STOCK PHOTO · SIN LICENCIA</div>
+        <div class="pie">araña_terrorifica_(1).jpeg</div>
+      </div>
+
+      <div class="foto-stock">
+        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="140" fill="#8a7a4e"/>
+          <rect x="16" y="30" width="168" height="86" fill="#c8b273" stroke="#5a4d2a" stroke-width="3"/>
+          <g fill="#7a1414" stroke="#3a0a0a" stroke-width="2">
+            <rect x="30" y="48" width="26" height="52" rx="4"/><rect x="66" y="48" width="26" height="52" rx="4"/>
+            <rect x="102" y="48" width="26" height="52" rx="4"/><rect x="138" y="48" width="26" height="52" rx="4"/>
+          </g>
+          <g fill="#e8dcb0" font-family="Arial" font-size="7" text-anchor="middle">
+            <text x="43" y="76">I ♥</text><text x="79" y="76">I ♥</text><text x="115" y="76">I ♥</text><text x="151" y="76">I ♥</text>
+            <text x="43" y="86">DRACULA</text><text x="79" y="86">DRACULA</text><text x="115" y="86">DRACULA</text><text x="151" y="86">DRACULA</text>
+          </g>
+          <text x="100" y="24" text-anchor="middle" font-family="Arial" font-size="11" fill="#fff8d0" font-weight="bold">SOUVENIRS 9,99€</text>
+        </svg>
+        <div class="marca">STOCK PHOTO · SIN LICENCIA<br>STOCK PHOTO · SIN LICENCIA<br>STOCK PHOTO · SIN LICENCIA</div>
+        <div class="pie">tienda_souvenirs_IMG0043.jpg</div>
+      </div>
+
+    </div>
+    <p class="mini" style="text-align:center">(fotos meramente ilustrativas. la realidad es peor)</p>
+  </div>
+
+  <hr class="cutre">
+
+  <!-- ====== la parrafada ====== -->
+  <div class="caja">
+    <h2>❤ SOBRE NOSOTROS ❤</h2>
+    <p>
+      Bienvenido/a a la <b>AUTENTICA</b> casa del <span class="rainbow">CONDE DRACULA</span>, el vampiro mas
+      famoso de la historia que <b>vivio aqui</b>(*) y donde pasan cosas <b>MUY TERRORIFICAS</b>.
+    </p>
+    <p class="mini">
+      (*) Nunca vivio aqui. Ni estuvo. Ni existio. El libro tampoco menciona este castillo. Pero bueno.
+    </p>
+    <p>
+      Nuestra decoracion <b>100% ARTESANAL</b> ha sido cuidadosamente seleccionada en el bazar de la
+      esquina e incluye: arañas de plastico, telarañas de algodon, murcielagos colgados con
+      <b>hilo de pescar VISIBLE</b> y una calabaza que sobro de halloween.
+    </p>
+    <p>
+      Al final del recorrido (2 habitaciones y un pasillo) le espera nuestra
+      <b>ESPECTACULAR</b> tienda de souvenirs con <span class="blink" style="color:#FF0000">17 IMANES DIFERENTES</span>.
+    </p>
+  </div>
+
+  <!-- ====== tabla de precios ====== -->
+  <div class="caja">
+    <h2>💰 PRECIOS Y HORARIOS 💰</h2>
+    <table class="tabla-cutre">
+      <tr><th>CONCEPTO</th><th>PRECIO</th></tr>
+      <tr><td>Entrada normal</td><td>Cara</td></tr>
+      <tr><td>Entrada + foto con vampiro</td><td>Mas cara</td></tr>
+      <tr><td>Cola para entrar</td><td>45 min</td></tr>
+      <tr><td>Duracion de la visita</td><td>11 min</td></tr>
+      <tr><td>Iman de nevera</td><td>9,99 €</td></tr>
+      <tr><td>Decepcion</td><td>GRATIS</td></tr>
+    </table>
+  </div>
+
+  <!-- ====== opiniones ====== -->
+  <div class="caja">
+    <h2>⭐ OPINIONES DE VISITANTES ⭐</h2>
+    <p class="estrellas">★★★★★ <span class="mini">— el dueño, probablemente</span></p>
+    <p>«INCREIBLE, DA MUCHISIMO MIEDO» <span class="mini">— Anonimo00123</span></p>
+    <p class="estrellas">★☆☆☆☆ <span class="mini">— alguien con ojos</span></p>
+    <p>«He visto casas del terror mejores en una feria de pueblo.» <span class="mini">— Carlos_1994</span></p>
+    <p class="estrellas">★☆☆☆☆ <span class="mini">— la copiloto</span></p>
+    <p>«‹‹ OPINIÓN DE BEA — EDITAR ›› (aquí lo que dijiste al salir)» <span class="mini">— Bea</span></p>
+  </div>
+
+  <div class="caja" style="text-align:center">
+    <h2>📖 LIBRO DE VISITAS 📖</h2>
+    <a class="boton-cutre" href="#" onclick="alert('El libro de visitas no funciona desde 2007.\n\nDisculpe las molestias.'); return false;">FIRMAR AQUI</a>
+    <a class="boton-cutre" href="#" onclick="alert('Error 404: la sorpresa no fue encontrada.'); return false;">CLICK PARA SORPRESA</a>
+    <p class="mini">Visitas a esta pagina: <span class="contador">0000012</span></p>
+    <p class="mini">Optimizada para Internet Explorer 6 · Resolucion 800x600 · <span class="gira">🦇</span></p>
+  </div>
+
+  <hr class="cutre">
+
+  <!-- ====== la salida ====== -->
+  <p style="color:#FFF; font-size:1.05rem; margin-bottom:2px">…vale, ya está.</p>
+  <p class="mini" style="margin-top:0">(salimos de ahí en 11 minutos)</p>
+  <a class="boton-salida" href="real.html">bueno… no estuvo tan mal 🦇</a>
+  <p class="mini" style="margin-top:14px">
+    <a href="../../index.html" style="color:#666">volver al mapa</a>
+  </p>
+
+</div>
 </body>
 </html>

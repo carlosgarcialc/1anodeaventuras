@@ -488,13 +488,9 @@
              S932.6,639.5 942.6,639.5 Q969.0,645.4 959.0,675.4"
       fill="none" stroke="#6E5B48" stroke-width="2.6" stroke-dasharray="1 9" stroke-linecap="round"/>
   </g>
-  <g transform="translate(920.3,582.65) rotate(64) scale(.62)" opacity=".9">
-    <rect x="-26" y="-12" width="52" height="24" rx="5" fill="#C98B84" stroke="#4A3B2C" stroke-width="2.5"/>
-    <path d="M-20,-6 h9 v8 h-9 Z M-6,-6 h9 v8 h-9 Z M8,-6 h9 v8 h-9 Z" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="1.6"/>
-    <circle cx="-14" cy="14" r="4.5" fill="#4A3B2C"/><circle cx="14" cy="14" r="4.5" fill="#4A3B2C"/>
-  </g>
   
-  <g><circle cx="416" cy="800" r="34" fill="url(#halo)"/><circle cx="525" cy="881" r="34" fill="url(#halo)"/><circle cx="485" cy="959" r="34" fill="url(#halo)"/><circle cx="860" cy="468" r="34" fill="url(#halo)"/><circle cx="880" cy="556" r="34" fill="url(#halo)"/><circle cx="905" cy="624" r="34" fill="url(#halo)"/><circle cx="959" cy="675" r="34" fill="url(#halo)"/><circle cx="1002" cy="641" r="34" fill="url(#halo)"/><circle cx="1146" cy="753" r="34" fill="url(#halo)"/><circle cx="1226" cy="833" r="34" fill="url(#halo)"/></g>
+  
+  <g><circle cx="416" cy="800" r="34" fill="url(#halo)"/><circle cx="525" cy="881" r="34" fill="url(#halo)"/><circle cx="485" cy="959" r="34" fill="url(#halo)"/><circle cx="860" cy="468" r="34" fill="url(#halo)"/><circle cx="880" cy="556" r="34" fill="url(#halo)"/><circle cx="959" cy="675" r="34" fill="url(#halo)"/><circle cx="1002" cy="641" r="34" fill="url(#halo)"/><circle cx="1146" cy="753" r="34" fill="url(#halo)"/><circle cx="1226" cy="833" r="34" fill="url(#halo)"/></g>
 
   <!-- VIGO · pata de pulpo -->
   <g transform="translate(416,800)">
@@ -548,14 +544,7 @@
     <path d="M13,-18 l4,-4 M15,-10 l6,0" stroke="#C9A24B" stroke-width="2" stroke-linecap="round"/>
   </g>
 
-  <!-- PRAGA · bola de disco -->
-  <g transform="translate(905,624)">
-    <path d="M0,-24 L0,-14" stroke="#4A3B2C" stroke-width="2.2"/>
-    <circle cx="0" cy="0" r="13" fill="#9BBAC0" stroke="#4A3B2C" stroke-width="2.5"/>
-    <path d="M-13,0 h26 M-11,-6 h22 M-11,6 h22 M0,-13 v26 M-6,-11.5 v23 M6,-11.5 v23" stroke="#F3ECDA" stroke-width="1.4"/>
-    <circle cx="-4" cy="-4" r="2" fill="#F7F1E1"/>
-    <path d="M-19,8 l-4,3 M19,8 l4,3 M-17,-12 l-4,-3 M17,-12 l4,-3" stroke="#C9A24B" stroke-width="2" stroke-linecap="round"/>
-  </g>
+  
 
   <!-- BRATISLAVA · salchicha pinchada en un tenedor -->
   <g transform="translate(959,675) rotate(-8)">

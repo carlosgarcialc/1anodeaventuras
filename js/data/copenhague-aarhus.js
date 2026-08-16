@@ -1,31 +1,29 @@
 /* ============================================================
    Copenhague–Aarhus — contenido de la página
-   ✏️ EDITA AQUÍ: fechas, textos y captions.
-   La media va en /assets/destinos/copenhague-aarhus/ con estos nombres:
-   hero.jpg (o hero.mp4 cambiando type a 'video'), foto-1.jpg…
-   Busca "EDITAR" para ver todos los huecos.
+   ✏️ Lo más cómodo: edítalo con el editor visual (editar.html).
+   La media va en /assets/destinos/copenhague-aarhus/ con estos nombres.
    ============================================================ */
 
 window.DESTINO_DATA = {
   slug: 'copenhague-aarhus',
   titulo: 'Copen<em>hague</em> &amp; Aarhus',
-  fechas: '‹‹ FECHAS — EDITAR ›› · p. ej. «marzo 2026»',
+  fechas: 'noviembre 2025',
 
-  intro: '‹‹ INTRO — EDITAR ›› — Hygge, patinaje sobre hielo, la Sirenita y un (1) enfado meteorológicamente documentado.',
+  intro: 'En las buenas, y en las malas pero siempre cotorreando',
 
-  hero: { type: 'img', src: 'hero.jpg' },  // cambia a { type:'video', src:'hero.mp4' } si es video
+  hero: { type: 'img', src: 'hero.jpg' },
 
-  galeriaSub: 'antes y después del nubarrón',
+  galeriaSub: 'algunos de los recuerdos',
   galeria: [
-    { type: 'img',   src: 'foto-1.jpg', caption: '‹‹ CAPTION 1 — EDITAR ››' },
-    { type: 'img',   src: 'foto-2.jpg', caption: '‹‹ CAPTION 2 — EDITAR ››', horizontal: true },
-    { type: 'img',   src: 'foto-3.jpg', caption: '‹‹ CAPTION 3 — EDITAR ››' },
-    { type: 'video', src: 'video-1.mp4', caption: '‹‹ CAPTION VÍDEO — EDITAR ››' },
-    { type: 'img',   src: 'foto-4.jpg', caption: '‹‹ CAPTION 4 — EDITAR ››', horizontal: true },
-    { type: 'img',   src: 'foto-5.jpg', caption: '‹‹ CAPTION 5 — EDITAR ››' },
+    { type: 'img', src: 'foto-1.jpg', caption: 'Mis momentos favoritos del viaje' },
+    { type: 'img', src: 'foto-2.jpg', caption: 'Yo creo que fue cuando splitee la G cuando te enamoraste de mí', horizontal: true },
+    { type: 'img', src: 'foto-3.jpg', caption: 'Pueblo porreta' },
+    { type: 'video', src: 'video-1.mp4', caption: 'O igual fue aquí cuando te enamoraste ' },
+    { type: 'img', src: 'foto-4.jpg', caption: 'Que raro haciendo el parvo', horizontal: true },
+    { type: 'img', src: 'foto-5.jpg', caption: 'Presumiendo de novia' },
   ],
 
-  historia: '‹‹ HISTORIA — EDITAR ›› — Aquí va nuestra anécdota de Copenhague–Aarhus: cómo empezó, qué salió (más o menos) según el plan y qué no olvidaremos.',
+  historia: 'Como nos marcó este viaje, sin duda un antes y un después en nuestra relación. Estoy escribiendo esto llorando. Es el viaje que más vivo me ha hecho sentir en mi vida. Y en el que dije esta chica es distinta. Vivo porque fueron todo emociones desde los días más ocuros hasta algunos de los momentos más felices que hemos tenido. Estar jugando en un bar en Copenaghue con nuestros amigos a cualquier cosa, echarte de menos porque dormíamos separados, que conocieras a gente mía de Vigo, discutir mucho, tener miedo real de que se acabara y darme cuenta en ese preciso momento que no quería perderte por nada del mundo y que iba a pelear eso hasta el final. Y que eras distinta me di cuenta cuando a pesar de estar agotados, nos tirábamos ocho horas seguidas hablando en el bus porque no podíamos parar. Mira que las ciudades me encantaron y nos lo pasamos genial pero genuinamente mi recuerdo más bonito de esos días siempre será tu y yo en esos buses sin poder parar de hablar.',
 
-  nota: '‹‹ INSIDE JOKE — EDITAR ›› <br>(el enfado escampó, el arcoíris quedó)',
+  nota: 'Aún te debemos todos la vacilada que le metiste a esos controladores de bus. Mételo al tricount o algo.',
 };
