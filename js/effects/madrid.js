@@ -147,7 +147,7 @@ window.DESTINO_EFFECTS = {
     gsap.to(n, { v: 19, ease: 'none', scrollTrigger: st,
       onUpdate: () => contador.textContent = Math.round(n.v) });
 
-    /* ===== anuncio: LOS DEL VERMUT™ (va TRAS la historia) ===== */
+    /* ===== anuncio: LOS DEL VERMUT™ (va TRAS la galería, antes de la historia) ===== */
     (function(){
       const anuncio = document.createElement('section');
       anuncio.className = 'escena-abierta will-reveal';
@@ -175,13 +175,16 @@ window.DESTINO_EFFECTS = {
             text-align:center; font-family:var(--font-hand); font-size:1.25rem;
             color:var(--ink-soft); margin-bottom:14px;
           }
-          .mad-ad-fotos{ display:flex; gap:14px; justify-content:center; margin:6px 0 4px; }
+          .mad-ad-fotos{ display:flex; gap:16px; justify-content:center; margin:6px 0 4px; }
           .mad-ad-foto{
-            flex:0 1 150px; background:#F7F1E1; padding:8px; box-shadow:var(--shadow-soft);
+            flex:0 1 clamp(160px,42vw,220px); width:clamp(160px,42vw,220px); margin:0;
+            background:#F7F1E1; padding:8px; box-shadow:var(--shadow-soft);
           }
           .mad-ad-foto:nth-child(1){ transform:rotate(-3deg); }
           .mad-ad-foto:nth-child(2){ transform:rotate(3deg); }
           .mad-ad-foto .media{ aspect-ratio:4/5; overflow:hidden; background:var(--paper-dark); }
+          .mad-ad-foto .media.horizontal{ aspect-ratio:5/4; }
+          .mad-ad-foto .media img, .mad-ad-foto .media video{ width:100%; height:100%; object-fit:cover; }
           .mad-ad-cta{
             display:block; width:max-content; margin:18px auto 4px;
             font-family:var(--font-display); font-size:.85rem; letter-spacing:.1em;
@@ -204,8 +207,8 @@ window.DESTINO_EFFECTS = {
           <button class="mad-ad-cta" type="button" disabled>${TXT('adCta')}</button>
           <p class="mad-ad-letrapeq">${TXT('adLetraPeq')}</p>
         </div>`;
-      const nota = document.querySelector('.d-nota');
-      if (nota) nota.before(anuncio); else section.appendChild(anuncio);
+      const historiaAd = document.querySelector('.d-historia');
+      if (historiaAd) historiaAd.before(anuncio); else section.appendChild(anuncio);
       anuncio.querySelector('#madAdFoto1')
         .appendChild(App.crearMedia({ type: 'img', src: 'vermut-1.jpg' }, 'madrid', '../../', 'vermut'));
       anuncio.querySelector('#madAdFoto2')
@@ -225,11 +228,13 @@ window.DESTINO_EFFECTS = {
         <style>
           .mad-hall-titulo{ text-align:center; font-size:clamp(1.5rem,6vw,2.2rem); font-family:var(--font-display); font-weight:900; padding:0 20px; }
           .mad-hall-pista{ text-align:center; font-family:var(--font-hand); font-size:1.2rem; color:var(--ink-soft); margin:.2em auto 18px; max-width:480px; padding:0 22px; }
-          .mad-hall-fila{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; max-width:640px; margin:0 auto; padding:0 16px; }
-          .mad-hall-marco{ flex:0 1 160px; text-align:center; }
+          .mad-hall-fila{ display:flex; gap:20px; justify-content:center; flex-wrap:wrap; max-width:760px; margin:0 auto; padding:0 16px; }
+          .mad-hall-marco{ flex:0 1 clamp(180px,45vw,240px); text-align:center; }
           .mad-hall-medalla{ font-size:1.6rem; line-height:1; margin-bottom:4px; }
-          .mad-hall-foto{ background:#F7F1E1; padding:8px 8px 10px; box-shadow:var(--shadow-soft); }
-          .mad-hall-foto .media{ aspect-ratio:1/1; overflow:hidden; background:var(--paper-dark); }
+          .mad-hall-foto{ width:100%; margin:0; background:#F7F1E1; padding:8px 8px 10px; box-shadow:var(--shadow-soft); }
+          .mad-hall-foto .media{ aspect-ratio:4/5; overflow:hidden; background:var(--paper-dark); }
+          .mad-hall-foto .media.horizontal{ aspect-ratio:5/4; }
+          .mad-hall-foto .media img, .mad-hall-foto .media video{ width:100%; height:100%; object-fit:cover; }
           .mad-hall-foto figcaption{ font-family:var(--font-hand); font-size:1.05rem; color:var(--ink-soft); padding-top:6px; }
           .mad-hall-marco:nth-child(1) .mad-hall-foto{ transform:rotate(-2deg); }
           .mad-hall-marco:nth-child(2) .mad-hall-foto{ transform:rotate(1.5deg); }
@@ -257,7 +262,7 @@ window.DESTINO_EFFECTS = {
       });
     })();
 
-    /* ===== Pareja: oasis con casita y piscina (va TRAS la nota, antes de la navegación) ===== */
+    /* ===== Pareja: oasis con casita y piscina (va TRAS la galería, antes de la historia) ===== */
     (function(){
       const oasis = document.createElement('section');
       oasis.className = 'escena-abierta will-reveal';
@@ -279,13 +284,15 @@ window.DESTINO_EFFECTS = {
           .mad-oasis-fronda{ transform-origin:bottom center; }
           .mad-oasis-agua{ opacity:.85; }
           .mad-oasis-titulo{ padding-top:26px; }
-          .mad-oasis-fila{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; max-width:640px; margin:20px auto 0; padding:0 16px; }
-          .mad-oasis-marco{ flex:0 1 160px; }
-          .mad-oasis-foto{ background:#F7F1E1; padding:8px 8px 10px; box-shadow:var(--shadow-soft); }
+          .mad-oasis-fila{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; max-width:760px; margin:20px auto 0; padding:0 16px; }
+          .mad-oasis-marco{ flex:0 1 clamp(180px,45vw,240px); }
+          .mad-oasis-foto{ width:100%; margin:0; background:#F7F1E1; padding:8px 8px 10px; box-shadow:var(--shadow-soft); }
           .mad-oasis-marco:nth-child(1) .mad-oasis-foto{ transform:rotate(-2.5deg); }
           .mad-oasis-marco:nth-child(2) .mad-oasis-foto{ transform:rotate(1.5deg); }
           .mad-oasis-marco:nth-child(3) .mad-oasis-foto{ transform:rotate(-1.5deg); }
           .mad-oasis-foto .media{ aspect-ratio:4/5; overflow:hidden; background:var(--paper-dark); }
+          .mad-oasis-foto .media.horizontal{ aspect-ratio:5/4; }
+          .mad-oasis-foto .media img, .mad-oasis-foto .media video{ width:100%; height:100%; object-fit:cover; }
           .mad-oasis-foto figcaption{ font-family:var(--font-hand); font-size:1.05rem; color:var(--ink-soft); text-align:center; padding-top:6px; }
         </style>
         <div class="mad-oasis-titulo">
@@ -338,12 +345,6 @@ window.DESTINO_EFFECTS = {
               <path d="M108 172 q14 -8 28 0 q14 8 28 0 q14 -8 28 0"/>
               <path d="M212 182 q14 -8 28 0 q14 8 28 0 q14 -8 28 0"/>
             </g>
-            <!-- flotador flamenco -->
-            <g transform="translate(268,164)">
-              <circle r="20" fill="none" stroke="#C98B84" stroke-width="7"/>
-              <path d="M14 -14 Q28 -30 24 -42 Q16 -34 12 -22" fill="#C98B84" stroke="#4A3B2C" stroke-width="2"/>
-              <circle cx="23" cy="-40" r="3" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="1.6"/>
-            </g>
             <!-- hamaca -->
             <g transform="translate(70,190)">
               <rect x="-22" y="-8" width="44" height="8" rx="3" fill="#F3ECDA" stroke-width="2"/>
@@ -361,8 +362,8 @@ window.DESTINO_EFFECTS = {
               </figure>
             </div>`).join('')}
         </div>`;
-      const nav = document.querySelector('.d-nav');
-      if (nav) nav.before(oasis); else section.appendChild(oasis);
+      const historiaOasis = document.querySelector('.d-historia');
+      if (historiaOasis) historiaOasis.before(oasis); else section.appendChild(oasis);
       [1, 2, 3].forEach(i => {
         oasis.querySelector('#madOasisFoto' + i)
           .appendChild(App.crearMedia({ type: 'img', src: `pareja-${i}.jpg` }, 'madrid', '../../', 'pareja ' + i));

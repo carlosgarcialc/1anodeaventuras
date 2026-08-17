@@ -10,20 +10,20 @@ window.TEXTOS_EFECTOS = {
     burbujaA: '¿otra ración?',   // Bocadillo · él
     burbujaB: 'obvio.',   // Bocadillo · ella
     caption: 'Bea que tenemos un album juntos en titktok de sitios que queremos ir y solo hay 3987894 restaurantes. Sin duda nuestro hobby.',   // Pie de la escena
-    adMarca: 'LOS DEL VERMUT™',   // Anuncio · nombre de la marca
+    adMarca: 'LOS DEL VERMUT™',   // Anuncio · marca
     adEslogan: 'peluches de tapas con denominación de origen',   // Anuncio · eslogan
     adCta: '¡RESERVA LA TUYA!',   // Anuncio · botón
     adLetraPeq: 'oferta válida hasta que se nos ocurra otra idea de negocio · unidades limitadas (0)',   // Anuncio · letra pequeña
     hallTitulo: 'Hall of Fame: platos de las citas',   // Hall of Fame · título
-    hallPista: 'los tres que no se nos olvidan (por lo bueno o por lo mucho que discutimos por la última croqueta)',   // Hall of Fame · frase bajo el título
-    hallCaption1: '‹‹ QUÉ PLATO — EDITAR ››',   // Hall of Fame · pie foto 1
-    hallCaption2: '‹‹ QUÉ PLATO — EDITAR ››',   // Hall of Fame · pie foto 2
-    hallCaption3: '‹‹ QUÉ PLATO — EDITAR ››',   // Hall of Fame · pie foto 3
+    hallPista: 'los tres que no se nos olvidan',   // Hall of Fame · frase bajo el título
+    hallCaption1: 'No sé si vale pero es lo mas rico que he comido',   // Hall of Fame · pie foto 1
+    hallCaption2: 'No es mala cena de examenes',   // Hall of Fame · pie foto 2
+    hallCaption3: 'Y ahora tenemos que hacer una tarta de esto?',   // Hall of Fame · pie foto 3
     parejaTitulo: 'Pareja',   // Oasis · título
-    parejaPista: 'nuestro paraíso particular (aunque sea un piso de 40m²)',   // Oasis · frase bajo el título
-    parejaCaption1: '‹‹ CAPTION — EDITAR ››',   // Oasis · pie foto 1
-    parejaCaption2: '‹‹ CAPTION — EDITAR ››',   // Oasis · pie foto 2
-    parejaCaption3: '‹‹ CAPTION — EDITAR ››',   // Oasis · pie foto 3
+    parejaPista: 'nuestro paraíso particular',   // Oasis · frase bajo el título
+    parejaCaption1: '',   // Oasis · pie foto 1
+    parejaCaption2: '',   // Oasis · pie foto 2
+    parejaCaption3: '',   // Oasis · pie foto 3
   },
   'cordoba': {
     duchaTitulo: 'yo solo queria una piscinita en el pisito de solteros',   // Ducha · título
