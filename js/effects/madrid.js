@@ -146,6 +146,235 @@ window.DESTINO_EFFECTS = {
     const n = { v: 3 };
     gsap.to(n, { v: 19, ease: 'none', scrollTrigger: st,
       onUpdate: () => contador.textContent = Math.round(n.v) });
+
+    /* ===== anuncio: LOS DEL VERMUT™ (va TRAS la historia) ===== */
+    (function(){
+      const anuncio = document.createElement('section');
+      anuncio.className = 'escena-abierta will-reveal';
+      anuncio.innerHTML = `
+        <style>
+          .mad-ad-recorte{
+            position:relative; max-width:420px; margin:8px auto 0;
+            background:var(--paper-light); background-image:var(--noise);
+            border:2px dashed var(--ink-soft); border-radius:4px;
+            padding:22px 18px 18px; box-shadow:var(--shadow-lift);
+            transform:rotate(-1deg);
+          }
+          .mad-ad-sello{
+            position:absolute; top:-14px; left:20px; transform:rotate(-4deg);
+            background:var(--wine); color:var(--paper-light);
+            font-family:var(--font-display); font-size:.62rem; letter-spacing:.14em;
+            text-transform:uppercase; padding:.3em .7em; border-radius:2px;
+          }
+          .mad-ad-marca{
+            font-family:var(--font-display); font-weight:900; font-style:italic;
+            font-size:clamp(1.5rem,6.5vw,2.1rem); text-align:center; color:var(--terracotta);
+            margin:.2em 0 0;
+          }
+          .mad-ad-eslogan{
+            text-align:center; font-family:var(--font-hand); font-size:1.25rem;
+            color:var(--ink-soft); margin-bottom:14px;
+          }
+          .mad-ad-fotos{ display:flex; gap:14px; justify-content:center; margin:6px 0 4px; }
+          .mad-ad-foto{
+            flex:0 1 150px; background:#F7F1E1; padding:8px; box-shadow:var(--shadow-soft);
+          }
+          .mad-ad-foto:nth-child(1){ transform:rotate(-3deg); }
+          .mad-ad-foto:nth-child(2){ transform:rotate(3deg); }
+          .mad-ad-foto .media{ aspect-ratio:4/5; overflow:hidden; background:var(--paper-dark); }
+          .mad-ad-cta{
+            display:block; width:max-content; margin:18px auto 4px;
+            font-family:var(--font-display); font-size:.85rem; letter-spacing:.1em;
+            background:var(--gold); color:var(--ink); border:2px solid var(--ink);
+            padding:.6em 1.3em; border-radius:3px; text-transform:uppercase;
+            animation:madAdPulso 1.6s ease-in-out infinite;
+          }
+          @keyframes madAdPulso{ 0%,100%{ transform:scale(1);} 50%{ transform:scale(1.045);} }
+          html.no-motion .mad-ad-cta{ animation:none; }
+          .mad-ad-letrapeq{ text-align:center; font-size:.68rem; color:var(--ink-soft); opacity:.7; margin-top:8px; }
+        </style>
+        <div class="mad-ad-recorte">
+          <span class="mad-ad-sello">publicidad</span>
+          <div class="mad-ad-marca">${TXT('adMarca')}</div>
+          <div class="mad-ad-eslogan">${TXT('adEslogan')}</div>
+          <div class="mad-ad-fotos">
+            <figure class="mad-ad-foto"><div class="media" id="madAdFoto1"></div></figure>
+            <figure class="mad-ad-foto"><div class="media" id="madAdFoto2"></div></figure>
+          </div>
+          <button class="mad-ad-cta" type="button" disabled>${TXT('adCta')}</button>
+          <p class="mad-ad-letrapeq">${TXT('adLetraPeq')}</p>
+        </div>`;
+      const nota = document.querySelector('.d-nota');
+      if (nota) nota.before(anuncio); else section.appendChild(anuncio);
+      anuncio.querySelector('#madAdFoto1')
+        .appendChild(App.crearMedia({ type: 'img', src: 'vermut-1.jpg' }, 'madrid', '../../', 'vermut'));
+      anuncio.querySelector('#madAdFoto2')
+        .appendChild(App.crearMedia({ type: 'img', src: 'vermut-2.jpg' }, 'madrid', '../../', 'vermut'));
+    })();
+
+    /* ===== Hall of Fame de platos (va TRAS la galería, antes de la historia) ===== */
+    (function(){
+      const hall = document.createElement('section');
+      hall.className = 'escena-abierta will-reveal';
+      const medallas = [
+        { color: '#C9A24B', medalla: '🥇' },
+        { color: '#B7C1CC', medalla: '🥈' },
+        { color: '#C98B84', medalla: '🥉' },
+      ];
+      hall.innerHTML = `
+        <style>
+          .mad-hall-titulo{ text-align:center; font-size:clamp(1.5rem,6vw,2.2rem); font-family:var(--font-display); font-weight:900; padding:0 20px; }
+          .mad-hall-pista{ text-align:center; font-family:var(--font-hand); font-size:1.2rem; color:var(--ink-soft); margin:.2em auto 18px; max-width:480px; padding:0 22px; }
+          .mad-hall-fila{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; max-width:640px; margin:0 auto; padding:0 16px; }
+          .mad-hall-marco{ flex:0 1 160px; text-align:center; }
+          .mad-hall-medalla{ font-size:1.6rem; line-height:1; margin-bottom:4px; }
+          .mad-hall-foto{ background:#F7F1E1; padding:8px 8px 10px; box-shadow:var(--shadow-soft); }
+          .mad-hall-foto .media{ aspect-ratio:1/1; overflow:hidden; background:var(--paper-dark); }
+          .mad-hall-foto figcaption{ font-family:var(--font-hand); font-size:1.05rem; color:var(--ink-soft); padding-top:6px; }
+          .mad-hall-marco:nth-child(1) .mad-hall-foto{ transform:rotate(-2deg); }
+          .mad-hall-marco:nth-child(2) .mad-hall-foto{ transform:rotate(1.5deg); }
+          .mad-hall-marco:nth-child(3) .mad-hall-foto{ transform:rotate(-1.5deg); }
+          .mad-hall-repisa{ height:10px; max-width:640px; margin:14px auto 0; background:var(--terracotta); border-radius:2px; box-shadow:var(--shadow-soft); }
+        </style>
+        <div class="mad-hall-titulo">${TXT('hallTitulo')}</div>
+        <div class="mad-hall-pista">${TXT('hallPista')}</div>
+        <div class="mad-hall-fila">
+          ${medallas.map((m, i) => `
+            <div class="mad-hall-marco">
+              <div class="mad-hall-medalla">${m.medalla}</div>
+              <figure class="mad-hall-foto" style="outline:3px solid ${m.color}">
+                <div class="media" id="madHallFoto${i + 1}"></div>
+                <figcaption>${TXT('hallCaption' + (i + 1))}</figcaption>
+              </figure>
+            </div>`).join('')}
+        </div>
+        <div class="mad-hall-repisa"></div>`;
+      const historia = document.querySelector('.d-historia');
+      if (historia) historia.before(hall); else section.appendChild(hall);
+      [1, 2, 3].forEach(i => {
+        hall.querySelector('#madHallFoto' + i)
+          .appendChild(App.crearMedia({ type: 'img', src: `plato-${i}.jpg` }, 'madrid', '../../', 'plato ' + i));
+      });
+    })();
+
+    /* ===== Pareja: oasis con casita y piscina (va TRAS la nota, antes de la navegación) ===== */
+    (function(){
+      const oasis = document.createElement('section');
+      oasis.className = 'escena-abierta will-reveal';
+      oasis.innerHTML = `
+        <style>
+          .mad-oasis-cielo{
+            position:relative; overflow:hidden; max-width:640px; margin:10px auto 0;
+            border-radius:10px; box-shadow:var(--shadow-lift);
+            background:linear-gradient(180deg, #F3ECDA 0%, #E8C06B 42%, #E0A860 62%, #C9A24B 100%);
+            min-height:260px;
+          }
+          .mad-oasis-sol{
+            position:absolute; top:16px; right:14%; width:56px; height:56px; border-radius:50%;
+            background:radial-gradient(circle, #F7F1E1, #C9A24B 62%, transparent 72%);
+          }
+          .mad-oasis-palmera{ position:absolute; width:70px; bottom:8%; }
+          .mad-oasis-palmera.izq{ left:2%; }
+          .mad-oasis-palmera.der{ right:2%; transform:scaleX(-1); }
+          .mad-oasis-fronda{ transform-origin:bottom center; }
+          .mad-oasis-agua{ opacity:.85; }
+          .mad-oasis-titulo{ padding-top:26px; }
+          .mad-oasis-fila{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; max-width:640px; margin:20px auto 0; padding:0 16px; }
+          .mad-oasis-marco{ flex:0 1 160px; }
+          .mad-oasis-foto{ background:#F7F1E1; padding:8px 8px 10px; box-shadow:var(--shadow-soft); }
+          .mad-oasis-marco:nth-child(1) .mad-oasis-foto{ transform:rotate(-2.5deg); }
+          .mad-oasis-marco:nth-child(2) .mad-oasis-foto{ transform:rotate(1.5deg); }
+          .mad-oasis-marco:nth-child(3) .mad-oasis-foto{ transform:rotate(-1.5deg); }
+          .mad-oasis-foto .media{ aspect-ratio:4/5; overflow:hidden; background:var(--paper-dark); }
+          .mad-oasis-foto figcaption{ font-family:var(--font-hand); font-size:1.05rem; color:var(--ink-soft); text-align:center; padding-top:6px; }
+        </style>
+        <div class="mad-oasis-titulo">
+          <div class="escena-titulo">${TXT('parejaTitulo')}</div>
+          <div class="escena-caption">${TXT('parejaPista')}</div>
+        </div>
+
+        <div class="mad-oasis-cielo" id="madOasisCielo">
+          <div class="mad-oasis-sol" id="madOasisSol"></div>
+
+          <div class="mad-oasis-palmera izq">
+            <svg viewBox="0 0 70 130" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linejoin="round">
+              <path d="M32 128 Q22 80 38 40" fill="none" stroke="#8a6a4d" stroke-width="7"/>
+              <g class="mad-oasis-fronda" style="transform-origin:38px 40px">
+                <path d="M38 40 Q10 30 4 10 Q26 18 38 40 Z" fill="#5F7355"/>
+                <path d="M38 40 Q14 46 2 62 Q24 58 38 40 Z" fill="#5F7355"/>
+                <path d="M38 40 Q52 14 74 8 Q64 30 38 40 Z" fill="#8B9A78"/>
+                <path d="M38 40 Q60 40 70 58 Q46 60 38 40 Z" fill="#8B9A78"/>
+                <path d="M38 40 Q30 8 40 -8 Q50 12 38 40 Z" fill="#5F7355"/>
+              </g>
+            </svg>
+          </div>
+          <div class="mad-oasis-palmera der">
+            <svg viewBox="0 0 70 130" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linejoin="round">
+              <path d="M32 128 Q22 80 38 40" fill="none" stroke="#8a6a4d" stroke-width="7"/>
+              <g class="mad-oasis-fronda" style="transform-origin:38px 40px">
+                <path d="M38 40 Q10 30 4 10 Q26 18 38 40 Z" fill="#5F7355"/>
+                <path d="M38 40 Q14 46 2 62 Q24 58 38 40 Z" fill="#5F7355"/>
+                <path d="M38 40 Q52 14 74 8 Q64 30 38 40 Z" fill="#8B9A78"/>
+                <path d="M38 40 Q60 40 70 58 Q46 60 38 40 Z" fill="#8B9A78"/>
+                <path d="M38 40 Q30 8 40 -8 Q50 12 38 40 Z" fill="#5F7355"/>
+              </g>
+            </svg>
+          </div>
+
+          <svg viewBox="0 0 400 220" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#4A3B2C" stroke-width="2.5" stroke-linejoin="round" style="display:block;width:100%">
+            <!-- casita -->
+            <g transform="translate(200,70)">
+              <path d="M-52 60 L0 20 L52 60 Z" fill="#B26A54"/>
+              <rect x="-40" y="60" width="80" height="54" fill="#F3ECDA"/>
+              <rect x="-8" y="86" width="16" height="28" fill="#6E5B48"/>
+              <rect x="-30" y="70" width="16" height="14" fill="#9BBAC0" stroke-width="2"/>
+              <rect x="14" y="70" width="16" height="14" fill="#9BBAC0" stroke-width="2"/>
+              <rect x="4" y="14" width="12" height="16" fill="#6E5B48"/>
+            </g>
+            <!-- piscina -->
+            <ellipse cx="200" cy="176" rx="132" ry="30" fill="#9BBAC0" stroke="#4A3B2C" stroke-width="2.5"/>
+            <ellipse cx="200" cy="176" rx="112" ry="22" fill="#BFD3D6"/>
+            <g class="mad-oasis-agua" id="madOasisAgua" stroke="#F3ECDA" stroke-width="2">
+              <path d="M108 172 q14 -8 28 0 q14 8 28 0 q14 -8 28 0"/>
+              <path d="M212 182 q14 -8 28 0 q14 8 28 0 q14 -8 28 0"/>
+            </g>
+            <!-- flotador flamenco -->
+            <g transform="translate(268,164)">
+              <circle r="20" fill="none" stroke="#C98B84" stroke-width="7"/>
+              <path d="M14 -14 Q28 -30 24 -42 Q16 -34 12 -22" fill="#C98B84" stroke="#4A3B2C" stroke-width="2"/>
+              <circle cx="23" cy="-40" r="3" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="1.6"/>
+            </g>
+            <!-- hamaca -->
+            <g transform="translate(70,190)">
+              <rect x="-22" y="-8" width="44" height="8" rx="3" fill="#F3ECDA" stroke-width="2"/>
+              <path d="M-22 0 l-4 14 M22 0 l4 14" stroke-width="2.4"/>
+            </g>
+          </svg>
+        </div>
+
+        <div class="mad-oasis-fila">
+          ${[1, 2, 3].map(i => `
+            <div class="mad-oasis-marco">
+              <figure class="mad-oasis-foto">
+                <div class="media" id="madOasisFoto${i}"></div>
+                <figcaption>${TXT('parejaCaption' + i)}</figcaption>
+              </figure>
+            </div>`).join('')}
+        </div>`;
+      const nav = document.querySelector('.d-nav');
+      if (nav) nav.before(oasis); else section.appendChild(oasis);
+      [1, 2, 3].forEach(i => {
+        oasis.querySelector('#madOasisFoto' + i)
+          .appendChild(App.crearMedia({ type: 'img', src: `pareja-${i}.jpg` }, 'madrid', '../../', 'pareja ' + i));
+      });
+
+      if (reduced || !App.hasGsap) return;
+      gsap.to('#madOasisSol', { scale: 1.12, opacity: .85, duration: 2, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+      oasis.querySelectorAll('.mad-oasis-fronda').forEach((f, i) => {
+        gsap.to(f, { rotation: i % 2 ? 4 : -4, duration: 2.2 + i * .3, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+      });
+      gsap.to('#madOasisAgua', { x: 8, opacity: .5, duration: 1.6, repeat: -1, yoyo: true, ease: 'sine.inOut' });
+    })();
   },
 
   /* tapas flotando por los laterales de toda la página */

@@ -16,6 +16,62 @@ window.TEXTOS_EFECTOS_LABELS = {
     [
       "caption",
       "Pie de la escena"
+    ],
+    [
+      "adMarca",
+      "Anuncio · marca"
+    ],
+    [
+      "adEslogan",
+      "Anuncio · eslogan"
+    ],
+    [
+      "adCta",
+      "Anuncio · botón"
+    ],
+    [
+      "adLetraPeq",
+      "Anuncio · letra pequeña"
+    ],
+    [
+      "hallTitulo",
+      "Hall of Fame · título"
+    ],
+    [
+      "hallPista",
+      "Hall of Fame · frase bajo el título"
+    ],
+    [
+      "hallCaption1",
+      "Hall of Fame · pie foto 1"
+    ],
+    [
+      "hallCaption2",
+      "Hall of Fame · pie foto 2"
+    ],
+    [
+      "hallCaption3",
+      "Hall of Fame · pie foto 3"
+    ],
+    [
+      "parejaTitulo",
+      "Oasis · título"
+    ],
+    [
+      "parejaPista",
+      "Oasis · frase bajo el título"
+    ],
+    [
+      "parejaCaption1",
+      "Oasis · pie foto 1"
+    ],
+    [
+      "parejaCaption2",
+      "Oasis · pie foto 2"
+    ],
+    [
+      "parejaCaption3",
+      "Oasis · pie foto 3"
     ]
   ],
   "cordoba": [
