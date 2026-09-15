@@ -115,17 +115,23 @@
       const heart = 'M200,205 C186,178 152,168 132,186 C110,206 114,238 136,260 C158,282 200,306 200,306 C200,306 242,282 264,260 C286,238 290,206 268,186 C248,168 214,178 200,205 Z';
       svg.innerHTML = `
         <defs><mask id="heartMask"><path id="heartMaskPath" d="${heart}" fill="none" stroke="#fff" stroke-width="16"/></mask></defs>
-        <path d="${heart}" fill="none" stroke="#6E5B48" stroke-width="3.5"
+        <path id="heroGuia" d="${heart}" fill="none" stroke="#6E5B48" stroke-width="3.5"
           stroke-dasharray="1 13" stroke-linecap="round" opacity=".8" mask="url(#heartMask)"/>
         <g id="heroAvionG" style="color:#6E5B48"><g transform="translate(-26,-16) scale(.8)">${ADORNOS.avion.replace('<svg','<svg width="64" height="40"')}</g></g>`;
       cont.appendChild(svg);
       const mp = svg.querySelector('#heartMaskPath');
+      /* OJO: el avión NO puede guiarse por el path de dentro del <mask>.
+         Los elementos de <defs> no se pintan, y el navegador ya no da una
+         matriz usable para ellos, así que GSAP alinea el avión a un punto
+         fijo y se queda quieto. Se guía por el path gemelo VISIBLE
+         (#heroGuia), que tiene exactamente la misma "d". */
+      const guia = svg.querySelector('#heroGuia');
       const L = mp.getTotalLength();
       mp.style.strokeDasharray = L; mp.style.strokeDashoffset = L;
       if (!App.reduced && App.hasGsap){
         gsap.to(mp, { strokeDashoffset: 0, duration: 3.4, ease: 'power1.inOut', delay: .6 });
         gsap.to('#heroAvionG', {
-          motionPath: { path: mp, align: mp, alignOrigin: [.5, .5], autoRotate: true },
+          motionPath: { path: guia, align: guia, alignOrigin: [.5, .5], autoRotate: true },
           duration: 3.4, ease: 'power1.inOut', delay: .6,
         });
         /* parallax sutil del hero */

@@ -68,6 +68,12 @@
   canvas.appendChild(svg);
 
   const maskPath = svg.querySelector('#rutaMaskPath');
+  /* OJO: el bus NO puede guiarse por el path de dentro del <mask>.
+     Los elementos de <defs> no se pintan, y el navegador ya no da una
+     matriz usable para ellos, así que GSAP alinea el bus a un punto fijo
+     (acaba fuera del mapa) y no recorre la ruta. Se guía por el path
+     punteado VISIBLE, que tiene exactamente la misma "d". */
+  const guia = svg.querySelector('.ruta-dots');
   const len = maskPath.getTotalLength();
   maskPath.style.strokeDasharray = len;
   maskPath.style.strokeDashoffset = App.reduced ? 0 : len;
@@ -83,11 +89,11 @@
   // el mini bus recorre la ruta de ida y vuelta
   if (!App.reduced && App.hasGsap && typeof MotionPathPlugin !== 'undefined'){
     gsap.to(bus, {
-      motionPath: { path: maskPath, align: maskPath, alignOrigin: [.5, .9], autoRotate: true },
+      motionPath: { path: guia, align: guia, alignOrigin: [.5, .9], autoRotate: true },
       duration: 10, repeat: -1, yoyo: true, ease: 'sine.inOut',
     });
   } else {
-    const mid = maskPath.getPointAtLength(len / 2);
+    const mid = guia.getPointAtLength(guia.getTotalLength() / 2);
     bus.setAttribute('transform', `translate(${mid.x},${mid.y})`);
   }
 
