@@ -13,7 +13,7 @@ echo ""
 
 # si ya hay algo escuchando en ese puerto, no arrancamos otro
 if ! lsof -i :$PUERTO >/dev/null 2>&1; then
-  /usr/bin/python3 -m http.server $PUERTO >/dev/null 2>&1 &
+  /usr/bin/python3 -m http.server $PUERTO --bind 127.0.0.1 >/dev/null 2>&1 &
   SERVIDOR=$!
   sleep 1
 else

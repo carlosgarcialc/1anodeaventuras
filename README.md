@@ -8,14 +8,31 @@ Sitio 100% estático (HTML + CSS + JS vanilla, GSAP/Lenis por CDN). Sin build, s
 
 ## 1. El mapa
 
-Hay **dos versiones** del mapa, ambas con geografía real de Europa (datos Natural Earth, proyección azimutal como los mapas europeos de verdad) y España sutilmente agrandada con una "lupa":
+Todas las versiones usan geografía real de Europa (datos Natural Earth, proyección azimutal como los mapas europeos de verdad) y España sutilmente agrandada con una "lupa".
 
-- **`assets/mapa.svg`** — la que usa la web. Sin textos: solo los 10 iconos de destino (con NFC) y los 4 easter eggs (oso de Cervera, cochinillo de Segovia, piscina de Guadalajara y tienda de Huesca — decoración, sin página).
-- **`assets/mapa-imprimir.svg`** — la del **cuadro físico**: igual pero con el cartucho del título ("1 año de Aventuras… por ahora") y la nota "psst: acerca el móvil a cada dibujo…". Ábrela en el navegador (con internet, para que cargue las fuentes) e imprímela o expórtala a PNG grande (Figma/Inkscape). Al ser vectorial no pierde calidad a ningún tamaño. Las pegatinas NFC van detrás de cada icono principal.
+### Para imprimir y enmarcar (A3)
+
+**`assets/mapa-A3.pdf`** — esto es lo que le llevas a la copistería. Mide
+**420,2 × 297,0 mm** (A3 apaisado exacto), lleva las cuatro tipografías
+incrustadas y los degradados a 300 dpi, así que allí no tienen que reescalar
+ni retocar nada. Una sola página.
+
+Los originales vectoriales, por si algún día quieres retocarlos, son
+`assets/mapa-A3.svg` (la versión limpia, la del PDF) y
+`assets/mapa-A3-detalles.svg` (la misma con una cartela abajo: leyenda de los
+10 destinos, escala gráfica, sello de beapa y los textos "edición única · 1/1"
+y "hecho a mano por Carlis").
+
+> Papel recomendado: grueso mate de 250–300 g. Las pegatinas NFC van detrás de cada icono que lleva brillito dorado ✦.
+
+### Para la web
+
+- **`assets/mapa.svg`** — el del "mapa vivo". Sin textos ni Praga, y sin el bus dibujado (ese va animado).
+- `assets/mapa-imprimir.svg` — la versión antigua en formato libre (3:2). Se conserva por si acaso; para imprimir usa las A3.
 
 Si algún día quieres usar una foto/escaneo del cuadro en la web: guárdala como `assets/mapa.png` y se usará si falta el SVG. Los marcadores están anclados en % en `js/data/destinos.js` (campo `x`/`y`).
 
-> El mapa se genera con dos scripts de Python (proyección + composición). Si quieres retocarlo en serio (mover decoración, cambiar el aumento de España…), pídemelo o edita el SVG directamente.
+> El mapa se genera con dos scripts de Python (proyección + composición) en `tools/mapa/`. Si quieres retocarlo en serio (mover decoración, cambiar el aumento de España…), pídemelo o edita el SVG directamente.
 
 ## 2. Añadir fotos y vídeos
 
@@ -34,9 +51,9 @@ Mientras un archivo no exista, se muestra un hueco vintage `‹‹ FOTO — … 
 
 ### La forma cómoda: el editor visual
 
-**Doble clic en `abrir-editor.command`**. Se abre una página con formularios normales donde escribes texto tal cual — sin comillas, sin códigos raros. Los huecos por rellenar salen resaltados y hay un contador que baja según escribes.
+**Doble clic en `abrir-editor.command`** (en Windows: **`abrir-editor.bat`**). Se abre una página con formularios normales donde escribes texto tal cual — sin comillas, sin códigos raros. Los huecos por rellenar salen resaltados y hay un contador que baja según escribes.
 
-> ⚠️ **Nunca abras los archivos `.html` o `.js` con TextEdit.** Los reescribe como documento de texto y destruye el código (si pasa: `git checkout HEAD -- index.html` lo recupera). Usa el editor visual, o un editor de código si te apañas.
+> ⚠️ **Nunca abras los archivos `.html` o `.js` con TextEdit (Mac) ni con Word.** Los reescriben como documento de texto y destruyen el código (si pasa: `git checkout HEAD -- index.html` lo recupera). Usa el editor visual, o un editor de código si te apañas. El Bloc de notas de Windows sí es seguro, pero el editor visual es más cómodo.
 
 Arriba hay **dos desplegables**:
 - **Destino** — la **★ Portada** (título, dedicatoria, firma, títulos de sección…) o cualquiera de los 10 destinos.
@@ -44,9 +61,9 @@ Arriba hay **dos desplegables**:
   - *Ficha del destino* → título, fecha, intro, el pie de cada foto, historia y nota. (guarda en `js/data/<slug>.js`)
   - *Textos de las escenas* → los bocadillos y títulos de los dibujos animados: la fiesta de Bratislava, el setlist de Berlín, la clase de Topkapi, los gritos de la cabaña… (guarda en `js/data/textos-efectos.js`)
 
-Cuando termines: **"guardar en el proyecto"** (la primera vez te pedirá que elijas la carpeta `Mapa interactivo`; dale a *Permitir*) y luego doble clic en `actualizar.command` para publicarlo.
+Cuando termines: **"guardar en el proyecto"** (la primera vez te pedirá que elijas la carpeta `Mapa interactivo`; dale a *Permitir*) y luego doble clic en `actualizar.command` / `actualizar.bat` para publicarlo.
 
-> Guardar directo funciona en **Chrome**. Si usas Safari, el botón **"descargar archivo"** te baja el archivo y solo tienes que meterlo en `js/data/` reemplazando el que había.
+> Guardar directo funciona en **Chrome** y en **Edge**. Si usas Safari, el botón **"descargar archivo"** te baja el archivo y solo tienes que meterlo en `js/data/` reemplazando el que había.
 
 ### A mano (si lo prefieres)
 
@@ -104,6 +121,10 @@ Slugs: `madrid` · `cordoba` · `vigo` · `bratislava` · `bucarest` · `tatras`
 
 ```
 index.html                  home: hero + dedicatoria + mapa vivo
+editar.html                 editor visual de textos
+CLAUDE.md                   guía del proyecto para Claude Code
+abrir-editor.command/.bat   abrir el editor   (Mac / Windows)
+actualizar.command/.bat     publicar la web   (Mac / Windows)
 css/
   design-system.css         paleta, tipografías, polaroids, sellos, tickets…
   home.css                  hero y mapa vivo
@@ -122,5 +143,54 @@ assets/
   favicon.svg
   destinos/<slug>/          ⬅ tus fotos y vídeos
 ```
+
+## 8. Llevarte el proyecto a otro ordenador (Windows)
+
+El proyecto funciona igual en Mac y en Windows. Los dos programas de doble clic
+tienen su gemelo: `.command` para Mac, `.bat` para Windows.
+
+### Qué hace falta en el ordenador nuevo
+
+1. **Git** → <https://git-scm.com/download/win>. Durante la instalación, en
+   *"Configuring the line ending conversions"*, elige
+   **"Checkout as-is, commit as-is"**. El archivo `.gitattributes` ya se
+   encarga de los finales de línea, y así no se pelean entre ellos.
+2. **Google Chrome** (o Edge, que ya viene puesto) → hace falta para que el
+   editor de textos pueda guardar directamente en el proyecto.
+3. **Python** → <https://www.python.org/downloads/windows/>. Marca la casilla
+   **"Add python.exe to PATH"** al instalar. Solo se usa para levantar el
+   servidor local del editor y para regenerar el mapa.
+
+### Traerte el proyecto
+
+Con todo subido a GitHub (doble clic en `actualizar.command` antes de salir del
+Mac), en el ordenador nuevo abre **Git Bash** o **PowerShell** y:
+
+```bash
+cd %USERPROFILE%\Desktop
+git clone https://github.com/<usuario>/<repo>.git "Mapa interactivo"
+```
+
+Eso baja todo: web, fotos, vídeos y el historial. Es un buen rato de descarga,
+son unos 300 MB de fotos.
+
+> Si prefieres copiarlo con un USB o un disco, copia **la carpeta entera**,
+> incluida la subcarpeta oculta `.git` (si no, pierdes el historial y la
+> conexión con GitHub). En el Finder, ⌘⇧. muestra los archivos ocultos.
+> La carpeta `.claude` no hace falta: es configuración de esta máquina.
+
+### Trabajar desde los dos ordenadores
+
+Si vas a tocar el proyecto desde el Mac y desde el PC, **antes de empezar** en
+cualquiera de los dos:
+
+```bash
+git pull
+```
+
+Y al terminar, doble clic en `actualizar.command` / `actualizar.bat`. Así los
+dos van siempre al día y no se pisan.
+
+---
 
 *1 año de Aventuras… por ahora.*

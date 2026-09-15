@@ -5,6 +5,53 @@
 
 window.DESTINO_EFFECTS = {
   init(section, reduced){
+
+    /* --- pingüino patinador (de pie), dibujado a mano --- */
+    const PINGUINO = (escala, bufanda) => `
+      <g transform="scale(${escala})">
+        <!-- cuchillas -->
+        <path d="M-14.5 24.6 h13 M1.5 24.6 h13" stroke="#9BBAC0" stroke-width="2.4"/>
+        <!-- patas -->
+        <path d="M-8 18 L-13.5 23 L-2 23 Z" fill="#C9A24B" stroke="#241C13" stroke-width="1.5"/>
+        <path d="M8 18 L13.5 23 L2 23 Z" fill="#C9A24B" stroke="#241C13" stroke-width="1.5"/>
+        <!-- cuerpo + cabeza (una sola pieza) -->
+        <path d="M0 -22 C-9 -22 -11.5 -14 -10.5 -9 C-14.5 -5.5 -14.5 7 -12 13
+                 C-9.5 18.5 -5 21 0 21 C5 21 9.5 18.5 12 13 C14.5 7 14.5 -5.5 10.5 -9
+                 C11.5 -14 9 -22 0 -22 Z" fill="#4A3B2C" stroke="#241C13" stroke-width="2"/>
+        <!-- panza -->
+        <path d="M0 -15 C-6 -15 -7.5 -9 -7 -5.5 C-10 -2 -10 8 -7 12.5 C-4.5 16 -2 17 0 17
+                 C2 17 4.5 16 7 12.5 C10 8 10 -2 7 -5.5 C7.5 -9 6 -15 0 -15 Z"
+              fill="#F7F1E1" stroke="#241C13" stroke-width="1.2"/>
+        <!-- aletas -->
+        <path d="M-10.5 -6 C-16.5 -3 -18 6 -14.5 11 C-13.5 6 -12 -1 -10 -4 Z" fill="#4A3B2C" stroke="#241C13" stroke-width="1.6"/>
+        <path d="M10.5 -6 C16.5 -3 18 6 14.5 11 C13.5 6 12 -1 10 -4 Z" fill="#4A3B2C" stroke="#241C13" stroke-width="1.6"/>
+        <!-- ojos y pico -->
+        <circle cx="-4" cy="-15" r="2.6" fill="#F7F1E1" stroke="none"/>
+        <circle cx="4" cy="-15" r="2.6" fill="#F7F1E1" stroke="none"/>
+        <circle cx="-3.6" cy="-14.8" r="1.1" fill="#241C13" stroke="none"/>
+        <circle cx="4.4" cy="-14.8" r="1.1" fill="#241C13" stroke="none"/>
+        <path d="M-3.3 -11.8 L3.3 -11.8 L0 -7.4 Z" fill="#C9A24B" stroke="#241C13" stroke-width="1.3"/>
+        <!-- bufanda -->
+        <path d="M-11 -5.6 q11 4.6 22 0" stroke="${bufanda}" stroke-width="3.4"/>
+        <path d="M9 -4.8 q5 4 2.6 9.6" stroke="${bufanda}" stroke-width="3"/>
+      </g>`;
+
+    /* --- pingüino deslizándose de panza (los de verdad frenan así) --- */
+    const PINGUINO_PANZA = (escala, bufanda) => `
+      <g transform="scale(${escala})">
+        <path d="M-24 9 q-10 3 -19 0" stroke="#F7F1E1" stroke-width="3" stroke-dasharray="3 6" opacity=".85"/>
+        <path d="M-22 -3 l-9 -6 M-22 1.5 l-10 -1" stroke="#C9A24B" stroke-width="3"/>
+        <ellipse cx="-4" cy="0" rx="20" ry="9" fill="#4A3B2C" stroke="#241C13" stroke-width="2"/>
+        <path d="M-19 4.5 C-9 9.5 6 8.5 13 3" stroke="#F7F1E1" stroke-width="6"/>
+        <path d="M-2 -4 C-8 -7.5 -14 -8.5 -18.5 -7 C-14 -3.5 -8 -1.5 -4 -0.5 Z" fill="#4A3B2C" stroke="#241C13" stroke-width="1.4"/>
+        <circle cx="18" cy="-5" r="9" fill="#4A3B2C" stroke="#241C13" stroke-width="2"/>
+        <path d="M26 -5.6 l7.5 2.2 l-7 3.2 z" fill="#C9A24B" stroke="#241C13" stroke-width="1.3"/>
+        <circle cx="20" cy="-8" r="2.4" fill="#F7F1E1" stroke="none"/>
+        <circle cx="20.7" cy="-7.8" r="1.1" fill="#241C13" stroke="none"/>
+        <path d="M8 -11.5 C12.5 -9.5 13.5 -1 9.5 2.5" stroke="${bufanda}" stroke-width="3.2"/>
+        <path d="M8 -11 C1 -16.5 -8 -16.5 -15 -12.5" stroke="${bufanda}" stroke-width="2.8"/>
+      </g>`;
+
     section.innerHTML = `
       <style>
         .cph-escena{ max-width:720px; margin:0 auto; padding:0 20px; }
@@ -99,10 +146,13 @@ window.DESTINO_EFFECTS = {
                 stroke="#DDE9EA" stroke-width="2.5" stroke-dasharray="4 9" opacity=".8"/>
               <!-- guías de deslizamiento (invisibles) -->
               <path id="cphGlide1" d="M70 152 Q200 122 330 152 T560 148" fill="none" stroke="none"/>
-              <path id="cphGlide2" d="M540 196 Q400 222 260 196 T60 194" fill="none" stroke="none"/>
+              <path id="cphGlide2" d="M528 190 Q400 222 260 196 T60 194" fill="none" stroke="none"/>
+              <path id="cphGlide3" d="M120 178 Q250 202 390 176 T580 180" fill="none" stroke="none"/>
+              <path id="cphGlide4" d="M500 138 Q380 160 280 136 T70 142" fill="none" stroke="none"/>
+              <path id="cphGlide5" d="M90 214 Q190 226 290 212 Q340 206 390 210" fill="none" stroke="none"/>
 
               <!-- patinador 1 -->
-              <g id="cphSk1"><g class="cph-lean">
+              <g id="cphSk1" transform="translate(70,152)"><g class="cph-lean">
                 <path d="M0 6 L-6 22" stroke="#4A3B2C" stroke-width="3.5"/>
                 <path d="M-11 24 L0 24" stroke="#9BBAC0" stroke-width="3"/>
                 <path d="M0 6 L11 15" stroke="#4A3B2C" stroke-width="3.5"/>
@@ -116,7 +166,7 @@ window.DESTINO_EFFECTS = {
               </g></g>
 
               <!-- patinador 2 -->
-              <g id="cphSk2"><g class="cph-lean">
+              <g id="cphSk2" transform="translate(540,196)"><g class="cph-lean">
                 <path d="M0 6 L6 22" stroke="#4A3B2C" stroke-width="3.5"/>
                 <path d="M0 24 L11 24" stroke="#9BBAC0" stroke-width="3"/>
                 <path d="M0 6 L-11 15" stroke="#4A3B2C" stroke-width="3.5"/>
@@ -128,12 +178,19 @@ window.DESTINO_EFFECTS = {
                 <circle cx="1.6" cy="-20.5" r=".8" fill="#4A3B2C" stroke="none"/>
               </g></g>
 
+              <!-- pingüinos patinadores -->
+              <g id="cphPg1" transform="translate(120,178)"><g class="cph-pg"> ${PINGUINO(.78, '#C98B84')} </g></g>
+              <g id="cphPg2" transform="translate(500,138)"><g class="cph-pg"> ${PINGUINO(.62, '#C9A24B')} </g></g>
+              <g id="cphPg3" transform="translate(70,216)"><g class="cph-pg"> ${PINGUINO_PANZA(.72, '#8B9A78')} </g></g>
+
               <!-- sirenita en su roca -->
               <g transform="translate(548,198)">
                 <path d="M0 0 q10 -18 2 -34 q14 8 12 26 q16 -6 18 -20 q6 22 -12 32 q-8 4 -20 -4 Z" fill="#9BBAC0" stroke="#4A3B2C" stroke-width="2"/>
                 <circle cx="6" cy="-40" r="7" fill="#C98B84" stroke="#4A3B2C" stroke-width="2"/>
               </g>
-              <text x="560" y="246" text-anchor="middle" font-family="Caveat, cursive" font-size="17" fill="#4A3B2C" stroke="none">hola, Sirenita</text>
+              <!-- ojo: la pista está recortada en óvalo, los textos van hacia dentro -->
+              <text x="488" y="218" text-anchor="middle" font-family="Caveat, cursive" font-size="17" fill="#4A3B2C" stroke="none">hola, Sirenita</text>
+              <text x="300" y="243" text-anchor="middle" font-family="Caveat, cursive" font-size="17" fill="#4A3B2C" stroke="none" opacity=".85">${TXT('pinguinos')}</text>
             </svg>
           </div>
 
@@ -148,15 +205,17 @@ window.DESTINO_EFFECTS = {
         </div>
       </div>`;
 
-    /* la pista se va tras el carrete: nunca dos escenas seguidas */
+    /* la pista se va tras el carrete: nunca dos escenas seguidas.
+       ¡ojo! deja de ser hija de `section`, así que a partir de aquí
+       sus elementos se buscan dentro de `pista`, no dentro de `section`. */
+    const pista = section.querySelector('.cph-hielo');
     (function(){
-      const hielo = section.querySelector('.cph-hielo');
       const hist = document.querySelector('.d-historia');
-      if (hielo && hist){
-        hielo.style.maxWidth = '720px';
-        hielo.style.margin = '44px auto 0';
-        hielo.style.padding = '0 20px';
-        hist.before(hielo);
+      if (pista && hist){
+        pista.style.maxWidth = '720px';
+        pista.style.margin = '44px auto 0';
+        pista.style.padding = '0 20px';
+        hist.before(pista);
       }
     })();
 
@@ -184,14 +243,17 @@ window.DESTINO_EFFECTS = {
     });
 
     /* patinadores: se deslizan por su guía, siempre de pie (con un leve vaivén) */
-    [['#cphGlide1', '#cphSk1', 13], ['#cphGlide2', '#cphSk2', 16]].forEach(([guia, sk, dur]) => {
-      const g = section.querySelector(guia);
-      gsap.to(section.querySelector(sk), {
+    if (!pista) return;
+    [['#cphGlide1', '#cphSk1', 13, 7, 24], ['#cphGlide2', '#cphSk2', 16, -7, 24],
+     ['#cphGlide3', '#cphPg1', 11, 8, 20], ['#cphGlide4', '#cphPg2', 15, -8, 20],
+     ['#cphGlide5', '#cphPg3', 9, 3, 20]].forEach(([guia, fig, dur, giro, eje]) => {
+      const g = pista.querySelector(guia);
+      gsap.to(pista.querySelector(fig), {
         motionPath: { path: g, align: g, alignOrigin: [.5, .95] },
         duration: dur, repeat: -1, yoyo: true, ease: 'sine.inOut',
       });
-      gsap.to(section.querySelector(sk + ' .cph-lean'), {
-        rotation: sk.endsWith('1') ? 7 : -7, transformOrigin: '0px 24px',
+      gsap.to(pista.querySelector(fig + ' > g'), {
+        rotation: giro, transformOrigin: `0px ${eje}px`,
         duration: dur / 4, repeat: -1, yoyo: true, ease: 'sine.inOut',
       });
     });

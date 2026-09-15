@@ -5,7 +5,7 @@ import json
 SCRATCH = "."  # ejecutar desde tools/mapa
 DEST = "../../assets"
 
-g = json.load(open(f"{SCRATCH}/geo_out.json"))
+g = json.load(open(f"{SCRATCH}/geo_out.json", encoding="utf-8"))
 C = g['cities']
 
 def T(name, dx=0, dy=0):
@@ -555,8 +555,8 @@ def sin_bus(svg):
     return svg
 
 web = sin_bus(sin_praga(svg_doc("", "", destellos_decor)))
-open(f"{DEST}/mapa.svg", "w").write(web)
-open(f"{DEST}/mapa-imprimir.svg", "w").write(svg_doc(fuentes_imprimir, cartucho + badges_nfc))
+open(f"{DEST}/mapa.svg", "w", encoding="utf-8", newline="\n").write(web)
+open(f"{DEST}/mapa-imprimir.svg", "w", encoding="utf-8", newline="\n").write(svg_doc(fuentes_imprimir, cartucho + badges_nfc))
 
 # coordenadas para js/data/destinos.js
 print("Coordenadas para destinos.js (x%, y%):")
@@ -566,3 +566,178 @@ for slug, key in [('madrid','madrid'),('cordoba','cordoba'),('vigo','vigo'),('br
     x, y = C[key]
     print(f"  {slug:22s} x:{x/1536*100:5.2f}, y:{y/1024*100:5.2f}")
 print("mapa.svg y mapa-imprimir.svg escritos")
+
+
+# ================================================================
+#   VERSIONES A3 (420 × 297 mm) — para imprimir y enmarcar
+# ================================================================
+import math
+
+A3_W_MM, A3_H_MM = 420, 297          # A3 apaisado
+LIENZO_W = 1536
+LIENZO_H = LIENZO_W * A3_H_MM / A3_W_MM      # 1086.17 → proporción A3 exacta
+
+def _grupo_balanceado(s, ini):
+    """(inicio, fin) del <g …>…</g> que empieza en `ini`, contando anidados."""
+    i, prof = ini, 0
+    while True:
+        ab, ce = s.find('<g', i), s.find('</g>', i)
+        if ce == -1: return None
+        if ab != -1 and ab < ce:
+            prof += 1; i = ab + 2
+        else:
+            prof -= 1; i = ce + 4
+            if prof == 0: return (ini, i)
+
+def icono_suelto(marca, clave_coord, dx, dy, s=1):
+    """Reutiliza un icono del mapa colocándolo en (dx,dy) a escala s.
+       Anula su translate original sin tocar su contenido."""
+    i = iconos.find(marca)
+    g0 = iconos.find('<g ', i)
+    g0, g1 = _grupo_balanceado(iconos, g0)
+    X, Y = C[clave_coord]
+    return (f'<g transform="translate({dx:.1f},{dy:.1f}) scale({s}) '
+            f'translate({-X:.1f},{-Y:.1f})">{iconos[g0:g1]}</g>')
+
+# escala gráfica aproximada (la proyección no conserva distancias al 100%)
+def _km(a, b):
+    (lo1, la1), (lo2, la2) = CIUDADES_LL[a], CIUDADES_LL[b]
+    R = 6371.0
+    p1, p2 = math.radians(la1), math.radians(la2)
+    dp, dl = math.radians(la2-la1), math.radians(lo2-lo1)
+    h = math.sin(dp/2)**2 + math.cos(p1)*math.cos(p2)*math.sin(dl/2)**2
+    return 2*R*math.asin(math.sqrt(h))
+
+CIUDADES_LL = {'berlin': (13.40, 52.52), 'bucarest': (26.10, 44.43)}
+_d_km = _km('berlin', 'bucarest')
+_d_px = math.dist(C['berlin'], C['bucarest'])
+PX_POR_KM = _d_px / _d_km            # unidades del lienzo por km
+
+def escala_grafica(x, y, km=500):
+    """Barra de escala tipo mapa antiguo."""
+    L = km * PX_POR_KM
+    return f'''
+  <g transform="translate({x},{y})" font-family="'EB Garamond', Georgia, serif">
+    <rect x="0" y="0" width="{L/2:.1f}" height="7" fill="#4A3B2C" stroke="#4A3B2C" stroke-width="1.2"/>
+    <rect x="{L/2:.1f}" y="0" width="{L/2:.1f}" height="7" fill="#F3ECDA" stroke="#4A3B2C" stroke-width="1.2"/>
+    <text x="0" y="-5" font-size="11" fill="#4A3B2C">0</text>
+    <text x="{L:.1f}" y="-5" font-size="11" fill="#4A3B2C" text-anchor="middle">{km} km</text>
+    <text x="0" y="20" font-size="10" fill="#6E5B48" font-style="italic">escala aproximada</text>
+  </g>'''
+
+def sello_beapa(x, y, r=46, rot=-12):
+    """El matasellos redondo de la web: 1er · aniversario · beapa."""
+    return f'''
+  <g transform="translate({x},{y}) rotate({rot})" font-family="'Playfair Display', Georgia, serif"
+     fill="#6E5B48" text-anchor="middle">
+    <circle r="{r}" fill="#F3ECDA" fill-opacity=".45" stroke="#6E5B48" stroke-width="2.4" opacity=".9"/>
+    <circle r="{r-7}" fill="none" stroke="#6E5B48" stroke-width="1.1" stroke-dasharray="3 4" opacity=".75"/>
+    <text y="-11" font-size="14" letter-spacing="1.4">1er</text>
+    <text y="6"  font-size="10.5" letter-spacing="2">ANIVERSARIO</text>
+    <text y="23" font-size="10.5" letter-spacing="2">· BEAPA ·</text>
+  </g>'''
+
+def _a3(cuerpo_mapa, escala_mapa=1.0, dy_mapa=None, pagina=""):
+    """Envuelve el mapa en una página A3 real (mm), centrado horizontalmente."""
+    w = LIENZO_W * escala_mapa
+    dx = (LIENZO_W - w) / 2
+    dy = (LIENZO_H - 1024 * escala_mapa) / 2 if dy_mapa is None else dy_mapa
+    return (f'<g transform="translate({dx:.2f},{dy:.2f}) scale({escala_mapa})">{cuerpo_mapa}</g>'
+            + pagina)
+
+
+# ---------------- 1) A3 LISTA PARA IMPRIMIR (limpia) ----------------
+def a3_limpia():
+    """El mapa a sangre sobre un A3 exacto (420×297 mm)."""
+    s = svg_doc(fuentes_imprimir, cartucho + badges_nfc)
+    H, dy = LIENZO_H, (LIENZO_H - 1024) / 2
+
+    s = s.replace('viewBox="0 0 1536 1024" width="1536" height="1024"',
+                  f'viewBox="0 0 1536 {H:.2f}" width="{A3_W_MM}mm" height="{A3_H_MM}mm"')
+    s = s.replace('<rect width="1536" height="1024"', f'<rect width="1536" height="{H:.2f}"')
+    s = s.replace('<rect x="16" y="16" width="1504" height="992"',
+                  f'<rect x="16" y="16" width="1504" height="{H-32:.2f}"')
+    s = s.replace('<rect x="26" y="26" width="1484" height="972"',
+                  f'<rect x="26" y="26" width="1484" height="{H-52:.2f}"')
+    s = s.replace('M40,966', f'M40,{H-58:.2f}').replace('M1496,966', f'M1496,{H-58:.2f}')
+
+    # el contenido del mapa se centra en el nuevo alto; la viñeta se queda a página
+    ancla = f'<rect width="1536" height="{H:.2f}" fill="url(#marGrad)"/>'
+    s = s.replace(ancla, ancla + f'\n  <g transform="translate(0,{dy:.2f})">', 1)
+    vineta = f'<rect width="1536" height="{H:.2f}" fill="none" stroke="#4A3B2C" stroke-opacity=".16"'
+    s = s.replace(vineta, '</g>\n\n  ' + vineta, 1)
+    return s
+
+
+# ---------------- 2) A3 CON DETALLES (leyenda, sello, escala) ----------------
+NOMBRES_LEYENDA = [
+    ('<!-- VIGO · pata de pulpo -->', 'vigo', 'Vigo'),
+    ('<!-- MADRID · helado de fresa y limón -->', 'madrid', 'Madrid'),
+    ('<!-- CÓRDOBA · termómetro -->', 'cordoba', 'Córdoba'),
+    ('<!-- COPENHAGUE · café pijo para llevar -->', 'copenhague', 'Copenhague'),
+    ('<!-- BERLÍN · micrófono -->', 'berlin', 'Berlín'),
+    ('<!-- PRAGA · bola de disco -->', 'praga', 'Praga'),
+    ('<!-- BRATISLAVA · salchicha pinchada en un tenedor -->', 'bratislava', 'Bratislava'),
+    ('<!-- TATRAS · cabaña -->', 'tatras', 'Tatras'),
+    ('<!-- BUCAREST · vampiro -->', 'bucarest', 'Bucarest'),
+    ('<!-- ESTAMBUL · kebab -->', 'estambul', 'Estambul'),
+]
+
+def a3_detalles():
+    """A3 con el mapa arriba y una cartela: leyenda, escala y sello."""
+    # el mapa entero va como SVG anidado, escalado y centrado arriba
+    interior = svg_doc(fuentes_imprimir, cartucho + badges_nfc)
+    esc = 0.905
+    w, h = 1536 * esc, 1024 * esc
+    x, y = (1536 - w) / 2, 10
+    interior = interior.replace('viewBox="0 0 1536 1024" width="1536" height="1024"',
+        f'x="{x:.1f}" y="{y}" width="{w:.1f}" height="{h:.1f}" viewBox="0 0 1536 1024"', 1)
+
+    # ---- cartela inferior ----
+    cy = y + h + 12                       # arranque de la cartela
+    alto = LIENZO_H - cy - 26
+    fila_ic, fila_tx = cy + 46, cy + 76
+
+    x0, x1 = 190, 1330
+    paso = (x1 - x0) / (len(NOMBRES_LEYENDA) - 1)
+    leyenda = ''
+    for i, (marca, clave, nombre) in enumerate(NOMBRES_LEYENDA):
+        cx = x0 + i * paso
+        leyenda += icono_suelto(marca, clave, cx, fila_ic, 0.60)
+        leyenda += (f'<text x="{cx:.1f}" y="{fila_tx:.1f}" text-anchor="middle" font-size="12.5" '
+                    f'font-family="\'EB Garamond\', Georgia, serif" fill="#4A3B2C">{nombre}</text>')
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 {LIENZO_H:.2f}"
+     width="{A3_W_MM}mm" height="{A3_H_MM}mm">
+  <!-- ============================================================
+       1 año de Aventuras — A3 con detalles (leyenda, escala, sello)
+       Tamaño real: {A3_W_MM}×{A3_H_MM} mm. Vectorial: no pierde calidad.
+       ============================================================ -->
+  <rect width="1536" height="{LIENZO_H:.2f}" fill="#EAE0CA"/>
+
+  {interior}
+
+  <!-- ================= cartela ================= -->
+  <g>
+    <rect x="26" y="{cy:.1f}" width="1484" height="{alto:.1f}" rx="6"
+          fill="#F3ECDA" fill-opacity=".55" stroke="#6E5B48" stroke-width="1.6"/>
+    <rect x="34" y="{cy+8:.1f}" width="1468" height="{alto-16:.1f}" rx="4"
+          fill="none" stroke="#6E5B48" stroke-width="1" stroke-dasharray="2 5" opacity=".7"/>
+    <text x="768" y="{cy+24:.1f}" text-anchor="middle" font-size="12" letter-spacing="3.4"
+          font-family="'Playfair Display', Georgia, serif" fill="#6E5B48">
+      LOS DIEZ DESTINOS · LOS DEL BRILLITO ✦ ESCONDEN UNA AVENTURA
+    </text>
+    {leyenda}
+    {escala_grafica(78, fila_ic + 6)}
+    {sello_beapa(1420, fila_ic + 6, 42)}
+    <text x="78" y="{cy+24:.1f}" font-size="11" font-style="italic"
+          font-family="'EB Garamond', Georgia, serif" fill="#6E5B48">edición única · 1/1</text>
+    <text x="1458" y="{cy+24:.1f}" text-anchor="end" font-size="11" font-style="italic"
+          font-family="'EB Garamond', Georgia, serif" fill="#6E5B48">hecho a mano por Carlis</text>
+  </g>
+</svg>
+'''
+
+open(f"{DEST}/mapa-A3.svg", "w", encoding="utf-8", newline="\n").write(a3_limpia())
+open(f"{DEST}/mapa-A3-detalles.svg", "w", encoding="utf-8", newline="\n").write(a3_detalles())
+print("A3 escritos: mapa-A3.svg y mapa-A3-detalles.svg")

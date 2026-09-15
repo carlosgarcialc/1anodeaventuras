@@ -202,6 +202,10 @@ window.TEXTOS_EFECTOS_LABELS = {
       "Enfado · moraleja"
     ],
     [
+      "pinguinos",
+      "Hielo · nota de los pingüinos"
+    ],
+    [
       "hyggeFinal",
       "Hielo · frase final"
     ]

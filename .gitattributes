@@ -1,0 +1,37 @@
+# Este proyecto se edita desde Mac y desde Windows.
+# Sin estas reglas, Git cambia los finales de línea al pasar de un sistema a
+# otro y aparecen "cambios" en archivos que nadie ha tocado (o peor: los
+# scripts dejan de arrancar).
+
+# Por defecto: todo el texto se guarda en LF (el estándar de la web y de Git).
+* text=auto eol=lf
+
+# Scripts de Mac: SIEMPRE LF. Con CRLF, bash no los ejecuta.
+*.command text eol=lf
+*.sh      text eol=lf
+
+# Scripts de Windows: SIEMPRE CRLF. Con LF, cmd.exe se atraganta.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binarios: que Git no los toque jamás (ni finales de línea ni diffs).
+*.png  binary
+*.PNG  binary
+*.jpg  binary
+*.JPG  binary
+*.jpeg binary
+*.JPEG binary
+*.gif  binary
+*.webp binary
+*.heic binary
+*.HEIC binary
+*.mp4  binary
+*.MP4  binary
+*.mov  binary
+*.MOV  binary
+*.pdf  binary
+*.ico  binary
+*.woff  binary
+*.woff2 binary
+*.ttf  binary
+*.otf  binary

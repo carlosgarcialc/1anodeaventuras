@@ -104,7 +104,7 @@ def path_of(points, close=True):
 def geo_keep(lon, lat):
     return -35 <= lon <= 105 and 18 <= lat <= 84
 
-land = json.load(open(f"{SCRATCH}/ne_50m_land.json"))
+land = json.load(open(f"{SCRATCH}/ne_50m_land.json", encoding="utf-8"))
 land_paths = []
 for feat in land["features"]:
     geom = feat["geometry"]
@@ -121,7 +121,7 @@ for feat in land["features"]:
             land_paths.append(path_of(simp))
 
 # ---------- fronteras ----------
-borders = json.load(open(f"{SCRATCH}/ne_50m_borders.json"))
+borders = json.load(open(f"{SCRATCH}/ne_50m_borders.json", encoding="utf-8"))
 border_paths = []
 for feat in borders["features"]:
     geom = feat["geometry"]
@@ -165,7 +165,7 @@ out = {
   'borders': border_paths,
   'cities': {k: [round(v[0],1), round(v[1],1)] for k, v in city_px.items()},
 }
-json.dump(out, open(f"{SCRATCH}/geo_out.json", 'w'))
+json.dump(out, open(f"{SCRATCH}/geo_out.json", 'w', encoding="utf-8", newline="\n"))
 
 print("anillos tierra:", len(land_paths), "| trozos frontera:", len(border_paths))
 print("bytes land:", sum(len(p) for p in land_paths))
