@@ -15,9 +15,12 @@ window.DESTINO_DATA = {
 
   galeriaSub: 'Aún disimulamos bien los 40º a la sombra',
   galeria: [
-    { type: 'img', src: 'foto-1.jpg', caption: 'Quien lo diría con lo guapos que estamos' },
+    { type: 'img', src: 'foto-6.jpg', caption: '‹‹ CAPTION 6 — EDITAR ››' },
+    { type: 'img', src: 'foto-1.jpg', caption: 'Quien lo diría con lo guapos que estamos', horizontal: true },
+    { type: 'img', src: 'foto-7.jpg', caption: '‹‹ CAPTION 7 — EDITAR ››' },
     { type: 'img', src: 'foto-2.jpg', caption: 'El guiri fotógrafo, de rodillas haciéndonos la foto el tío', horizontal: true },
     { type: 'img', src: 'foto-3.jpg', caption: 'Siempre será la foto ganadora' },
+    { type: 'img', src: 'foto-8.jpg', caption: '‹‹ CAPTION 8 — EDITAR ››', horizontal: true },
     { type: 'video', src: 'video-1.mp4', caption: 'Goood girl *tap* *tap*' },
     { type: 'img', src: 'foto-4.jpg', caption: 'Oye salimos guapetes eh? Menos mal que de vez en cuando te acuerdas de sacar fotos...', horizontal: true },
     { type: 'img', src: 'foto-5.jpg', caption: 'Simplemente: mi fondo de pantalla ' },

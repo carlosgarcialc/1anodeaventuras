@@ -65,7 +65,7 @@ window.TEXTOS_EFECTOS = {
     tuVersion: 'Fuiste un gilipollas',   // Enfado · tu versión
     suVersion: 'La verdad es que sí',   // Enfado · su versión
     moraleja: 'Todo enfado tiene solución mientras haya amor y comunicación',   // Enfado · moraleja
-    pinguinos: 'los únicos que no se cayeron',   // Hielo · nota de los pingüinos
+    pinguinos: 'luego un ratito visitando a pingu',   // Hielo · nota de los pingüinos
     hyggeFinal: '',   // Hielo · frase final
   },
   'berlin': {

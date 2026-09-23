@@ -51,6 +51,12 @@
   align-items:start; /* cada polaroid con su altura natural, sin huecos */
 }
 .d-galeria .polaroid:nth-child(3n){ margin-top:18px; }
+/* móvil (2 columnas): si la última polaroid se queda sola, va centrada */
+@media (max-width:759px){
+  .d-galeria .polaroid:last-child:nth-child(odd){
+    grid-column:1 / -1; justify-self:center; width:calc(50% - 8px);
+  }
+}
 .d-galeria-titulo{ text-align:center; padding-top:26px; }
 .d-galeria-titulo h2{ font-size:clamp(1.8rem,6vw,2.6rem); }
 .d-galeria-titulo .hand{ font-size:1.4rem; color:var(--ink-soft); }
@@ -123,7 +129,13 @@
 }
 
 @media (min-width:760px){
-  .d-galeria{ grid-template-columns:repeat(3, 1fr); gap:34px 24px; }
+  /* 3 polaroids por fila sobre una rejilla de 6 (cada una ocupa 2): mismo
+     tamaño que con 3 columnas, pero deja centrar la última fila si no
+     está completa */
+  .d-galeria{ grid-template-columns:repeat(6, 1fr); gap:34px 24px; }
+  .d-galeria .polaroid{ grid-column:span 2; }
+  .d-galeria .polaroid:nth-last-child(2):nth-child(3n+1){ grid-column:2 / span 2; }
+  .d-galeria .polaroid:last-child:nth-child(3n+1){ grid-column:3 / span 2; }
   .d-galeria .polaroid:nth-child(3n){ margin-top:30px; }
   .d-galeria .polaroid:nth-child(3n+2){ margin-top:-14px; }
   .d-header .d-icono{ width:92px; }
