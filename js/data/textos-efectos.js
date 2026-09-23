@@ -18,7 +18,7 @@ window.TEXTOS_EFECTOS = {
     hallPista: 'los tres que no se nos olvidan',   // Hall of Fame · frase bajo el título
     hallCaption1: 'No sé si vale pero es lo mas rico que he comido',   // Hall of Fame · pie foto 1
     hallCaption2: 'No es mala cena de examenes',   // Hall of Fame · pie foto 2
-    hallCaption3: 'Y ahora tenemos que hacer una tarta de esto?',   // Hall of Fame · pie foto 3
+    hallCaption3: 'Lo de hacer una tarta de esto como que no',   // Hall of Fame · pie foto 3
     parejaTitulo: 'Pareja',   // Oasis · título
     parejaPista: 'nuestro paraíso particular',   // Oasis · frase bajo el título
     parejaCaption1: '',   // Oasis · pie foto 1
@@ -30,7 +30,7 @@ window.TEXTOS_EFECTOS = {
     duchaCaption: 'Tu no compartiste la misma visión estética, una decisión polémica a la par que respetable',   // Ducha · pie
     fotosTitulo: 'sesión de fotos nº ∞ · en la Mezquita',   // Mezquita · título
     fotosElla: 'repite que en esa salgo fatal',   // Mezquita · ella dice
-    fotosEllaSub: 'un poco de interés',   // Mezquita · ella (línea pequeña)
+    fotosEllaSub: 'sale con un pelito a la izquierda',   // Mezquita · ella (línea pequeña)
     fotosEl: 'que dices amor si estás guapísima…',   // Mezquita · él dice
     fotosElSub: '(foto nº 47)',   // Mezquita · él (línea pequeña)
     fotosCaption: 'Menos mal que una comida en Voltereta lo solucionaba todo',   // Mezquita · pie
@@ -39,18 +39,18 @@ window.TEXTOS_EFECTOS = {
     cartel: 'SE BUSCA: gaviota · botín: un bocadillo de pollo empanado',   // Cartel del mar
     catastrofesTitulo: 'y un minuto de silencio para...',   // Catástrofes · título
     captionBarco: 'el estómago de Bea de camino a Cíes',   // Catástrofes · pie del barco
-    captionBmw: 'la bala azul, no sé como hasta ese día me lo pasé bien',   // Catástrofes · pie del BMW
-    reinaTitulo: 'Bea que cada vez que viene se va con joyas que ni le caben en las muñecas',   // Realeza · título
+    captionBmw: 'no sé como hasta ese día me lo pasé bien',   // Catástrofes · pie del BMW
+    reinaTitulo: 'Bea recibiendo las ofrendas de sus súbditos (la familia de Carlos)',   // Realeza · título
     captionRealeza: 'No sé como les has engañado tanto...',   // Realeza · pie
   },
   'bratislava': {
-    captionSalchicha: '',   // Danubio · pie
-    fiestaTitulo: 'itinerario turístico de Bratislava',   // Fiesta · título
+    captionSalchicha: 'Menos mal que estábamos nosotros para animar un poco Bratis',   // Danubio · pie
+    fiestaTitulo: 'Itinerario turístico básico de Bratislava',   // Fiesta · título
     boca1: 'Maksym, que habla ucraniano',   // Fiesta · bocadillo 1
     boca2: '¿luego en Viking\'s?',   // Fiesta · bocadillo 2
     boca3: '¿after en la 213?',   // Fiesta · bocadillo 3
     boca4: 'puto Erasmusdreamland',   // Fiesta · bocadillo 4
-    fiestaCaption: 'Momento top el vikings de luego en la habita commenting',   // Fiesta · pie
+    fiestaCaption: 'Creo que no nos llegamos a acabar una recena',   // Fiesta · pie
   },
   'bucarest': {
     caption: 'mordiscos confirmados: 0 · sustos: solo por los precios del taxi',   // Pie de la escena
@@ -58,14 +58,14 @@ window.TEXTOS_EFECTOS = {
   'tatras': {
     boca1: '¡AY, MI RODILLA!',   // Bocadillo 1
     boca2: '¿Qué tamaño de palo es vuestro favorito?',   // Bocadillo 2
-    boca3: '¡UNA CABRA!',   // Bocadillo 3
+    boca3: '¡Otro plato de arroz porfa!',   // Bocadillo 3
     caption: '',   // Pie de la escena
   },
   'copenhague-aarhus': {
     tuVersion: 'Fuiste un gilipollas',   // Enfado · tu versión
     suVersion: 'La verdad es que sí',   // Enfado · su versión
-    moraleja: 'Todo enfado tiene solución mientras haya amor y comunicación',   // Enfado · moraleja
-    pinguinos: 'luego un ratito visitando a pingu',   // Hielo · nota de los pingüinos
+    moraleja: 'Danos 10 horas de bus y solucionamos el mundo',   // Enfado · moraleja
+    pinguinos: '¡Míranos estamos con Pingu!',   // Hielo · nota de los pingüinos
     hyggeFinal: '',   // Hielo · frase final
   },
   'berlin': {

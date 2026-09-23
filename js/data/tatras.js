@@ -23,7 +23,7 @@ window.DESTINO_DATA = {
     { type: 'img', src: 'foto-5.jpg', caption: 'Antes de Berlin cuando os llevabais bien' },
   ],
 
-  historia: '¡Qué viajazo, que bien lo pasamos aquí! La verdad es que no fue mucho un viaje de pareja pero tenía que incluirlo. Recuerdo que fue donde nos sacamos alguna fotillo más de pareja (eso me moló un poco). Y que me levanté a las 8 am para freír pollo empanado para que la niña tuviera su bocadillo en la montaña. Como olvidar también aquella noche en Cracovia cuando te pusiste tan enferma que no pudiste salir y me tocó cuidarte. Pero no me importó mucho. Hasta que vino Juanpa a unirse a la fiesta y nos tuvimos que ir de confesiones a las escaleras. No sé, otra parte de nuestras aventuras juntos!',
+  historia: '¡Qué viajazo, qué bien lo pasamos aquí! La verdad es que no fue mucho una escapada de pareja pero tenía que incluirlo. Recuerdo que aquí fueron nuestras primeras fotos de novietes (eso moló un poco). Y que me levanté a las 8 am para freír pollo empanado para que la niña tuviera su bocadillo en la montaña. También recuerdo que descubrí lo rápido que era un ser humano capaz de andar por una montaña. Y como olvidar también aquella noche en Cracovia cuando te pusiste tan enferma que no pudiste salir y me tocó cuidarte. Pero no me importó mucho. Hasta que vino Juanpa a unirse a la fiesta y nos tuvimos que ir de confesiones a las escaleras. ¡No sé, otra parte de nuestras aventuras juntos!',
 
   nota: 'A lo tonto a lo tonto algo de culo he tocado',
 };

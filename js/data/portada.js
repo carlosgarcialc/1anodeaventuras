@@ -24,7 +24,7 @@ window.TEXTOS_PORTADA = {
 
   // El mapa
   mapaTitulo: 'El mapa vivo',   // Título de la sección
-  mapaPista: 'cada destino esconde una página (igual que el mapa esconde chips)',   // Frase bajo el título
+  mapaPista: 'cada destino esconde una historia',   // Frase bajo el título
   mapaAyuda: 'en el móvil: pellizca para hacer zoom · toca un destino para desplegarlo · toca otra vez para viajar ✈',   // Instrucciones del mapa
 
   // Próximas paradas

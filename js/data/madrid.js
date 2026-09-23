@@ -7,7 +7,7 @@
 window.DESTINO_DATA = {
   slug: 'madrid',
   titulo: 'Ma<em>dri</em>d',
-  fechas: 'enero 2026 - toda la vidaa',
+  fechas: 'enero 2026 - una temporaditaa',
 
   intro: 'Madrid, nuestro hogar ahora',
 
@@ -23,7 +23,7 @@ window.DESTINO_DATA = {
     { type: 'img', src: 'foto-5.jpg', caption: 'Triste en el Honest Greens, imposible' },
   ],
 
-  historia: 'Que vamos a decir de Madrid no? Donde conocí a tu familia y amigos y tu a los míos. Donde empezó a ser una relación de verdad (bueno después de los 4 meses que pasaron hasta que te pedí salir). Pienso en nosotros y en Madrid y pienso en malabares imposibles para poder vernos 5 minutitos, en entrelazar nuestras vidas y en comida. En dates super guays (y alguna que otra en el tiger), sorpresas tuyas, sorpresas mías, flores, abrazos, findes en tu casa y findes de cagalera. He descubierto mucho mas Madrid contigo y puedo decir que cada día me gusta más. Tengo que ir preparándome igual va a ser mi hogar para muucho tiempo.',
+  historia: 'Que vamos a decir de Madrid no? Donde nuestras vidas se juntaron. Donde empezó a ser una relación de verdad (bueno después de los 4 meses que pasaron hasta que te pedí salir). Pienso en nosotros y en Madrid y pienso en malabares imposibles para poder vernos 5 minutitos, en entrelazar nuestras vidas y en comida. En dates super guays (y alguna que otra en el tiger), sorpresas tuyas, sorpresas mías, flores, abrazos, findes en tu casa y findes de cagalera. He descubierto mucho mas Madrid contigo y puedo decir que cada día me gusta más. Tengo que ir preparándome igual va a ser mi hogar para muucho tiempo.',
 
   nota: 'Me he dado cuenta que muchas fotos e historias son cerca de mi casa, igual es porque vivo más cerca del centro',
 };
