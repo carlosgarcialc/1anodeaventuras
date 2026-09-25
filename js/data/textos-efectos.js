@@ -53,7 +53,7 @@ window.TEXTOS_EFECTOS = {
     fiestaCaption: 'Creo que no nos llegamos a acabar una recena',   // Fiesta · pie
   },
   'bucarest': {
-    caption: 'mordiscos confirmados: 0 · sustos: solo por los precios del taxi',   // Pie de la escena
+    caption: 'los únicos sustos que nos llevamos fueron los que nos dio Unai de fiesta',   // Pie de la escena
   },
   'tatras': {
     boca1: '¡AY, MI RODILLA!',   // Bocadillo 1
